@@ -1,0 +1,60 @@
+<section class="search-schools">
+  <div class="search-schools__search">
+    <input id="searchInputDesk" type="text"
+          [value]="searchDeskValue"
+          (input)="searchDeskValue = $event.target.value"
+          [focus]="focusTriggeringEventEmitter"
+          placeholder="Digite o nome de uma escola"
+          class="search__input"/>
+    <input id="searchInputMob" auto-complete
+      [(ngModel)]="schoolSelected"
+      max-num-list="15"
+      min-chars="2"
+      [list-formatter]="autocompleListFormatter"
+      [source]="schools"
+      (ngModelChange)="searchUpdate($event)"
+      value-property-name="_id"
+      display-property-name="nome"
+      no-match-found-text="Nenhuma escola encontrada."
+      placeholder="Digite o nome de uma escola"
+      [focus]="focusTriggeringEventEmitter"
+      class="search__input"/>
+    <a routerLink="" class="search__button-back"></a>
+    <a href="javascript:void(0)" (click)="searchBoxClear($event)" class="search__button-close"></a>
+  </div>
+  <div class="error-msg">{{errorMsg}}</div>
+  <!-- <div class="error-msg">Nenhuma escola encontrada.</div> -->
+  <ul class="schools__list-desk">
+    <li class="item" (click)="onSelectSchool(school)" *ngFor="let school of schools | SearchPipe:searchDeskValue | slice:0:15">
+      <div class="distance">
+        <img src="assets/images/prato-aberto-icone-pin-escola.png" alt="" class="icon">
+        <span class="km">{{school.distance}} km</span>
+      </div>
+      <div class="infos">
+        <h3 class="name">{{school.nome}}</h3>
+        <!-- <span class="desc">{{school.description}}</span> -->
+        <small class="address">{{school.endereco}}<br>{{school.bairro}}</small>
+      </div>
+    </li>
+  </ul>
+  <div *ngIf="originSearch == 'button'" class="search-carousel">
+    <div class="item" *ngFor="let school of schoolsFromCarousel;let i = index">
+        <div class="distance">
+          <div class="thumb-container">
+            <img src="assets/images/prato-aberto-proximas-borda-thumb.png" alt="" class="thumb-border">
+            <div class="thumb-crop">
+              <img src="assets/images/img_escola.png" alt="" class="thumb-image">
+            </div>
+          </div>
+          <img src="assets/images/prato-aberto-icone-pin-cinza.png" alt="" class="icon">
+          <span class="km">{{school.distance}} km</span>
+        </div>
+        <div class="infos">
+          <h3 class="name">{{school.nome}}</h3>
+          <!-- <span class="desc">{{school.description}}</span> -->
+          <small class="address">{{school.endereco}}<br>{{school.bairro}}</small>
+        </div>
+        <a href="javascript:void(0)" (click)="onSelectSchool(school)" class="school-button">VEJA O CARDÁPIO</a>
+    </div>
+  </div>
+</section>

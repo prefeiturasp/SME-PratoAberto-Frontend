@@ -1,0 +1,42 @@
+<section class="home">
+  <div class="home__header">
+    <img src="assets/images/prato-aberto-logo.png" alt="" class="logo">
+    <h1 class="title">COMIDA BOA <br>NÃO TEM SEGREDO</h1>
+    <p class="desc">Um jeito fácil e transparente para todo mundo <br>se nutrir de informação sobre o que é servido <br>na Rede Municipal de Ensino.</p>
+    <!-- <input type="text" [(ngModel)]="searchInputModel" placeholder="Qual escola você procura?" class="search__box"> -->
+    <a href="javascript:void(0)" (click)="onScrollto()" class="arrow__down">Saiba mais sobre o Prato Aberto</a>
+  </div>
+  <div class="search__box-button" (click)="gotoRoute('/busca', 'input')">Digite o nome de uma escola</div>
+  <a (click)="gotoRoute('/busca', 'button')" class="home__button">ESCOLAS PERTO DE VOCÊ</a>
+  <div class="home__merendometer">
+    <h3 class="title">Merendômetro</h3>
+    <p class="subtitle">
+      Com o trabalho da CODAE, milhares de estudantes recebem refeições nutritivas e de qualidade nas escolas. Confira os números que não param de crescer.
+    </p>
+    <owl-carousel
+      [options]="{
+          center: true,
+          items: 1,
+          dots: true
+      }"
+      useAttributeSelector="true"
+      [items]="merendometers"
+      [carouselClasses]="['owl-theme']"
+      class="merendometer-carousel">
+      <div class="item no-border" *ngFor="let item of merendometers;let i = index">
+        <img src="{{item.image}}" alt="">
+      </div>
+    </owl-carousel>
+    <img class="merendomenter-desk" src="/assets/images/prato-aberto-home-merendometro-desk.png" alt="">
+    <div class="banner-educassis">
+      <img src="/assets/images/prato-aberto-home-educassis-mob.png" class="educassis-mob" alt="">
+      <img src="/assets/images/prato-aberto-home-educassis-desk.png" class="educassis-desk" alt="">
+      <a href="https://www.messenger.com/t/Educassis.sp" target="_blank" class="button-moreinfos fb"></a>
+      <a href="https://web.telegram.org/#/im?p=@EducAssis_bot" target="_blank" class="button-moreinfos tl"></a>
+    </div>
+    <div class="footer">
+        <img src="/assets/images/prato-aberto-footer-mob.png" class="bg-mob" alt="">
+        <img src="/assets/images/prato-aberto-footer-desk.png" class="bg-desk" alt="">
+      </div>
+  </div>
+</section>

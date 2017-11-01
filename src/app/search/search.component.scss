@@ -1,0 +1,206 @@
+@import '../sass_utils/_mixins';
+
+.search-schools{
+
+  .schools__list-desk{
+    display: none;
+  }
+  .search-schools__search{
+    width: 100%;
+    padding: 16px 8px;
+    background-image: linear-gradient(to right, #9657bf, #6d15a9);
+    position: fixed;
+    top: 0;
+    z-index: 6;
+    background-image: url(/assets/images/prato-aberto-busca-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+    .search__input{
+      width: calc(100% - 50px);
+      height: 48px;
+      margin: 0;
+      padding-left: 50px;
+      border-radius: 8px;
+      opacity: 0.85;
+      border: none;
+      background-color: #fafafa;
+
+      &#searchInputDesk{
+        display: none;
+      }
+    }
+
+    .search__button-back{
+      width: 50px;
+      height: 48px;
+      opacity: 0.85;
+      display: block;
+      @include centerY(absolute);
+      left: 8px;
+      background-image: url(/assets/images/prato-aberto-icone-voltar.png);
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      background-position: 50% 50%;
+    }
+
+    .search__button-close{
+      width: 50px;
+      height: 48px;
+      opacity: 0.85;
+      display: block;
+      @include centerY(absolute);
+      right: 8px;
+      background-image: url(/assets/images/prato-aberto-icone-fechar.png);
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      background-position: 50% 50%;
+    }
+  }
+
+  .search-carousel{
+    position: absolute;
+    bottom: 10px;
+    z-index: 5;
+    .item{
+      @include set-size(260px, 240px);
+      @include border-radius(8px);
+      background-color: #fff;
+      position: relative;
+      float: left;
+      @include minWidth(375) {
+        @include set-size(312px, 216px);
+      }
+      .distance{
+          width: 88px;
+          vertical-align: top;
+          padding-top: 6px;
+          .thumb-container, .icon{
+            display: block;
+            margin: 0 auto;
+          }
+
+          .thumb-container{
+            position: relative;
+
+            .thumb-border{
+              width: 100%;
+            }
+            .thumb-crop{
+              overflow: hidden;
+              @include set-size(62px, auto);
+              @include centerX(absolute);
+              top: 6px;
+              .thumb-image{
+                @include set-size(100%, auto);
+              }
+            }
+          }
+
+          .icon{
+            @include set-size(12px, auto);
+            margin-top: -10px;
+          }
+
+          .km{
+            text-align: center;
+          }
+      }
+
+      .infos{
+          vertical-align: top;
+          padding-top: 25px;
+          text-align: left;
+
+          .name{
+            line-height: 20px;
+          }
+      }
+      .school-button{
+        @include centerX(absolute);
+        @include set-size(240px, 48px);
+        @include font-size(14);
+        bottom: 16px;
+        color: #fff;
+        font-family: RobMd;
+        text-align: center;
+        border-radius: 8px;
+        background-color: #2881bb;
+        line-height: 48px;
+        box-shadow: 0 4px 8px 0 rgba(28, 107, 170, 0.6), inset 0 -3px 0 0 #1c6baa;
+        background-image: url(/assets/images/prato-aberto-icone-talheres.png);
+        background-repeat: no-repeat;
+        background-size: 12px 20px;
+        background-position: 42px 50%;
+        display: block;
+
+        @include minWidth(375) {
+          @include set-size(280px, 48px);
+          background-position: 42px 50%;
+          background-position: 62px 50%;
+        }
+      }
+    }
+  }
+  @include minWidth(1023){
+    @include set-size(400px, 100vh);
+    background-color: #ffffff;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
+    .schools__list-desk{
+      display: block;
+      position: absolute;
+      top: 80px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: #fff;
+      height: calc(100vh - 110px);
+
+      .item{
+        cursor: pointer;
+        min-width: 400px;
+      }
+    }
+
+    .search-schools__search{
+      max-width: 400px;
+
+      .search__input{
+        &#searchInputMob{
+          display: none;
+        }
+
+        &#searchInputDesk{
+          display: block;
+        }
+      }
+    }
+    .search-carousel{
+        width: 400px;
+        left: 0px;
+    }
+  }
+}
+
+.error-msg{
+  font-size: 16px;
+  font-family: RobLt;
+  color: #9468AC;
+  padding: 15px;
+  z-index: 10;
+  display: block;
+  margin: 100px;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  display: none;
+
+  @include minWidth(1024){
+    display: block;
+  }
+}

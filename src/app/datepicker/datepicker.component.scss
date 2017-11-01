@@ -1,0 +1,231 @@
+@import '../sass_utils/_mixins';
+.calendar {
+  padding: 20px;
+}
+
+.timeline-carousel{
+  display: block;
+
+  @media print{
+    display: none;
+  }
+}
+.calendar{
+  display: none;
+  .slider-days__dateStr{
+    text-align: center;
+    font-family: RobRg;
+    font-size: 12px;
+    color: #5C5C5C;
+    display: block;
+  }
+
+  .slider-days{
+    @include set-size(100%, 85px);
+    display: block;
+    overflow: hidden;
+
+    .owl-stage-outer{
+      .owl-stage{
+        .owl-item .active .center {
+          font-family: RobLt;
+          line-height: 120px;
+          transition: all 0.2s linear;
+          -webkit-transition: all 0.2s linear;
+          margin: 0 auto;
+          text-align: center;
+          cursor: pointer;
+
+        }
+      }
+    }
+
+    .slider-day-item{
+      display: inline;
+    }
+
+    .unit, .unit-slider{
+      font-family: RobLt;
+      line-height: 60px;
+      transition: all 0.2s linear;
+      -webkit-transition: all 0.2s linear;
+      margin: 0 auto;
+      text-align: center;
+      cursor: pointer;
+      width: 90px;
+
+      b{
+        font-size: 32px;
+        color: #E5D9EE;
+      }
+
+      &.active{
+        b{
+          font-size: 80px;
+          color: #9468AC;
+        }
+      }
+    }
+  }
+}
+.calendar .unit {
+  float: left;
+  width: 14.28%;
+  text-align: center;
+}
+.calendar .years{
+  height: 32px;
+}
+
+.calendar .years .prev {
+  text-align: left;
+}
+.calendar .years .next {
+  text-align: right;
+}
+.calendar .years .prev em, .calendar .years .next em {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+}
+.calendar .years .prev em:before, .calendar .years .next em:before {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  margin-top: 6px;
+  font-size: 0;
+  content: "";
+  border-style: solid;
+  border-width: 7px;
+}
+.calendar .years .prev em:before {
+  top: 3px;
+  left: 4px;
+  border-color: transparent #2881BB transparent transparent;
+}
+.calendar .years .next em:before {
+  top: 3px;
+  left: 13px;
+  border-color: transparent transparent transparent #2881BB;
+}
+.calendar .years .prev em:hover, .calendar .years .next em:hover, .calendar .years .prev em:active, .calendar .years .next em:active {
+  border-color: #2881BB;
+}
+.calendar .years .prev em:hover:before, .calendar .years .prev em:active:before {
+  opacity: 0.5;
+}
+.calendar .years .next em:hover:before, .calendar .years .next em:active:before {
+  opacity: 0.5;
+}
+.calendar .years .monyear {
+  float: left;
+  width: 71.42%;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+}
+.calendar .days {
+  padding-top: 25px;
+  margin-top: 15px;
+}
+.calendar .days .unit {
+  height: 28px;
+  color:#5C5C5C;
+  margin-bottom: 3px;
+  line-height: 34px;
+  text-align: center;
+}
+.calendar .days .unit b {
+  width: 34px;
+  height: 34px;
+  font-weight: normal;
+}
+.calendar .days .unit:hover b, .calendar .days .unit:active b, .calendar .days .unit.active b {
+  display: inline-block;
+  color: #9468AC;
+  position: relative;
+
+  &:after{
+    content: "•";
+    color: #9468AC;
+    font-size: 14px;
+    line-height: 20px;
+    @include centerX(absolute);
+    bottom: -5px;
+  }
+  cursor: pointer;
+  background-color: white;
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+.calendar .days .unit.older b {
+  width: auto;
+  height: auto;
+  color: #5C5C5C;
+  opacity: 0.5;
+  cursor: default;
+  background-color: transparent;
+  display: none;
+}
+
+.custom-input{
+  position: relative;
+  display: block;
+  margin: 30px auto 20px auto;
+  @media print{
+    display: none;
+  }
+  .input-date-display{
+    width: 185px;
+    height: 48px;
+    line-height: 48px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    text-align: left;
+    font-size: 20px;
+    font-family: RobRg;
+    border-bottom: 2px solid #2881BB;
+    background: url(/assets/images/prato-aberto-icone-calendar.png) no-repeat center right;
+  }
+  .input-date{
+    width: 165px;
+    height: 48px;
+    @include center(absolute);
+    z-index: 1;
+    opacity: 0;
+  }
+}
+
+.timeline-carousel{
+  margin-bottom: 20px;
+
+  .item{
+    font-family: RobRg;
+    font-size: 16px;
+    color: #5C5C5C;
+    text-align: center;
+    border: none;
+
+    .mob{
+      display: block;
+    }
+
+    .desk{
+      display: none;
+    }
+  }
+}
+
+@include minWidth(1024){
+  .timeline-carousel, .custom-input{
+    display: none;
+  }
+  .calendar{
+    display: block;
+  }
+}

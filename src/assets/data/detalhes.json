@@ -1,0 +1,94 @@
+[
+  {
+    "id": "tercerizada",
+    "title": "NOTAS GERAIS PARA UNIDADES TERCEIRIZADAS",
+    "items": [
+      {
+        "title": "1) Os cardápios foram elaborados por nutricionistas da Coordenadoria de Alimentação Escolar e acordados com o nutricionista responsável técnico da empresa contratada para prestação de serviço de nutrição e alimentação escolar, abaixo identificado:",
+        "list": [
+          "- Jéssica Giarletta Lomas de Oliveira Rocha - CRN3 nº 32.090 - CODAE",
+          "- Mônica Cardial Tobias – CRN3 - nº 5.128 - CODAE",
+          "- Rita de Cassia Carvalho Oda - CRN3 nº 11.394 - Apetece Sistemas de Alimentação S/A.",
+          "- Fernanda Izabel Galego - CRN3 nº 5.042 - Denjud Refeições Coletivas Adm e Serv Ltda.",
+          "- Sofia Edneia Vitti - CRN3 nº 10.270 - SHA Comércio de Alimentos Ltda.",
+          "- Lais Witzel Ferreira - CRN3 nº 7.219 - Comercial Milano Brasil Ltda.",
+          "- Fernanda Barbosa – CRN3 nº 10.947 – AEX Alimenta Comércio de Refeições e Serviços Ltda."
+        ]
+      },
+      {
+        "title": "2) Hidratação:",
+        "list": [
+          "a. Faixa Etária 0 a 5 meses: Água fervida ou filtrada nos intervalos para as crianças que não estão em aleitamento materno exclusivo.",
+          "b. Faixa Etária 6 meses a 6 anos: Água fervida ou filtrada nos intervalos."
+        ]
+      },
+      {
+        "title": "3) Alimentação Complementar – Faixa etária de 4 a 5 meses: ",
+        "list": [
+          "Na eventualidade de haver crianças de 4 a 5 meses que já iniciaram a alimentação complementar, estas deverão seguir o esquema alimentar da faixa etária de 6 meses, com as seguintes alterações: ",
+          "- O ovo deverá ser substituído por carne ou frango na papa principal;",
+          "- A fórmula infantil a ser ofertada deverá ser a fórmula infantil de 1° semestre."
+        ]
+      },
+      {
+        "title": "4) Amamentação",
+        "list": [
+          "a. Faixa Etária 0 a 11 meses: verificar cardápio publicado.",
+          "b. Faixa etária 1 ano a 1 anos e 11 meses: para crianças desta faixa etária que estão em aleitamento materno, o CEI deve oferecer leite materno ao invés do leite integral."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diretas",
+    "title": "NOTAS GERAIS PARA UNIDADES DIRETAS, MISTAS e CONVENIADAS (CEI, CCI, CECI, CEMEI)",
+    "items": [
+      {
+        "title": "1) Cardápio elaborado por Nutricionistas da Coordenadoria de Alimentação Escolar",
+        "list": []
+      },
+      {
+        "title": "2) Hidratação:",
+        "list": [
+          "a. Faixa Etária 0 a 5 meses: Água fervida ou filtrada nos intervalos para as crianças que não estão em ",
+          "b. Faixa Etária 6 meses a 6 anos: Água fervida ou filtrada nos intervalos."
+        ]
+      },
+      {
+        "title": "3) Alimentação Complementar – Faixa etária de 4 a 5 meses: ",
+        "list": [
+          "Na eventualidade de haver crianças de 4 a 5 meses que já iniciaram a alimentação complementar, estas deverão seguir o seguinte esquema alimentar: ",
+          "DESJEJUM: Leite Materno ou Fórmula Infantil (1º Semestre).",
+          "ALMOÇO: Papa Principal (Seguir composição da papa do almoço de 6 meses, sendo que no dia do ovo, substituir por carne ou frango.)",
+          "LANCHE: Leite Materno ou Fórmula Infantil (1º Semestre) + Papa de Fruta (Seguir a papa de fruta do almoço de 6 meses).",
+          "REFEIÇÃO DA TARDE: Leite Materno ou Fórmula Infantil (1º Semestre)."
+        ]
+      },
+      {
+        "title": "4) Amamentação",
+        "list": [
+          "a. Faixa Etária 0 a 11 meses: verificar cardápio publicado.",
+          "b. Faixa etária 1 ano a 1 anos e 11 meses: para crianças desta faixa etária que estão em aleitamento materno, o CEI deve oferecer leite materno ao invés do leite integral."
+        ]
+      },
+      {
+        "title": "5) Para a faixa etária de 8 a 11 meses os legumes e verduras deverão ser fornecidos cozidos.",
+        "list": []
+      },
+      {
+        "title": "6) Refeição da Tarde: de acordo com as condições climáticas, os mesmos ingredientes do dia e seus respectivos percapitas poderão ser utilizados no preparo de risotos ou sopas.",
+        "list": []
+      }
+    ]
+  },
+  {
+    "id": "diretas",
+    "title": "NOTAS GERAIS PARA UNIDADES DIRETAS e MISTAS COM MERENDA SECA",
+    "items": [
+      {
+        "title": "O Suco de Uva Integral (somente para os SME Convênios) e a Bebida UHT poderão ser servidos juntamente com o biscoito, conforme disponibilidade em estoque.",
+        "list": []
+      }
+    ]
+  }
+]

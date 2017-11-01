@@ -1,0 +1,104 @@
+@import './sass_utils/_mixins';
+
+.map-container{
+  position: relative;
+  z-index: 1;
+  height: 50vh;
+  top: 50%;
+
+  &.search-page, &.school-page{
+    height: calc(100vh - 80px);
+    top: 80px;
+  }
+
+  ngui-map{
+    height: 100%;
+  }
+
+  &.school-page{
+    display: none;
+  }
+
+  @include minWidth(1024){
+    @include set-size(calc(100% - 640px), 100vh);
+    position: absolute;
+    left: 640px;
+    top: 0;
+    z-index: 2;
+
+
+    &.search-page, &.school-page{
+      top: 0;
+      display: block;
+    }
+
+    &.school-page{
+      @include set-size(calc(100% - 730px), 100vh);
+      left: 730px;
+    }
+
+    &.search-page{
+      @include set-size(calc(100% - 400px), 100vh);
+      left: 400px;
+    }
+  }
+}
+
+
+.loader__overlay{
+  width: 100%;
+  height: 50vh;
+  top: 50%;
+  z-index: 3;
+  background: rgba(21,2,33,0.85);
+  display: none;
+  position: absolute;
+
+  &.search-page{
+    height: calc(100vh - 80px);
+    top: 80px;
+  }
+
+  &.school-page{
+    display: none;
+  }
+
+  @include minWidth(1023){
+    @include set-size(calc(100% - 640px), 100vh);
+    position: absolute;
+    left: 640px;
+    top: 0;
+    z-index: 3;
+
+
+    &.search-page, &.school-page{
+      top: 0;
+    }
+
+    &.school-page{
+      @include set-size(calc(100% - 730px), 100vh);
+      left: 730px;
+    }
+
+    &.search-page{
+      @include set-size(calc(100% - 400px), 100vh);
+      left: 400px;
+    }
+  }
+
+  .loader__circle{
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #7624ae;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: -60px 0 0 -40px;
+    animation: spin 2s linear infinite;
+    @include center(absolute);
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+}

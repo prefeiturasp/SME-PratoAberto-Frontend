@@ -1,0 +1,445 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import 'app/sass_utils/_variables';
+@import 'app/sass_utils/_mixins';
+
+html, body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+
+  .container{
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    min-height: 560px;
+
+    @media print{
+      height: auto;
+    }
+
+    @include minWidth(1024){
+      min-height: auto;
+    }
+  }
+}
+
+.banner-educassis{
+  position: relative;
+  .educassis-mob,.educassis-desk{
+    width: 90%;
+    max-width: 1232px;
+    margin: 30px auto;
+    display: block;
+  }
+
+  .educassis-desk{
+    display: none;
+  }
+
+  .button-moreinfos{
+    // @include centerX(absolute);
+    position: absolute;
+    bottom: 50%;
+    display: block;
+    width: 130px;
+    height: 52px;
+    background-repeat: no-repeat;
+    background-image: url(/assets/images/prato-aberto-home-educassis-buttons.png);
+    background-size: 100%;
+    &.fb{
+      left: 10%;
+      background-position: 0 0;
+    }
+    &.tl{
+      right: 10%;
+      background-position: 0 -53px;
+    }
+
+    @include minWidth(375) {
+      @include set-size(140px, 58px);
+
+      &.fb{
+        left: 12%;
+      }
+      &.tl{
+        right: 12%;
+        background-position: 0 -57px;
+      }
+    }
+    @include minWidth(414) {
+
+      &.fb{
+        left: 15%;
+      }
+      &.tl{
+        right: 15%;
+      }
+    }
+    @include minWidth(768) {
+      @include set-size(280px, 110px);
+
+      &.tl{
+        background-position: 0 -114px;
+      }
+    }
+  }
+}
+
+@include minWidth(1024){
+  .banner-educassis{
+    max-width: 1232px;
+    margin: 0 auto;
+    .educassis-mob{
+      display: none;
+    }
+    .educassis-desk{
+      display: block;
+      margin: 32px auto;
+    }
+
+    .button-moreinfos{
+      width: 143px;
+      height: 60px;
+      line-height: 50px;
+      left: inherit;
+      transform: translate(0);
+      -webkit-transform: translate(0);
+
+      &.fb{
+        left: inherit;
+        top: 85px;
+        right: 170px;
+      }
+
+      &.tl{
+        top: 140px;
+        right: 170px;
+        background-position: 0 -58px;
+      }
+
+    }
+  }
+}
+
+.no-border{
+  border: none !important;
+}
+
+// autocomplete style
+ngui-auto-complete{
+  width: calc(100% + 16px) !important;
+  left: -8px !important;
+}
+.ngui-auto-complete{
+  margin-top: 16px;
+  width: 100%;
+
+  > ul{
+    border: none !important;
+  }
+
+}
+
+.owl-item{
+  max-width: 380px !important;
+  float: left;
+}
+
+.owl-carousel  .owl-wrapper,
+.owl-carousel  .owl-item{
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility:    hidden;
+  -ms-backface-visibility:     hidden;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+}
+.slider-days, .timeline-carousel{
+  position: relative;
+  .owl-stage-outer{
+    .owl-stage{
+      .owl-item{
+        float: left;
+      }
+
+      .center{
+
+        .item{
+          color: #9468AC !important;
+        }
+
+        @include minWidth(1023) {
+          .item{
+            font-size: 80px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .owl-nav{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: block !important;
+
+    .owl-next, .owl-prev{
+      position: absolute;
+      height: 140px;
+      width: 50px;
+      opacity: 0;
+    }
+
+    .owl-next{
+      right: 0;
+    }
+    .owl-prev{
+      left: 0;
+    }
+  }
+}
+
+.timeline-carousel{
+  position: relative;
+  @media print{
+    display: none;
+  }
+  .owl-stage-outer{
+    .owl-stage{
+      .owl-item{
+        float: left;
+      }
+
+      .center{
+
+        .item{
+          color: #9468AC !important;
+          position: relative;
+          &:after{
+            content:"";
+            @include centerX(absolute);
+            bottom: 0;
+            @include set-size(8px, 8px);
+            border-radius: 50%;
+            background-color: #9468AC;
+          }
+        }
+      }
+    }
+  }
+}
+
+.search-schools__item, .item{
+  border-bottom: solid 1px #cbc4d1;
+  display: table;
+  padding: 10px 0;
+  margin: 0 auto;
+  width: 100%;
+
+  &.selected{
+    background-color: rgba(248, 247, 251, 1);
+  }
+  .distance{
+    width: 50px;
+    display: table-cell;
+    vertical-align: middle;
+    .icon{
+      width: 32px;
+      height: 32px;
+      display: block;
+      margin: 0 auto 5px auto;
+    }
+
+    .km{
+      font-family: RobRg;
+      @include font-size(10);
+      line-height: 20px;
+      color: #5c5c5c;
+      text-align: center;
+      display: block;
+    }
+  }
+  .infos{
+    display: table-cell;
+    .name{
+      font-family: RobBd;
+      @include font-size(16);
+      line-height: 16px;
+      color: #000;
+      margin: 0;
+    }
+
+    .desc{
+      font-family: RobLt;
+      @include font-size(12);
+      line-height: 20px;
+      color: #5c5c5c;
+      display: block;
+    }
+
+    .address{
+      font-family: RobRg;
+      @include font-size(14);
+      line-height: 14px;
+      color: #5c5c5c;
+      display: block;
+    }
+  }
+}
+
+.item{
+  border: none;
+}
+
+.owl-theme{
+  .owl-dots{
+    .owl-dot{
+      vertical-align: middle;
+      span{
+        @include set-size(12px, 12px);
+        background: transparent !important;
+        border: 2px solid #B654BE;
+        @include border-radius(50%);
+      }
+
+      &.active{
+        span{
+          @include set-size(16px, 16px);
+          background: #B654BE !important;
+        }
+      }
+    }
+  }
+}
+
+/* FONTS  */
+@font-face {
+	font-family: 'RobRg';
+	src: url('assets/fonts/Roboto-Regular.eot');
+	src: url('assets/fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-Regular.woff') format('woff'),
+		url('assets/fonts/Roboto-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobBl';
+	src: url('assets/fonts/Roboto-Black.eot');
+	src: url('assets/fonts/Roboto-Black.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-Black.woff') format('woff'),
+		url('assets/fonts/Roboto-Black.ttf') format('truetype');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobIt';
+	src: url('assets/fonts/Roboto-Italic.eot');
+	src: url('assets/fonts/Roboto-Italic.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-Italic.woff') format('woff'),
+		url('assets/fonts/Roboto-Italic.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'RobMdIt';
+	src: url('assets/fonts/Roboto-MediumItalic.eot');
+	src: url('assets/fonts/Roboto-MediumItalic.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-MediumItalic.woff') format('woff'),
+		url('assets/fonts/Roboto-MediumItalic.ttf') format('truetype');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'RobBlIt';
+	src: url('assets/fonts/Roboto-BlackItalic.eot');
+	src: url('assets/fonts/Roboto-BlackItalic.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-BlackItalic.woff') format('woff'),
+		url('assets/fonts/Roboto-BlackItalic.ttf') format('truetype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'RobLt';
+	src: url('assets/fonts/Roboto-Light.eot');
+	src: url('assets/fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-Light.woff') format('woff'),
+		url('assets/fonts/Roboto-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobBdIt';
+	src: url('assets/fonts/Roboto-BoldItalic.eot');
+	src: url('assets/fonts/Roboto-BoldItalic.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-BoldItalic.woff') format('woff'),
+		url('assets/fonts/Roboto-BoldItalic.ttf') format('truetype');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'RobLtIt';
+	src: url('assets/fonts/Roboto-LightItalic.eot');
+	src: url('assets/fonts/Roboto-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-LightItalic.woff') format('woff'),
+		url('assets/fonts/Roboto-LightItalic.ttf') format('truetype');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'RobBd';
+	src: url('assets/fonts/Roboto-Bold.eot');
+	src: url('assets/fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-Bold.woff') format('woff'),
+		url('assets/fonts/Roboto-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobTh';
+	src: url('assets/fonts/Roboto-Thin.eot');
+	src: url('assets/fonts/Roboto-Thin.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-Thin.woff') format('woff'),
+		url('assets/fonts/Roboto-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobMd';
+	src: url('assets/fonts/Roboto-Medium.eot');
+	src: url('assets/fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-Medium.woff') format('woff'),
+		url('assets/fonts/Roboto-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobThIt';
+	src: url('assets/fonts/Roboto-ThinItalic.eot');
+	src: url('assets/fonts/Roboto-ThinItalic.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/Roboto-ThinItalic.woff') format('woff'),
+		url('assets/fonts/Roboto-ThinItalic.ttf') format('truetype');
+	font-weight: 100;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Varela';
+	src: url('assets/fonts/VarelaRound-Regular.eot');
+	src: url('assets/fonts/VarelaRound-Regular.eot?#iefix') format('embedded-opentype'),
+		url('assets/fonts/VarelaRound-Regular.woff') format('woff'),
+		url('assets/fonts/VarelaRound-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

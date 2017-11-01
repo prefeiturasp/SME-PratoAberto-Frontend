@@ -1,0 +1,48 @@
+<div [ngStyle]="{'height': height, 'width': width, 'border-style': border}">
+    <div class="selectiongroup" *ngIf="showTextBox">
+        <span class="selection" [ngStyle]="{'height': height, 'line-height': height}" (click)="openBtnClicked()">{{selectionDayTxt}}</span>
+        <span class="selbtngroup" [style.height]="height">
+        <button type="button" class="btnpicker" (click)="openBtnClicked()"><span class="icon icon-calendar"></span></button>
+        </span>
+    </div>
+    <div class="custom-input">
+      <span class="input-date-display" >{{inputSelectedDate}}</span>
+      <input pattern="\d{1,2}/\d{1,2}/\d{4}" type="date" name="input-date" id="input-date" value="" class="input-date" (change)="inputChangeDate($event)" [(ngModel)]="selectedInputDate">
+    </div>
+    <div class="timeline-carousel">
+      <div class="item" *ngFor="let tl of sliderDates;let i = index">
+          <span (click)="cellClicked(tl)">{{tl.dayStr.substring(0,3)}}, {{tl.day}}</span>
+      </div>
+    </div>
+    <div class="row" *ngIf="showSelector">
+        <div class="col-md-12" style="z-index:1000">
+            <div class="calendar" style="height:300px">
+                <div class="years clearfix">
+                    <div class="unit prev" (click)="prevMonth()"><em></em></div>
+                    <div class="monyear">{{visibleMonth.monthTxt}} {{visibleMonth.year}}</div>
+                    <div class="unit next" (click)="nextMonth()"><em></em></div>
+                </div>
+                <div class="slider-days">
+                  <div class="item item-{{i}}" id="{{d.dayStr}}" *ngFor="let d of sliderDates;let i = index">
+                    <div (click)="cellClicked(d)" [ngClass]="{'unit active': selectedDate.day===d.day && selectedDate.month===d.month && selectedDate.year===d.year && d.cmo===CURR_MONTH || d.currDay }">
+                      <div [ngClass]="{'unit-slider older': d.cmo===PREV_MONTH || d.cmo===NEXT_MONTH, 'unit-slider': d.cmo===CURR_MONTH || d.cmo!==CURR_MONTH}"><b>{{d.day}}</b></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slider-days__dateStr" *ngIf="weekdayStr">{{weekdayStr}}, {{visibleMonth.monthTxt}} {{visibleMonth.year}}</div>
+                <div class="days">
+                    <div class="clearfix">
+                        <div class="unit" *ngFor="let days of weekDays">{{days.substring(0, 3)}}</div>
+                    </div>
+                    <div class="clearfix">
+                        <div *ngFor="let w of dates">
+                            <div *ngFor="let d of w" (click)="cellClicked(d)" [ngClass]="{'unit active': selectedDate.day===d.day && selectedDate.month===d.month && selectedDate.year===d.year && d.cmo===CURR_MONTH || d.currDay }">
+                                <div [ngClass]="{'unit older': d.cmo===PREV_MONTH || d.cmo===NEXT_MONTH, 'unit': d.cmo===CURR_MONTH || d.cmo!==CURR_MONTH}"><b>{{d.day}}</b></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

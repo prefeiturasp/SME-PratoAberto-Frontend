@@ -1,0 +1,610 @@
+@import '../sass_utils/_mixins';
+.school{
+  width: 100%;
+  background-color: #fff;
+
+  .calendary{
+    position: relative;
+    .calendary__button-back{
+      width: 50px;
+      height: 48px;
+      opacity: 0.85;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      background-image: url(/assets/images/prato-aberto-icone-voltar-branco.png);
+      background-repeat: no-repeat;
+      background-size: 16px 15px;
+      background-position: 50% 50%;
+    }
+    .school-infos{
+      @include set-size(100%, 224px);
+      background-size: cover;
+      position: relative;
+      .txt-content {
+        position: absolute;
+        bottom: 10px;
+        left: 16px;
+        width: 80%;
+
+        .title{
+          font-family: RobBd;
+          font-size: 18px;
+          line-height: 20px;
+          color: #fff;
+          text-align: left;
+          text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.5);
+          margin: 0 0 30px 0;
+        }
+
+        .desc{
+          font-family: RobLt;
+          font-size: 12px;
+          line-height: 20px;
+          color: #fff;
+          text-align: left;
+          text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.5);
+        }
+      }
+
+      @media print{
+        height: 80px;
+        .txt-content {
+          width: 100%;
+          text-align: center;
+
+          .title{
+            color: #000;
+          }
+        }
+      }
+    }
+
+    .dates{
+
+      .datepicker-container{
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+    .button-share{
+      display: block;
+      @include set-size(48px, 48px);
+      background-image: url(/assets/images/prato-aberto-icone-compartilhar.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: absolute;
+      right: 16px;
+      bottom: -24px;
+      opacity: 1;
+
+      &.opened{
+        opacity: 0.8;
+      }
+    }
+
+    .container-share{
+      position: absolute;
+      right: 66px;
+      bottom: -2px;
+
+      &.mob{
+        display: none;
+      }
+
+      &.desk{
+        display: none;
+      }
+
+      &.opened{
+        display: block;
+      }
+    }
+
+    .button-sharefb, .button-sharemail, .button-shareprint{
+      @extend .button-share;
+      background-image: url(/assets/images/prato-aberto-escola-compartilhar.png);
+    }
+    .button-sharefb{
+      background-position: 0 0;
+      right: 96px;
+    }
+    .button-sharemail{
+      background-position: -48px 0;
+      right: 48px;
+    }
+
+    .button-shareprint{
+      background-position: -96px 0;
+      right: 0px;
+    }
+  }
+
+  .card{
+
+    .card-alert{
+      font-size: 16px;
+      font-family: RobLt;
+      color: #9468AC;
+      padding: 15px;
+    }
+
+    .age-header{
+      @include set-size(100%, 64px);
+      background-color: #F4F4F7;
+      font-family: Varela;
+      @include font-size(18);
+      line-height: 64px;
+      color: #000;
+      padding-left: 20px;
+      cursor: pointer;
+      background-image: url(/assets/images/prato-aberto-accordeon-seta-baixo.png);
+      background-repeat: no-repeat;
+      background-position: 95% 50%;
+      border: 1px solid #e0e0e0;
+    }
+    .age-item{
+      height: 64px;
+      overflow: hidden;
+
+      &.selected{
+        height: auto;
+
+        .age-header{
+          background-image: url(/assets/images/prato-aberto-accordeon-seta-cima.png);
+        }
+      }
+
+      @media print{
+        height: auto;
+        overflow: auto;
+      }
+    }
+    .card-item{
+      border: 1px solid #e0e0e0;
+      .title-content {
+        @include set-size(100%, 48px);
+        background-color: #E9E8EE;
+
+        .icon{
+          @include set-size(32px, 32px);
+          display: inline-block;
+          background-color: #9468AC;
+          @include border-radius(50%);
+          vertical-align: middle;
+          margin: 0 16px;
+        }
+
+        .title{
+          line-height: 48px;
+          font-family: Varela;
+          font-size: 18px;
+          text-align: left;
+          color: #000;
+          display: inline-block;
+          margin: 0;
+          vertical-align: middle;
+        }
+      }
+
+    }
+    .deatils-link{
+      line-height: 20px;
+      font-family: RobRg;
+      font-size: 14px;
+      color: #5C5C5C;
+      background-color: #E9E8EE;
+      padding: 20px;
+
+      a{
+        color: #2881BB;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .food-list{
+      margin: 0;
+      background-color: #E9E8EE;
+      display: block;
+
+      .food-item{
+        border-bottom: 1px solid #C4B7CD;
+        @include set-size(calc(95% - 64px), auto);
+        // min-height: 64px;
+        display: block;
+        margin-left: 64px;
+
+        &:last-child{
+          border-bottom: none;
+        }
+
+        .food-title{
+          font-family: RobRg;
+          font-size: 12px;
+          color: #5C5C5C;
+          line-height: 40px;
+          padding-left: 8px;
+
+          &:before{
+            content: "•";
+            color: #9468AC;
+            font-size: 14px;
+            line-height: 20px;
+            position: relative;
+            left: - 8px;
+          }
+        }
+      }
+    }
+  }
+
+  @include minWidth(1023){
+    width: 730px;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
+    .calendary, .card{
+      height: 100vh;
+      display: inline-block;
+      width: 360px;
+      vertical-align: top;
+      margin: 0;
+    }
+    .calendary{
+      overflow-x: hidden;
+      overflow-y: auto;
+      .dates{
+        position: relative;
+        .datepicker-container{
+
+
+        }
+
+        .custom-input{
+          display: none;
+        }
+        .timeline-carousel{
+          position: absolute;
+          top: 60px;
+          .item{
+            font-family: RobLt;
+            color: #E5D9EE;
+            font-size: 32px;
+            line-height: 120px;
+            transition: all 0.2s linear;
+            -webkit-transition: all 0.2s linear;
+
+            .mob{
+              display: none;
+            }
+
+            .desk{
+              display: block;
+            }
+          }
+        }
+      }
+
+      .button-share{
+        display: none;
+      }
+
+      .container-share{
+        right: inherit;
+        @include centerX(relative);
+        bottom: -90px;
+        width: 145px;
+        margin-bottom: 30px;
+
+        &.desk{
+          display: block;
+        }
+      }
+
+      .button-sharefb, .button-sharemail, .button-shareprint{
+        display: block;
+      }
+    }
+    .card{
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+}
+
+.button-educassis{
+  width: 62px;
+  height: 66px;
+  cursor: pointer;
+  background-image: url(/assets/images/prato-aberto-educassis-button-mob.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  display: block;
+  margin: 0;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  @include minWidth(1024){
+    @include set-size(272px, 56px);
+    cursor: pointer;
+    background-image: url(/assets/images/prato-aberto-educassis-button.png);
+    margin: -20px auto 20px auto;
+    position: relative;
+    top: inherit;
+    right: inherit;
+  }
+}
+
+.overlay-educassis{
+  @include set-size(100%, 100vh);
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  background: rgba(21,2,33,0.85);
+  display: none;
+
+
+  .banner-educassis{
+    @include center(absolute);
+    width: 100%;
+    height: 100vh;
+    // max-width: 500px;
+
+    .educassis-mob{
+      width: auto;
+      height: 100%;
+      margin: 0;
+    }
+
+    .button__fechar{
+      @include set-size(62px, 33px);
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      cursor: pointer;
+      background-image: url(/assets/images/prato-aberto-educassis-modal-fechar.png);
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 100% auto;
+      display: block;
+      z-index: 2;
+    }
+
+    .fb, .tl{
+      width: 110px;
+      height: 45px;
+      bottom: 54vh;
+    }
+    .fb{
+      left: 15%;
+    }
+
+    .tl{
+      right: 15%;
+      background-position: 0 -46px;
+    }
+    @include minWidth(375){
+      .fb, .tl{
+        width: 135px;
+        height: 55px;
+      }
+
+      .fb{
+        left: 12%;
+      }
+      .tl{
+        right: 12%;
+        background-position: 0 -55px;
+      }
+    }
+    @include minWidth(414){
+      .fb, .tl{
+        width: 150px;
+        height: 58px;
+      }
+
+      .tl{
+        background-position: 0 -62px;
+      }
+    }
+    @include minWidth(1024){
+      max-width: 950px;
+      height: auto;
+      .fb, .tl{
+        left: 74%;
+      }
+
+      .fb{
+        top: 125px;
+      }
+
+      .tl{
+        top: 185px;
+      }
+
+      .button__fechar{
+        right: 80px;
+        top: 20px;
+      }
+    }
+  }
+}
+
+.overlay-details{
+  @include set-size(100%, 100vh);
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  background: rgba(21,2,33,0.85);
+  display: none;
+
+  .button__fechar{
+    @include set-size(62px, 33px);
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    background-image: url(/assets/images/prato-aberto-modal-fechar-roxo.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100% auto;
+    display: block;
+    z-index: 2;
+
+    @include minWidth(1024){
+      background-image: url(/assets/images/prato-aberto-educassis-modal-fechar.png);
+      right: 13%;
+      top: 9vh;
+    }
+  }
+
+  .details-content{
+    @include center(absolute);
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    padding: 25px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @include minWidth(1024){
+      width: 75%;
+      height: 70vh;
+    }
+
+    .details-title{
+      font-size: 26px;
+      line-height: 36px;
+      font-family: Varela;
+      margin: 40px auto;
+
+      @include minWidth(375){
+        font-size: 32px;
+        line-height: 41px;
+      }
+      @include minWidth(1024){
+        margin: 0 auto 40px auto;
+      }
+    }
+
+    .details-desc{
+      margin-top: 32px;
+      .title{
+        line-height: 20px;
+        font-family: RobRg;
+        font-size: 20px;
+      }
+
+      .txt{
+        line-height: 20px;
+        font-family: RobRg;
+        font-size: 16px;
+        color: #5C5C5C;
+
+        .txt-title{
+          font-size: 14px;
+        }
+
+        .txt-desc{
+          font-size: 12px;
+          padding-left: 12px;
+        }
+      }
+    }
+  }
+}
+
+.print-page{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 65px 24px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+
+  .title {
+    font-family: Varela;
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .date-range {
+    font-family: Varela;
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 28px;
+    display: block;
+  }
+
+  .school-title{
+    font-family: RobBd;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .school-subtitle{
+    font-family: RobRg;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .week-box{
+    .week-age{
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      width: 100%;
+      display: block;
+      font-family: Varela;
+      font-size: 18px;
+      line-height: 20px;
+      padding-bottom: 10px;
+    }
+
+    .week-table{
+      width: 100%;
+
+      .week-table-title{
+        font-family: Varela;
+        font-size: 14px;
+        padding: 15px;
+      }
+
+      th:nth-child(even) {
+        background: rgba(0,0,0,0.1);
+      }
+      th:nth-child(odd) {
+        background: #fff;
+      }
+
+      .week-table-item{
+        font-family: RobRg;
+        font-size: 14px;
+        vertical-align: top;
+        padding: 30px 15px 15px 15px;
+
+        &:nth-child(even) {
+          background: #fff;
+        }
+        &:nth-child(odd) {
+          background: rgba(0,0,0,0.1);
+        }
+
+        .dot {
+          color: #9468AC;
+        }
+      }
+    }
+  }
+}

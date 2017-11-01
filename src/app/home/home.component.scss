@@ -1,0 +1,296 @@
+@import '../sass_utils/_mixins';
+
+.home{
+
+  .home__header{
+    width: 100%;
+    height: 50vh;
+    background-image: linear-gradient(to right, #9657bf, #6d15a9);
+    padding: 19px 16px 58px 16px;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+
+    background-image: url(/assets/images/prato-aberto-home-bg-mob.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .arrow__down{
+      display: none;
+    }
+
+    .logo{
+      width: 60%;
+      min-width: 170px;
+      height: auto;
+      margin: 0 auto 10px auto;
+      display: block;
+    }
+
+    .title{
+      @include font-size(28);
+      line-height: 36px;
+      @include font-scale(320, 768, 28, 38);
+      color: #fff;
+      font-family: 'Varela';
+      text-align: center;
+      margin: 0 auto 10px auto;
+
+      @include minWidth(768) {
+        line-height: 56px;
+      }
+    }
+
+    .desc{
+      width: 90%;
+      @include font-scale(320, 767, 13, 30);
+      line-height: 22px;
+      color: #fff;
+      font-family: 'RobRg';
+      text-align: center;
+      margin: 0 auto;
+
+      @include minWidth(414) {
+        line-height: 26px;
+        margin: 20px auto;
+      }
+
+      @include minWidth(768) {
+        line-height: 40px;
+      }
+    }
+
+
+  }
+  .search__box{
+    @include centerX(absolute);
+    bottom: -54px;
+    max-width: 328px;
+    width: calc(90% - 50px);
+    height: 64px;
+    border-radius: 8px;
+    padding-left: 50px;
+    border: solid 2px #cbc8ce;
+    background-color: #fafafa;
+    background-image: url(/assets/images/prato-aberto-icone-lupa.png);
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 16px 50%;
+
+    @include input-placeholder{
+      color: #5c5c5c;
+      font-family: 'RobRg';
+      @include font-size(18);
+      text-align: left;
+    }
+
+    @include minWidth(768) {
+      min-width: 468px;
+      height: 74px;
+      bottom: -60px;
+    }
+  }
+
+  .search__box-button{
+    @extend .search__box;
+    @include font-size(18);
+    width: calc(100% - 50px);
+    color: #5c5c5c;
+    font-family: 'RobRg';
+    text-align: left;
+    line-height: 64px;
+    cursor: pointer;
+    @include centerX(absolute);
+    top: calc(50vh - 32px);;
+    z-index: 10;
+    box-shadow: 0px 32px 28px -8px rgba(47,13,70,0.35);
+  }
+
+  .home__button{
+    @include centerX(absolute);
+    bottom: 30px;
+    width: 224px;
+    height: 48px;
+    border-radius: 8px;
+    box-shadow: inset 0 -3px 0 0 #1c6baa;
+    font-family: RobMd;
+    @include font-size(14);
+    line-height: 48px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #2881bb;
+    background-image: url(/assets/images/prato-aberto-icone-pin-branco.png);
+    background-repeat: no-repeat;
+    background-size: 12px 16px;
+    background-position: 14px 50%;
+    z-index: 10;
+    @include minWidth(768) {
+      width: 294px;
+      height: 68px;
+      @include font-size(16);
+      line-height: 68px;
+    }
+  }
+
+  .home__merendometer{
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    width: 100%;
+    .title{
+      font-family: Varela;
+      @include font-size(32);
+      line-height: 48px;
+      color: #000;
+      text-align: center;
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .subtitle{
+      font-family: RobRg;
+      @include font-size(16);
+      line-height: 20px;
+      color: #000;
+      text-align: center;
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .merendomenter-carousel{
+      display: block;
+    }
+
+    .merendomenter-desk{
+      display: none;
+    }
+
+    .footer{
+      position: relative;
+      .bg-mob,.bg-desk{
+        width: 100%;
+      }
+
+      .bg-desk{
+        display: none;
+      }
+    }
+  }
+
+
+  @include minWidth(1024) {
+    .home__header{
+      @include set-size(640px, 100vh);
+      min-height: 640px;
+      display: inline-block;
+      background-image: url(/assets/images/prato-aberto-home-bg-desk.png);
+
+      .arrow__down{
+        display: inline-block;
+        background-image: url(/assets/images/prato-aberto-home-setinha-baixo.png);
+        background-size: 16px 34px;
+        background-repeat: no-repeat;
+        padding-left: 34px;
+        line-height: 34px;
+        color: #fff;
+        font-family: RobRg;
+        font-size: 14px;
+        position: absolute;
+        bottom: 16px;
+        left: 75px;
+      }
+      .logo{
+        width: 140px;
+        margin: 40px auto 0 10%;
+      }
+
+      .title{
+        width: 80%;
+        @include font-size(36);
+        line-height: 48px;
+        text-align: left;
+        margin: 30px auto 18px auto;
+      }
+
+      .desc{
+        width: 80%;
+        @include font-size(16);
+        line-height: 24px;
+        text-align: left;
+      }
+
+    }
+    .search__box-button{
+      line-height: 70px;
+    }
+
+    .search__box{
+      position: relative;
+      bottom: inherit;
+      margin-top: 20px;
+      transform: translateX(0%);
+      -webkit-transform: translateX(0%);
+      min-width: auto;
+      max-width: 90%;
+      left: calc(7% - 18px);
+      min-width: auto;
+      max-width: 700px;
+      top: 340px;
+    }
+
+    .home__button{
+      display: none;
+    }
+
+    .home__merendometer{
+      .title{
+        margin-top: 30px;
+      }
+      .subtitle{
+        display: block;
+        width: 572px;
+        margin: 0 auto 60px auto;
+
+        br{
+          display: none;
+        }
+      }
+
+      .merendometer-carousel{
+        display: none;
+      }
+
+      .merendomenter-desk{
+        display: block;
+        width: 100%;
+        max-width: 1110px;
+        margin: 0 auto;
+      }
+
+
+      .footer{
+        .bg-mob{
+          display: none;
+        }
+
+        .bg-desk{
+          display: block;
+        }
+      }
+    }
+
+  }
+
+  @include minWidth(1366) {
+    .search__box{
+      margin-top: 30px;
+      left: 5%;
+    }
+  }
+  @include minWidth(1440) {
+    .search__box{
+      top: 340px;
+    }
+  }
+}

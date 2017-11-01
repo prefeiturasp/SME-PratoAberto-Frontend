@@ -1,0 +1,27 @@
+
+<div class="container">
+    <router-outlet></router-outlet>
+    <div id="map-container" class="map-container">
+      <ngui-map
+        zoom="15"
+        center="userLocation"
+        (mapReady$)="onMapReady($event)"
+        (mapClick)="onMapClick($event)"
+        (idle)="onIdle($event)"
+        mapTypeId="roadmap"
+        disableDefaultUI="true">
+
+        <marker *ngFor="let marker of positions"
+          title="{{marker.title}}"
+          [icon]="marker.image.url"
+          [id]="marker.id"
+          [position]="marker.pos"
+          (click)="gotoSchool(marker)"
+          (initialized$)="onMarkerInit($event)">
+        </marker>
+      </ngui-map>
+    </div>
+    <div class="loader__overlay" id="map-loader">
+      <div class="loader__circle"></div>
+    </div>
+</div>
