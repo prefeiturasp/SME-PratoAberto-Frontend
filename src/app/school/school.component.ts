@@ -302,12 +302,10 @@ export class SchoolComponent implements OnInit {
       startStr,
       endStr
     ).subscribe((res)=> {
-      console.log("res", res);
       this.weekCalendary = [];
       let calendaryAgeGroups = this.winRef.nativeWindow._.groupBy(res, (item)=>{
         return item.idade;
       });
-      console.log("calendaryAgeGroups", calendaryAgeGroups);
       let item;
       let currMenu = {};
       let ageMenu = {};
@@ -322,16 +320,20 @@ export class SchoolComponent implements OnInit {
           let currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], {data: currDate});
 
           if (currEats){
+            // console.log("currEats", currEats)
             Object.keys(currEats["cardapio"]).map((menuKey, idx)=>{
               if (!ageMenu[ageKey][menuKey]){
                 ageMenu[ageKey][menuKey] = {};
               }
               ageMenu[ageKey][menuKey] = {
-                name: menuKey,
+                name: currEats.idade,
                 date: currDate,
                 weekDays: _weekDays,
-                eats:[menuKey]
+                items:{
+                  eats:[[menuKey]]
+                }
               };
+              // console.log("ageMenu[ageKey][menuKey]", ageMenu[ageKey][menuKey])
               for (let j = 0; j < 5; j++){
                 let _currDate = "" + currWeekByDate[j].getFullYear() + this.preZero(currWeekByDate[j].getMonth() + 1) + this.preZero(currWeekByDate[j].getDate());
                 let _currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], {data: _currDate});
@@ -339,49 +341,49 @@ export class SchoolComponent implements OnInit {
                 if (_currEats){
                   tempArr = _currEats["cardapio"][menuKey];
                 }
-                ageMenu[ageKey][menuKey]["eats"].push(tempArr);
+                ageMenu[ageKey][menuKey]["items"]["eats"].push(tempArr);
               }
             });
           }
         }
-        tempWeek.push(ageMenu);
-      });
-      let tempObj = {};
-      this.weekCalendary = [];
-      Object.keys(tempWeek).map((key, i)=>{
-        tempObj = {};
-        tempObj = {
-          weekDays: _weekDays,
+        let tempObj = {
           name: "",
+          weekDays: _weekDays,
           items: []
-        }
-        // console.log("[key]", tempWeek[key])
-        Object.keys(tempWeek[key]).map((_key, _i)=>{
-
-          console.log("tempWeek[_key]", tempWeek[key][_key])
-
-          tempObj["name"] = tempWeek[key][_key].name;
-          // tempObj["items"] = [];
-          // tempObj["items"].push([tempWeek[key][_key].name]);
-
-          Object.keys(tempWeek[key][_key]).map((__key, __i)=>{
-
-            if (__i == 0){
-              console.log("__i", tempWeek[key][_key][__key]);
-              tempObj["items"].push([tempWeek[key][_key][__key]]);
+        };
+        Object.keys(ageMenu[ageKey]).map((key, i)=>{
+          if (ageMenu[ageKey][key].items) {
+            let tempArr = [];
+            for (let eat = 0; eat < ageMenu[ageKey][key].items.eats.length; eat++){
+              tempArr.push(ageMenu[ageKey][key].items.eats[eat]);
             }
-
-            if (typeof tempWeek[key][_key][__key] === 'object' && __key != 'name'){
-              tempObj["items"].push(tempWeek[key][_key][__key]);
-            }
-          });
+            tempObj["name"] = ageMenu[ageKey][key].name;
+            tempObj['items'].push(tempArr);
+          }
         });
         this.weekCalendary.push(tempObj);
-      })
-      console.log("this.weekCalendary", this.weekCalendary)
-      this.doc.getElementById("printPage").style.display = "block";
+      });
+      let printContents, popupWin;
+      setTimeout(()=>{
+        printContents = this.winRef.nativeWindow.$("#printPage").clone();
+        printContents.css({
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          display: "block",
+          overflow: "visible"
+        })
+        this.winRef.nativeWindow.$("body").prepend(printContents);
+        setTimeout(()=>{
+          window.print();
+          setTimeout(()=>{
+            window.close();
+            printContents.remove();
+          }, 1000);
+        }, 1000);
+      },250);
     });
-    // window.print();
+
   }
 
   getWeekByDate(currDate){
@@ -398,6 +400,18 @@ export class SchoolComponent implements OnInit {
 
   preZero(val){
     return val < 10 ? "0" + val : val;
+  }
+
+  public getStyleContent(idx){
+    if (idx % 2 == 0){
+      return "#fafafa"
+    }
+  }
+
+  public getStyleTitle(idx){
+    if (idx == 1 || idx == 3 || idx == 5){
+      return "#fafafa"
+    }
   }
 
   public camelize(str) {

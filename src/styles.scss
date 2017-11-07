@@ -15,7 +15,8 @@ html, body{
     min-height: 560px;
 
     @media print{
-      height: auto;
+      display: none;
+
     }
 
     @include minWidth(1024){
@@ -267,7 +268,7 @@ ngui-auto-complete{
       @include font-size(16);
       line-height: 16px;
       color: #000;
-      margin: 0;
+      margin: 0 0 8px 0
     }
 
     .desc{

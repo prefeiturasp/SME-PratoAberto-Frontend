@@ -152,7 +152,12 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   autocompleListFormatter(data: any) {
-    // <span class="km">${data.distance} km</span>
+    function camelize(str) {
+      let _str = str.toLowerCase().replace(/\s(.)/g, function($1) { return $1.toUpperCase(); });
+      return _str.substring(0, 1).toUpperCase() + _str.substring(1, _str.length);
+    }
+
+    let address = camelize(`${data.endereco} - ${data.bairro}`);
     let html = `
         <div class="distance">
           <img src="assets/images/prato-aberto-icone-pin-escola.png" alt="" class="icon">
@@ -160,9 +165,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
         </div>
         <div class="infos">
           <h3 class="name">${data.nome}</h3>
-          <small class="address">${data.endereco} - ${data.bairro}</small>
+          <small class="address">${address}</small>
           </div>`;
-          // <span class="desc">${data.description}</span>
     return html;
   }
 
@@ -172,6 +176,11 @@ export class SearchComponent implements OnInit, AfterViewInit {
       this.router.navigate(['../escola', $event._id]);
     }
 
+  }
+
+  public camelize(str) {
+    let _str = str.toLowerCase().replace(/\s(.)/g, function($1) { return $1.toUpperCase(); });
+    return _str.substring(0, 1).toUpperCase() + _str.substring(1, _str.length);
   }
 
   ngOnDestroy() {

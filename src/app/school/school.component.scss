@@ -3,6 +3,10 @@
   width: 100%;
   background-color: #fff;
 
+  @media print{
+    display: none;
+  }
+
   .calendary{
     position: relative;
     .calendary__button-back{
@@ -23,6 +27,13 @@
       @include set-size(100%, 224px);
       background-size: cover;
       position: relative;
+
+      @include minWidth(1280){
+        @include set-size(100%, 134px);
+      }
+      @include minWidth(1366){
+        @include set-size(100%, 224px);
+      }
       .txt-content {
         position: absolute;
         bottom: 10px;
@@ -37,6 +48,13 @@
           text-align: left;
           text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.5);
           margin: 0 0 30px 0;
+
+          @include minWidth(1280){
+            margin: 0 0 10px 0;
+          }
+          @include minWidth(1366){
+            margin: 0 0 30px 0;
+          }
         }
 
         .desc{
@@ -352,6 +370,9 @@
   background: rgba(21,2,33,0.85);
   display: none;
 
+  @media print{
+    display: none;
+  }
 
   .banner-educassis{
     @include center(absolute);
@@ -447,21 +468,29 @@
   background: rgba(21,2,33,0.85);
   display: none;
 
+  @media print{
+    display: none;
+  }
+
   .button__fechar{
-    @include set-size(62px, 33px);
+    @include set-size(100%, 50px);
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 0px;
+    top: 0px;
     cursor: pointer;
     background-image: url(/assets/images/prato-aberto-modal-fechar-roxo.png);
     background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: 100% auto;
+    background-position: 95% 50%;
+    background-size: 62px 16px;
+    background-color: #fff;
     display: block;
     z-index: 2;
 
     @include minWidth(1024){
+      @include set-size(62px, 33px);
       background-image: url(/assets/images/prato-aberto-educassis-modal-fechar.png);
+      background-position: 50% 50%;
+      background-size: 100% auto;
       right: 13%;
       top: 9vh;
     }

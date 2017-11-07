@@ -128,8 +128,18 @@
   text-align: center;
 }
 .calendar .days {
-  padding-top: 25px;
+  padding-top: 10px;
   margin-top: 15px;
+
+  @include minWidth(1280){
+    padding-top: 0;
+    margin-top: 5px;
+  }
+
+  @include minWidth(1366){
+    padding-top: 10px;
+    margin-top: 15px;
+  }
 }
 .calendar .days .unit {
   height: 28px;
