@@ -150,7 +150,8 @@ export class SchoolComponent implements OnInit {
                 self.currentSchool.cards[res[i].idade].menu.push({
                   name: key,
                   content: eats,
-                  icon: key.replace(/ /g, '').toLowerCase()
+                  icon: key.replace(/ /g, '').toLowerCase(),
+                  exibitionOrder: self.currentSchool.refeicoes.indexOf(key)
                 });
               }
             });

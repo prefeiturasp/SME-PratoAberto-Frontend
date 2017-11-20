@@ -36,7 +36,7 @@
         {{card.name}}
         <!-- {{card.name.substring(card.name.indexOf("-")+1, card.name.length)}} -->
       </div>
-      <div class="card-item" *ngFor="let menu of card.menu">
+      <div class="card-item" *ngFor="let menu of card.menu | orderby">
         <div class="title-content">
           <img src="assets/images/prato-aberto-icone-{{menu.icon}}.png" alt="" class="icon">
           <h4 class="title">{{menu.name}}</h4>

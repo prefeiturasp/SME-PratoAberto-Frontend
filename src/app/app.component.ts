@@ -91,8 +91,8 @@ export class AppComponent implements OnInit {
   }
 
   public setMarkersBySchools() {
-    // this._schools = Globals.schools.filter(school => { return school["distance"] < 2});
-    this._schools = Globals.schools;
+    this._schools = Globals.schools.filter(school => { return school["distance"] < 2});
+    // this._schools = Globals.schools;
     for (let i=0; i< this._schools.length; i++) {
       if (this._schools[i]["lat"] && this._schools[i]["lon"]){
         this.positions.push({
