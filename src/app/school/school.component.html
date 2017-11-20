@@ -31,14 +31,16 @@
       <a href="javascript:void(0)" (click)="onOpenModalEducassis()" class="button-educassis"></a>
   </div>
   <div class="card" *ngIf="isCard && currentSchool.cards">
-    <div class="age-item" (click)="onExpandCard($event)" *ngFor="let card of currentSchool.cards | keys">
+    <div class="age-item" (click)="onExpandCard($event)" *ngFor="let card of currentSchool.cards | keys | orderby">
       <div class="age-header">
-        {{card.name.substring(card.name.indexOf("-")+1, card.name.length)}}
+        {{card.name}}
+        <!-- {{card.name.substring(card.name.indexOf("-")+1, card.name.length)}} -->
       </div>
       <div class="card-item" *ngFor="let menu of card.menu">
         <div class="title-content">
           <img src="assets/images/prato-aberto-icone-{{menu.icon}}.png" alt="" class="icon">
-          <h4 class="title">{{menu.name.substring(menu.name.indexOf("-")+1, menu.name.length)}}</h4>
+          <h4 class="title">{{menu.name}}</h4>
+          <!-- <h4 class="title">{{menu.name.substring(menu.name.indexOf("-")+1, menu.name.length)}}</h4> -->
         </div>
         <ul class="food-list">
           <li class="food-item" *ngFor="let food of menu.content">

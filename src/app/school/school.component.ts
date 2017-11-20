@@ -93,6 +93,7 @@ export class SchoolComponent implements OnInit {
           self.currentSchool.agrupamento
         );
 
+        // console.log("curretnSchool", self.currentSchool)
         self.isCard = false;
 
         if (Globals.mapInstance){
@@ -132,46 +133,37 @@ export class SchoolComponent implements OnInit {
         self.currentSchool.cards = {};
         for (let i = 0; i < res.length; i++){
           let obj = res[i].cardapio;
-
-          if (!self.currentSchool.cards[res[i].idade]){
-            self.currentSchool.cards[res[i].idade] = {
-              name: res[i].idade,
-              menu: []
-            };
-          }
-          Object.keys(obj).forEach((key) =>{
-            let eats = [];
-            for (let j = 0; j < obj[key].length; j++){
-              eats.push(obj[key][j]);
+          if (self.currentSchool.idades.indexOf(res[i].idade) > -1){
+            if (!self.currentSchool.cards[res[i].idade]){
+              self.currentSchool.cards[res[i].idade] = {
+                name: res[i].idade,
+                menu: [],
+                exibitionOrder: self.currentSchool.idades.indexOf(res[i].idade)
+              };
             }
-
-            let _icon = "";
-            if (key.toLowerCase().indexOf('desjejum') > 0){
-              _icon = "desjejum"
-            } else if (key.toLowerCase().indexOf('almoco') > 0 || key.toLowerCase().indexOf('jantar') > 0){
-              _icon = "almoco"
-            } else if (key.toLowerCase().indexOf('tarde') > 0){
-              _icon = "tarde"
-            } else if (key.toLowerCase().indexOf('colacao') > 0){
-              _icon = "colacao"
-            } else if (key.toLowerCase().indexOf('lanche') > 0){
-              _icon = "lanche"
-            }
-            self.currentSchool.cards[res[i].idade].menu.push({
-              name: key,
-              content: eats,
-              icon: key.replace(/ /g, '').toLowerCase()
+            Object.keys(obj).forEach((key) =>{
+              let eats = [];
+              for (let j = 0; j < obj[key].length; j++){
+                eats.push(obj[key][j]);
+              }
+              if (self.currentSchool.refeicoes.indexOf(key) > -1){
+                self.currentSchool.cards[res[i].idade].menu.push({
+                  name: key,
+                  content: eats,
+                  icon: key.replace(/ /g, '').toLowerCase()
+                });
+              }
             });
-          });
+          }
+          if (res.length > 0){
+            self.isCard = true;
+            self.errorMessage = "Carregando.";
+          } else {
+            self.isCard = false;
+            self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
+          }
+          // console.log("calendaryService: ", self.currentSchool);
         }
-        if (res.length > 0){
-          self.isCard = true;
-          self.errorMessage = "Carregando.";
-        } else {
-          self.isCard = false;
-          self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
-        }
-        // console.log("calendaryService: ", res, self.currentSchool.cards);
       }
     );
   }
