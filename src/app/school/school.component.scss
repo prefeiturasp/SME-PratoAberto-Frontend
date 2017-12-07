@@ -184,7 +184,7 @@
     .card-item{
       border: 1px solid #e0e0e0;
       .title-content {
-        @include set-size(100%, 48px);
+        @include set-size(100%, auto);
         background-color: #E9E8EE;
 
         .icon{
@@ -197,7 +197,6 @@
         }
 
         .title{
-          line-height: 48px;
           font-family: Varela;
           font-size: 18px;
           text-align: left;
@@ -205,6 +204,8 @@
           display: inline-block;
           margin: 0;
           vertical-align: middle;
+          width: calc(100% - 98px);
+          line-height: 26px;
         }
       }
 
@@ -482,7 +483,6 @@
     background-repeat: no-repeat;
     background-position: 95% 50%;
     background-size: 62px 16px;
-    background-color: #fff;
     display: block;
     z-index: 2;
 

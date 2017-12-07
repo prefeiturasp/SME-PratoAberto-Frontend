@@ -130,6 +130,11 @@ export class SchoolComponent implements OnInit {
     let self = this;
     this.calendaryService.get(date, unit, attendance, grouping)
       .subscribe(function(res){
+        if (res.length == 0) {
+          self.isCard = false;
+          self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
+          return
+        }
         self.currentSchool.cards = {};
         for (let i = 0; i < res.length; i++){
           let obj = res[i].cardapio;
@@ -156,6 +161,7 @@ export class SchoolComponent implements OnInit {
               }
             });
           }
+
           if (res.length > 0){
             self.isCard = true;
             self.errorMessage = "Carregando.";
