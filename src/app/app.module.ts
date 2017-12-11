@@ -43,7 +43,7 @@ import { FocusDirective } from './focus.directive';
     HttpModule,
     routing,
     NguiAutoCompleteModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyD8QD7mRNzYD_QtUKnY39qKBLbJVxr4l5w'}),
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyC8kj656eK7QoUEKd4aZe0NwlYl_vJSCnA'}),
     NguiDatetimePickerModule,
     OwlModule
   ],
