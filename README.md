@@ -2,7 +2,7 @@
 
 # Frontend
 
-Website do projeto Prato Aberto que permite à população descobrir o cardápio das escolas públicas de São Paulo.
+Website do projeto Prato Aberto que permite à população descobrir o cardápio das escolas públicas de São Paulo. A plataforma pode ser acessada em https://pratoaberto.sme.prefeitura.sp.gov.br/.
 
 # Dependências
 
