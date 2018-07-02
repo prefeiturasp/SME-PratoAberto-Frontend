@@ -31,7 +31,7 @@
       <a href="javascript:void(0)" (click)="onOpenModalEducassis()" class="button-educassis"></a>
   </div>
   <div class="card" *ngIf="isCard && currentSchool.cards">
-    <div class="age-item" (click)="onExpandCard($event)" *ngFor="let card of currentSchool.cards | keys | orderby">
+    <div class="age-item" (click)="onExpandCard($event)" *ngFor="let card of currentSchool.cards | keys">
       <div class="age-header">
         {{card.name}}
         <!-- {{card.name.substring(card.name.indexOf("-")+1, card.name.length)}} -->

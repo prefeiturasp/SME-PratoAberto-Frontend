@@ -291,7 +291,7 @@ export class SchoolComponent implements OnInit {
     this.rangeStr = `
       ${this.preZero(currWeekByDate[0].getDate())} -
       ${this.preZero(currWeekByDate[4].getDate())} de
-      ${Globals.monthLabels[currWeekByDate[0].getMonth()]} de
+      ${Globals.monthLabels[currWeekByDate[4].getMonth() + 1]} de
       ${currWeekByDate[4].getFullYear()}`
 
     this.calendaryService.getByRange(
