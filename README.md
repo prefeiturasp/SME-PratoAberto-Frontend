@@ -1,10 +1,15 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/7d34f4c49b56a7c38466/maintainability)](https://codeclimate.com/github/prefeiturasp/SME-PratoAberto-Frontend/maintainability)
 
-# Prato Aberto
+# Pátio Digital
 
 _“Recurso público retorna ao público”._
 
-Nós somos o **pátio digital**, uma iniciativa da Secretaria Municipal de Educação que, por meio do fortalecimento da transparência, da participação social e do desenvolvimento de novas tecnologias, aproxima diferentes grupos da sociedade civil por um objetivo maior: a melhoria da educação na cidade de São Paulo. 
+Nós somos o **pátio digital**, uma iniciativa da Secretaria Municipal de Educação de São Paulo que, por meio do fortalecimento da transparência, da participação social e do desenvolvimento de novas tecnologias, aproxima diferentes grupos da sociedade civil por um objetivo maior: a melhoria da educação na cidade de São Paulo. 
+
+# Prato Aberto
+
+
+"Prato Aberto – Comida Boa Não Tem Segredo". 
 
 ## Conteúdo
 
@@ -16,16 +21,16 @@ Nós somos o **pátio digital**, uma iniciativa da Secretaria Municipal de Educa
 
 ## Sobre o prato aberto
 
-"Prato Aberto – Comida Boa Não Tem Segredo". 
 
 
-Projetada para funcionar em computadores e dispositivos móveis como 
-tablets e celulares. A ferramenta permite a consulta dos cardápios por dia
- e por escola, com visualização no mapa. É a primeira vez que os cardápios 
- são divulgados por unidade escolar. Além de facilitar a consulta dos cardápios, 
- a plataforma permite a avaliação da qualidade das refeições e prevê interação 
- com usuários via Facebook e Telegram, por meio de um assistente virtual, o Robô
-  Edu. Site: https://pratoaberto.sme.prefeitura.sp.gov.br/
+Projetada para funcionar em computadores e dispositivos móveis como tablets e celulares. A ferramenta permite a consulta dos cardápios por dia e por escola, com visualização no mapa. É a primeira vez que os cardápios 
+são divulgados por unidade escolar. Além de facilitar a consulta dos cardápios,a plataforma permite a avaliação da qualidade das refeições e prevê interação com usuários via Facebook e Telegram, por meio de um assistente virtual, o Robô Edu.
+
+### Nossos outros repositórios
+
+1. [Robô Edu](https://github.com/prefeiturasp/SME-PratoAberto-Edu)
+2. [API](https://github.com/prefeiturasp/SME-PratoAberto-API)
+3. [Editor](https://github.com/prefeiturasp/SME-PratoAberto-Editor)
   
 ## Comunicação
 
@@ -35,16 +40,17 @@ tablets e celulares. A ferramenta permite a consulta dos cardápios por dia
 | [Issues do Github](https://github.com/prefeiturasp/SME-PratoAberto-Frontend/issues) | - Sugestão de novas funcionalidades<br> - Reportar bugs<br> - Discussões técnicas |
 | [Telegram](https://t.me/patiodigital ) | - Comunicar novidades sobre os projetos<br> - Movimentar a comunidade<br>  - Falar tópicos que **não** demandem discussões profundas |
 
-Qualquer outro grupo de discussão não é reconhecido oficialmente pela
-comunidade i-Educar e não terá suporte.
+Qualquer outro grupo de discussão não é reconhecido oficialmente.
 
 ## Roadmap de tecnologia
 
 
 ### Passos iniciais
-
-- Iniciar a cobertura de testes para possibilitar refatorações
-
+- Melhorar a qualidade de código
+- Iniciar a escrita de testes para possibilitar refatorações
+- Configurar Docker
+- Iniciar escrita de testes funcionais
+- Melhorar documentação de maneira enxuta
 
 ## Como contribuir
 
@@ -64,11 +70,11 @@ ajudar a alcançar nossos objetivos.
 
 ### Organização do projeto
 
- * instalar dependências via cli com o comando --save-dev
- * manter templates em arquivos separados, da mesma forma que já é proposto pelo @angular-cli na criação de componentes
- * classes devem ser criadas via @angular-cli e escritas em Typescript
+ * Instalar dependências via cli com o comando --save-dev
+ * Manter templates em arquivos separados, da mesma forma que já é proposto pelo @angular-cli na criação de componentes
+ * Classes devem ser criadas via @angular-cli e escritas em Typescript
  * CSS utiliza Sass
- * a pasta `src/assets` concentra qualquer asset necessário, como imagens, fontes e dados
+ * A pasta `src/assets` concentra qualquer asset necessário, como imagens, fontes e dados
 
 ### Deploy
 
