@@ -47,8 +47,9 @@ Qualquer outro grupo de discussão não é reconhecido oficialmente.
 
 ### Passos iniciais
 - Melhorar a qualidade de código
-- Iniciar a escrita de testes para possibilitar refatorações
+- Iniciar a escrita de testes unitários
 - Configurar Docker
+- Transferir front para o github pages
 - Iniciar escrita de testes funcionais
 - Melhorar documentação de maneira enxuta
 
