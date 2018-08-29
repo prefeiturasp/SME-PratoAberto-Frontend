@@ -158,6 +158,7 @@ formas de contribuir:
 Este documento foi escrito com o auxílio de outros documentos similares
 utilizados em outras comunidades. Destacamos:
 
+- [i-Educar](https://github.com/portabilis/i-educar/blob/master/CONTRIBUTING.md)
 - [Metabase](https://github.com/metabase/metabase/blob/master/docs/contributing.md)
 - [Ghost](https://docs.ghost.org/v1/docs/contributing)
 - [Ember.js](https://github.com/emberjs/ember.js/blob/master/CONTRIBUTING.md)
