@@ -77,12 +77,19 @@ nosso [código de conduta](./CODEOFCONDUCT.md).
  * Classes devem ser criadas via @angular-cli e escritas em Typescript
  * CSS utiliza Sass
  * A pasta `src/assets` concentra qualquer asset necessário, como imagens, fontes e dados
+ 
+ ### Subir ambiente de desenvolvimento
+ 
+ 1. `npm install`
+ 3. `ng-serve`, para rodar uma versão do servidor de desenvolvimento
+ 
 
-### Deploy
+### Deploy 
 
  1. `ng build -prod`, gera a versão de distribuição na pasta `dist`
  2. `npm install`
  3. `ng-serve`, para rodar uma versão do servidor de desenvolvimento
+ 
 
 
 
