@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  
+  angular-service:
+    container_name: angular-service-container
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - '4200:4200'
