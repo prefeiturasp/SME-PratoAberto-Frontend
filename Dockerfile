@@ -3,7 +3,7 @@ FROM node:10.11.0
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 
-RUN npm install -g @angular/cli
+RUN npm install -g @angular/cli@6.2.3
 
 COPY . /usr/src/app
 
