@@ -184,6 +184,7 @@
     .card-item{
       border: 1px solid #e0e0e0;
       background-color: #E9E8EE;
+      padding: 15px 0;
 
       .title-content {
         @include set-size(100%, auto);
