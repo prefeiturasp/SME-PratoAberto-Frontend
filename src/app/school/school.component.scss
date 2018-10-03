@@ -183,9 +183,10 @@
     }
     .card-item{
       border: 1px solid #e0e0e0;
+      background-color: #E9E8EE;
+
       .title-content {
         @include set-size(100%, auto);
-        background-color: #E9E8EE;
 
         .icon{
           @include set-size(32px, 32px);
@@ -227,7 +228,6 @@
 
     .food-list{
       margin: 0;
-      background-color: #E9E8EE;
       display: block;
 
       .food-item{
