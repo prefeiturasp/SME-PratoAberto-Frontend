@@ -13,18 +13,18 @@ Nós somos o **pátio digital**, uma iniciativa da Secretaria Municipal de Educa
 
 ## Conteúdo
 
-1. [Sobre o prato aberto](#sobre-o-prato-aberto)
+1. [Sobre o Prato Aberto](#sobre-o-prato-aberto)
 2. [Comunicação](#comunicação)
 3. [Roadmap de tecnologia](#roadmap-de-tecnologia)
 4. [Como contribuir](#como-contribuir)
 5. [Instalação](#instalação)
 
-## Sobre o prato aberto
+## Sobre o Prato Aberto
 
 
 
-Projetada para funcionar em computadores e dispositivos móveis como tablets e celulares. A ferramenta permite a consulta dos cardápios por dia e por escola, com visualização no mapa. É a primeira vez que os cardápios 
-são divulgados por unidade escolar. Além de facilitar a consulta dos cardápios,a plataforma permite a avaliação da qualidade das refeições e prevê interação com usuários via Facebook e Telegram, por meio de um assistente virtual, o Robô Edu.
+Projetada para funcionar em computadores e dispositivos móveis, como tablets e celulares, a ferramenta permite a consulta dos cardápios por dia e por escola, com visualização no mapa. É a primeira vez que os cardápios 
+são divulgados por unidade escolar. Além de facilitar a consulta dos cardápios, a plataforma permite a avaliação da qualidade das refeições e prevê interação com usuários via Facebook e Telegram, por meio de um assistente virtual, o Robô Edu.
 
 ### Nossos outros repositórios
 
@@ -56,7 +56,7 @@ Qualquer outro grupo de discussão não é reconhecido oficialmente.
 ## Como contribuir
 
 Contribuições são **super bem vindas**! Se você tem vontade de construir o
-prato aberto conosco, veja o nosso [guia de contribuição](./CONTRIBUTING.md)
+Prato Aberto conosco, veja o nosso [guia de contribuição](./CONTRIBUTING.md)
 onde explicamos detalhadamente como trabalhamos e de que formas você pode nos
 ajudar a alcançar nossos objetivos. Lembrando que todos devem seguir 
 nosso [código de conduta](./CODEOFCONDUCT.md).
