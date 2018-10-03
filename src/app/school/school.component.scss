@@ -236,6 +236,7 @@
         // min-height: 64px;
         display: block;
         margin-left: 64px;
+        padding: 5px 0;
 
         &:last-child{
           border-bottom: none;
@@ -245,7 +246,7 @@
           font-family: RobRg;
           font-size: 14px;
           color: #3a3a3a;
-          line-height: 40px;
+          line-height: 20px;
           padding-left: 8px;
 
           &:before{
