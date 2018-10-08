@@ -81,14 +81,14 @@ nosso [código de conduta](./CODEOFCONDUCT.md).
  ### Subir ambiente de desenvolvimento
  
  1. `npm install`
- 3. `ng-serve`, para rodar uma versão do servidor de desenvolvimento
+ 3. `ng serve`, para rodar uma versão do servidor de desenvolvimento
  
 
 ### Deploy 
 
  1. `ng build -prod`, gera a versão de distribuição na pasta `dist`
  2. `npm install`
- 3. `ng-serve`, para rodar uma versão do servidor de desenvolvimento
+ 3. `ng serve`, para rodar uma versão do servidor de desenvolvimento
  
 
 
