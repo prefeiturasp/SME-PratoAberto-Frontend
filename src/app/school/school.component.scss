@@ -188,6 +188,7 @@
 
       .title-content {
         @include set-size(100%, auto);
+        padding: 20px 0;
 
         .icon{
           @include set-size(32px, 32px);
@@ -232,12 +233,11 @@
       display: block;
 
       .food-item{
-        border-bottom: 1px solid #C4B7CD;
+        border-bottom: 1px solid #dcdae8;
         @include set-size(calc(95% - 64px), auto);
-        // min-height: 64px;
         display: block;
         margin-left: 64px;
-        padding: 5px 0;
+        padding: 8px 0;
 
         &:last-child{
           border-bottom: none;
@@ -249,6 +249,8 @@
           color: #3a3a3a;
           line-height: 20px;
           padding-left: 8px;
+          display: block;
+          padding-bottom: 5px;
 
           &:before{
             content: "•";
