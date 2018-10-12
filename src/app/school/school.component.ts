@@ -20,24 +20,24 @@ export class SchoolComponent implements OnInit {
   public weekCalendary = [];
   public currentSchool;
   public currentCard;
-  public isCard:Boolean = false;
+  public isCard: Boolean = false;
   public schools = Globals.schools;
-  public errorMessage = "Carregando";
+  public errorMessage = 'Carregando';
   public weekday = [
-    "dom",
-    "seg",
-    "ter",
-    "qua",
-    "qui",
-    "sex",
-    "sab"
-  ]
+    'dom',
+    'seg',
+    'ter',
+    'qua',
+    'qui',
+    'sex',
+    'sab'
+  ];
   public datePickerOptions = {
       todayBtnTxt: 'Today',
       dateFormat: 'yyyy-mm-dd',
       firstDayOfWeek: 'su',
       sunHighlight: false,
-      background: "#3BAFDA",
+      background: '#3BAFDA',
       showTextBox: false,
       showCurDay: false
   };
@@ -58,33 +58,33 @@ export class SchoolComponent implements OnInit {
 
   ngOnInit() {
     this.doc = this.winRef.nativeWindow.document;
-    this.doc.getElementById("map-container").className = "map-container school-page";
-    this.doc.getElementById("map-loader").className = "loader__overlay school-page";
+    this.doc.getElementById('map-container').className = 'map-container school-page';
+    this.doc.getElementById('map-loader').className = 'loader__overlay school-page';
     this.setToday();
     this.route.params.subscribe(params => {
       this.getCurrentSchool(params['id']);
     });
 
-    let self = this;
+    const self = this;
     this.schoolsService.getDetails().subscribe(function(res){
       self.detailsList = res;
     });
   }
 
-  getCurrentSchool(_id){
-    let self = this;
+  getCurrentSchool(_id) {
+    const self = this;
     this.schoolsService.getById(_id)
       .subscribe(function(res){
         self.currentSchool = res;
-        let today = new Date();
-        let todayStr = self.generateDate(
+        const today = new Date();
+        const todayStr = self.generateDate(
           today.getFullYear(),
           (today.getMonth() + 1),
           today.getDate()
         );
 
-        let splitToday = todayStr.split("-");
-        let findStr = splitToday[2]+"-"+splitToday[0]+"-"+splitToday[1];
+        const splitToday = todayStr.split('-');
+        const findStr = splitToday[2] + '-' + splitToday[0] + '-' + splitToday[1];
 
         self.getCalendary(
           todayStr,
@@ -96,8 +96,8 @@ export class SchoolComponent implements OnInit {
         // console.log("curretnSchool", self.currentSchool)
         self.isCard = false;
 
-        if (Globals.mapInstance){
-          if (self.currentSchool.lat && self.currentSchool.lon){
+        if (Globals.mapInstance) {
+          if (self.currentSchool.lat && self.currentSchool.lon) {
             Globals.mapInstance.setCenter({
               lat: self.currentSchool.lat,
               lng: self.currentSchool.lon
@@ -110,48 +110,48 @@ export class SchoolComponent implements OnInit {
     );
   }
 
-  generateDate(y, m, d){
+  generateDate(y, m, d) {
     let todayStr = y.toString();
     let month = m.toString();
     if (month.length < 2) {
-      month = "0" + month;
+      month = '0' + month;
     }
     todayStr += month;
     let day = d.toString();
     if (day.length < 2) {
-      day = "0" + day;
+      day = '0' + day;
     }
     todayStr += day;
 
     return todayStr;
   }
 
-  getCalendary(date, unit, attendance, grouping){
-    let self = this;
+  getCalendary(date, unit, attendance, grouping) {
+    const self = this;
     this.calendaryService.get(date, unit, attendance, grouping)
       .subscribe(function(res){
-        if (res.length == 0) {
+        if (res.length === 0) {
           self.isCard = false;
-          self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
-          return
+          self.errorMessage = 'Nenhum cardápio encontrado para a data selecionada.';
+          return;
         }
         self.currentSchool.cards = {};
-        for (let i = 0; i < res.length; i++){
-          let obj = res[i].cardapio;
-          if (self.currentSchool.idades.indexOf(res[i].idade) > -1){
-            if (!self.currentSchool.cards[res[i].idade]){
+        for (let i = 0; i < res.length; i++) {
+          const obj = res[i].cardapio;
+          if (self.currentSchool.idades.indexOf(res[i].idade) > -1) {
+            if (!self.currentSchool.cards[res[i].idade]) {
               self.currentSchool.cards[res[i].idade] = {
                 name: res[i].idade,
                 menu: [],
                 exibitionOrder: self.currentSchool.idades.indexOf(res[i].idade)
               };
             }
-            Object.keys(obj).forEach((key) =>{
-              let eats = [];
-              for (let j = 0; j < obj[key].length; j++){
+            Object.keys(obj).forEach((key) => {
+              const eats = [];
+              for (let j = 0; j < obj[key].length; j++) {
                 eats.push(obj[key][j]);
               }
-              if (self.currentSchool.refeicoes.indexOf(key) > -1){
+              if (self.currentSchool.refeicoes.indexOf(key) > -1) {
                 self.currentSchool.cards[res[i].idade].menu.push({
                   name: key,
                   content: eats,
@@ -162,12 +162,12 @@ export class SchoolComponent implements OnInit {
             });
           }
 
-          if (res.length > 0){
+          if (res.length > 0) {
             self.isCard = true;
-            self.errorMessage = "Carregando.";
+            self.errorMessage = 'Carregando.';
           } else {
             self.isCard = false;
-            self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
+            self.errorMessage = 'Nenhum cardápio encontrado para a data selecionada.';
           }
           // console.log("calendaryService: ", self.currentSchool);
         }
@@ -176,10 +176,10 @@ export class SchoolComponent implements OnInit {
   }
 
   onDateChanged(event) {
-      if (this.newSelectedDate == event.formatted.replace(/-/g, "")){
+      if (this.newSelectedDate === event.formatted.replace(/-/g, '')) {
         return;
       }
-      this.newSelectedDate = event.formatted.replace(/-/g, "");
+      this.newSelectedDate = event.formatted.replace(/-/g, '');
       // console.log('onDateChanged(): ', event);
       // this.setCard(this.newSelectedDate);
       if (this.currentSchool) {
@@ -196,103 +196,117 @@ export class SchoolComponent implements OnInit {
       }
   }
 
-  setToday(){
-    let today = new Date();
-    let todayStr = today.getFullYear() + "-";
-    todayStr += today.getMonth().toString().length < 2 ? "0" + (today.getMonth() + 1) + "-" : (today.getMonth() + 1) + "-";
-    todayStr += today.getDate().toString().length < 2 ? "0" + today.getDate() : today.getDate();
+  setToday() {
+    const today = new Date();
+    let todayStr = today.getFullYear() + '-';
+    todayStr += today.getMonth().toString().length < 2 ? '0' + (today.getMonth() + 1) + '-' : (today.getMonth() + 1) + '-';
+    todayStr += today.getDate().toString().length < 2 ? '0' + today.getDate() : today.getDate();
     this.selectedDate = todayStr;
   }
 
-  onOpenModalEducassis(){
-    this.doc.getElementById("overlayEducassis").style.display = "block";
+  onOpenModalEducassis() {
+    this.doc.getElementById('overlayEducassis').style.display = 'block';
   }
 
-  onCloseModalEducassis(){
-    this.doc.getElementById("overlayEducassis").style.display = "none";
+  onCloseModalEducassis() {
+    this.doc.getElementById('overlayEducassis').style.display = 'none';
   }
 
-  onOpenModalDetails(){
-    this.doc.getElementById("overlayDetails").style.display = "block";
+  onOpenModalDetails() {
+    this.doc.getElementById('overlayDetails').style.display = 'block';
   }
 
-  onCloseModalDetails(){
-    this.doc.getElementById("overlayDetails").style.display = "none";
+  onCloseModalDetails() {
+    this.doc.getElementById('overlayDetails').style.display = 'none';
   }
 
-  shareFb(){
-    // window.open('https://www.facebook.com/sharer/sharer.php?u=https://pratoaberto.tk', 'fbShareWindow', 'height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+  shareFb() {
+    // window.open('https://www.facebook.com/sharer/sharer.php?u=https://pratoaberto.tk',
+    // 'fbShareWindow', 'height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+
     window.open(`https://www.facebook.com/sharer/sharer.php?u=https://pratoaberto.tk
     &picture=https://pratoaberto.tk/assets/images/Post_Facebook_1200x600.jpg
     &title=Prato Aberto - COMIDA BOA NÃO TEM SEGREDO
-    &description=Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino.`, 'fbShareWindow', 'height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+    &description=Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino.`,
+    'fbShareWindow',
+    'height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
   }
 
-  onItemSelect(carouselItem:any):void{
+  onItemSelect(carouselItem: any): void {
     // console.log("onItemSelect", carouselItem)
   }
 
-  onSelected(e){
+  onSelected(e) {
     // console.log("onSelected", e)
   }
 
-  getObjectById(data, key, id){
+  getObjectById(data, key, id) {
     // console.log("getDimensionsByFind", data, id)
-    return data.find(x => x[key] == id);
+    return data.find(x => x[key] === id);
   }
-  onClose(e){
+  onClose(e) {
     // console.log("onClose", e)
   }
 
-  onClickShare(){
-    if (this.doc.getElementById("share-container").className == "container-share mob"){
-      this.doc.getElementById("share-button").className = "button-share opened";
-      this.doc.getElementById("share-container").className = "container-share opened";
+  onClickShare() {
+    if (this.doc.getElementById('share-container').className === 'container-share mob') {
+      this.doc.getElementById('share-button').className = 'button-share opened';
+      this.doc.getElementById('share-container').className = 'container-share opened';
     } else {
-      this.doc.getElementById("share-button").className = "button-share";
-      this.doc.getElementById("share-container").className = "container-share mob";
+      this.doc.getElementById('share-button').className = 'button-share';
+      this.doc.getElementById('share-container').className = 'container-share mob';
     }
   }
 
-  onExpandCard(event){
-    let target = event.target || event.srcElement || event.currentTarget;
-    if (this.winRef.nativeWindow.$(target).parent().hasClass("selected")){
-      this.winRef.nativeWindow.$(".age-item").removeClass('selected');
+  onExpandCard(event) {
+    const target = event.target || event.srcElement || event.currentTarget;
+    if (this.winRef.nativeWindow.$(target).parent().hasClass('selected')) {
+      this.winRef.nativeWindow.$('.age-item').removeClass('selected');
       return;
     }
-    this.winRef.nativeWindow.$(".age-item").removeClass('selected');
+    this.winRef.nativeWindow.$('.age-item').removeClass('selected');
     this.winRef.nativeWindow.$(target).parent().addClass('selected');
   }
 
-  dateModelChange(e){
+  dateModelChange(e) {
     // console.log("dateModelChange", e)
 
   }
 
-  onPrintPage(){
-    let currWeekByDate = this.getWeekByDate(
+  onPrintPage() {
+    const currWeekByDate = this.getWeekByDate(
       new Date(
-        Globals.calendaryDate["year"],
-        Globals.calendaryDate["month"] - 1,
-        Globals.calendaryDate["day"]
+        Globals.calendaryDate['year'],
+        Globals.calendaryDate['month'] - 1,
+        Globals.calendaryDate['day']
       )
-    )
-    let _weekDays = [
-      "",
+    );
+
+    const _weekDays = [
+      '',
       `${Globals.weekDayLabels[0]}, ${this.preZero(currWeekByDate[0].getDate())}/${this.preZero(currWeekByDate[0].getMonth() + 1)}`,
       `${Globals.weekDayLabels[1]}, ${this.preZero(currWeekByDate[1].getDate())}/${this.preZero(currWeekByDate[1].getMonth() + 1)}`,
       `${Globals.weekDayLabels[2]}, ${this.preZero(currWeekByDate[2].getDate())}/${this.preZero(currWeekByDate[2].getMonth() + 1)}`,
       `${Globals.weekDayLabels[3]}, ${this.preZero(currWeekByDate[3].getDate())}/${this.preZero(currWeekByDate[3].getMonth() + 1)}`,
       `${Globals.weekDayLabels[4]}, ${this.preZero(currWeekByDate[4].getDate())}/${this.preZero(currWeekByDate[4].getMonth() + 1)}`
-    ]
-    let startStr = "" + currWeekByDate[0].getFullYear() + this.preZero(currWeekByDate[0].getMonth() + 1) + this.preZero(currWeekByDate[0].getDate());
-    let endStr = "" + currWeekByDate[4].getFullYear() + this.preZero(currWeekByDate[4].getMonth() + 1) + this.preZero(currWeekByDate[4].getDate());
+    ];
+
+    const startStr = '' +
+                    currWeekByDate[0].getFullYear() +
+                    this.preZero(currWeekByDate[0].getMonth() + 1) +
+                    this.preZero(currWeekByDate[0].getDate());
+
+    const endStr = '' +
+                  currWeekByDate[4].getFullYear() +
+                  this.preZero(currWeekByDate[4].getMonth() + 1) +
+                  this.preZero(currWeekByDate[4].getDate());
 
     this.rangeStr = `
       ${this.preZero(currWeekByDate[0].getDate())} -
       ${this.preZero(currWeekByDate[4].getDate())} de
       ${Globals.monthLabels[currWeekByDate[4].getMonth() + 1]} de
-      ${currWeekByDate[4].getFullYear()}`
+      ${currWeekByDate[4].getFullYear()}
+    `;
 
     this.calendaryService.getByRange(
       this.currentSchool.tipo_unidade,
@@ -300,121 +314,126 @@ export class SchoolComponent implements OnInit {
       this.currentSchool.agrupamento,
       startStr,
       endStr
-    ).subscribe((res)=> {
+    ).subscribe(res => {
       this.weekCalendary = [];
-      let calendaryAgeGroups = this.winRef.nativeWindow._.groupBy(res, (item)=>{
+      const calendaryAgeGroups = this.winRef.nativeWindow._.groupBy(res, (item) => {
         return item.idade;
       });
-      let item;
-      let currMenu = {};
-      let ageMenu = {};
-      let tempWeek = [];
-      Object.keys(calendaryAgeGroups).map((ageKey, idx)=>{
+
+      const ageMenu = {};
+
+      Object.keys(calendaryAgeGroups).map(ageKey => {
         if (!ageMenu[ageKey]) {
           ageMenu[ageKey] = {};
           ageMenu[ageKey].name = ageKey;
         }
-        for (let i = 0; i < currWeekByDate.length; i++){
-          let currDate = "" + currWeekByDate[i].getFullYear() + this.preZero(currWeekByDate[i].getMonth() + 1) + this.preZero(currWeekByDate[i].getDate());
-          let currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], {data: currDate});
+        for (let i = 0; i < currWeekByDate.length; i++) {
+          const currDate = '' +
+                        currWeekByDate[i].getFullYear() +
+                        this.preZero(currWeekByDate[i].getMonth() + 1) +
+                        this.preZero(currWeekByDate[i].getDate());
 
-          if (currEats){
+          const currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], {data: currDate});
+
+          if (currEats) {
             // console.log("currEats", currEats)
-            Object.keys(currEats["cardapio"]).map((menuKey, idx)=>{
-              if (!ageMenu[ageKey][menuKey]){
+            Object.keys(currEats['cardapio']).map(menuKey => {
+              if (!ageMenu[ageKey][menuKey]) {
                 ageMenu[ageKey][menuKey] = {};
               }
               ageMenu[ageKey][menuKey] = {
                 name: currEats.idade,
                 date: currDate,
                 weekDays: _weekDays,
-                items:{
-                  eats:[[menuKey]]
+                items: {
+                  eats: [[menuKey]]
                 }
               };
               // console.log("ageMenu[ageKey][menuKey]", ageMenu[ageKey][menuKey])
-              for (let j = 0; j < 5; j++){
-                let _currDate = "" + currWeekByDate[j].getFullYear() + this.preZero(currWeekByDate[j].getMonth() + 1) + this.preZero(currWeekByDate[j].getDate());
-                let _currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], {data: _currDate});
+              for (let j = 0; j < 5; j++) {
+                const _currDate = '' +
+                                currWeekByDate[j].getFullYear() +
+                                this.preZero(currWeekByDate[j].getMonth() + 1) +
+                                this.preZero(currWeekByDate[j].getDate());
+
+                const _currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], {data: _currDate});
                 let tempArr = [];
-                if (_currEats){
-                  tempArr = _currEats["cardapio"][menuKey];
+                if (_currEats) {
+                  tempArr = _currEats['cardapio'][menuKey];
                 }
-                ageMenu[ageKey][menuKey]["items"]["eats"].push(tempArr);
+                ageMenu[ageKey][menuKey]['items']['eats'].push(tempArr);
               }
             });
           }
         }
-        let tempObj = {
-          name: "",
+        const tempObj = {
+          name: '',
           weekDays: _weekDays,
           items: []
         };
-        Object.keys(ageMenu[ageKey]).map((key, i)=>{
+        Object.keys(ageMenu[ageKey]).map(key => {
           if (ageMenu[ageKey][key].items) {
-            let tempArr = [];
-            for (let eat = 0; eat < ageMenu[ageKey][key].items.eats.length; eat++){
+            const tempArr = [];
+            for (let eat = 0; eat < ageMenu[ageKey][key].items.eats.length; eat++) {
               tempArr.push(ageMenu[ageKey][key].items.eats[eat]);
             }
-            tempObj["name"] = ageMenu[ageKey][key].name;
+            tempObj['name'] = ageMenu[ageKey][key].name;
             tempObj['items'].push(tempArr);
           }
         });
         this.weekCalendary.push(tempObj);
       });
-      let printContents, popupWin;
-      setTimeout(()=>{
-        printContents = this.winRef.nativeWindow.$("#printPage").clone();
+
+      let printContents;
+
+      setTimeout(() => {
+        printContents = this.winRef.nativeWindow.$('#printPage').clone();
         printContents.css({
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          display: "block",
-          overflow: "visible"
-        })
-        this.winRef.nativeWindow.$("body").prepend(printContents);
-        setTimeout(()=>{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          display: 'block',
+          overflow: 'visible'
+        });
+        this.winRef.nativeWindow.$('body').prepend(printContents);
+        setTimeout(() => {
           window.print();
-          setTimeout(()=>{
+          setTimeout(() => {
             window.close();
             printContents.remove();
           }, 1000);
         }, 1000);
-      },250);
+      }, 250);
     });
 
   }
 
-  getWeekByDate(currDate){
-    var week= new Array();
-    currDate.setDate((currDate.getDate() - currDate.getDay() +1));
-    for (var i = 0; i < 7; i++) {
+  getWeekByDate(currDate) {
+    const week: Date[] = new Array();
+
+    currDate.setDate((currDate.getDate() - currDate.getDay() + 1));
+    for (let i = 0; i < 7; i++) {
         week.push(
             new Date(currDate)
         );
-        currDate.setDate(currDate.getDate() +1);
+        currDate.setDate(currDate.getDate() + 1);
     }
     return week;
   }
 
-  preZero(val){
-    return val < 10 ? "0" + val : val;
+  preZero(val) {
+    return val < 10 ? '0' + val : val;
   }
 
-  public getStyleContent(idx){
-    if (idx % 2 == 0){
-      return "#fafafa"
+  public getStyleContent(idx) {
+    if (idx % 2 === 0) {
+      return '#fafafa';
     }
   }
 
-  public getStyleTitle(idx){
-    if (idx == 1 || idx == 3 || idx == 5){
-      return "#fafafa"
+  public getStyleTitle(idx) {
+    if (idx === 1 || idx === 3 || idx === 5) {
+      return '#fafafa';
     }
-  }
-
-  public camelize(str) {
-    let _str = str.toLowerCase().replace(/\s(.)/g, function($1) { return $1.toUpperCase(); });
-    return _str.substring(0, 1).toUpperCase() + _str.substring(1, _str.length);
   }
 }
