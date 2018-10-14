@@ -1,0 +1,144 @@
+Ngui Map Test On Browser
+
+START
+  open browser
+  go to http://localhost:9239
+
+Simple Map
+  click "li[routerlink='/simple-map']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.getCenter().lat() === 42.99"
+
+Simple Circle
+  click "li[routerlink='/simple-circle']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.circles"
+  verify script "nguiMapRef.map.circles.length == 1"
+
+Simple Marker
+  click "li[routerlink='/simple-marker']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.markers"
+  verify script "nguiMapRef.map.markers.length == 1"
+
+Marker With ngFor
+  click "li[routerlink='/marker-ng-for']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.markers"
+  verify script "nguiMapRef.map.markers.length == 9"
+  click button
+  verify script "nguiMapRef.map.markers.length == 9"
+
+Simple InfoWindow
+  click "li[routerlink='/simple-info-window']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.markers"
+  run script "google.maps.event.trigger(nguiMapRef.map.markers[0], 'click')"
+  verify script "nguiMapRef.map.infowindows"
+  verify script "nguiMapRef.map.infowindows[0].anchor"
+
+Polygon
+  click "li[routerlink='/polygon']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.polygons"
+
+Map With Options
+  click "li[routerlink='/map-with-options']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.getZoom() === 18"
+  verify script "nguiMapRef.map.getMapTypeId() === 'satellite'"
+  verify script "nguiMapRef.map.getTilt() === 45"
+
+Map -- Change Multiple Properties
+  click "li[routerlink='/map-change-multiple-properties']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.getZoom() === 11"
+  verify script "nguiMapRef.map.getCenter().lat() == 42.99"
+  click button#change-props
+  verify script "nguiMapRef.map.getZoom() === 8"
+  verify script "nguiMapRef.map.getCenter().lat() == 40.7127837"
+
+Simple Polyline
+  click "li[routerlink='/simple-polyline']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.polylines"
+
+Simple Ground Overay
+  click "li[routerlink='/simple-ground-overlay']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.groundoverlays"
+
+Bicycling Layer
+  click "li[routerlink='/bicycling-layer']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.bicyclinglayers"
+
+Traffic Layer
+  click "li[routerlink='/traffic-layer']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.trafficlayers"
+
+Transit Layer
+  click "li[routerlink='/transit-layer']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.transitlayers"
+
+Heatmap Layer
+  click "li[routerlink='/heatmap-layer']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.heatmaplayers"
+
+Kml Layer
+  click "li[routerlink='/kml-layer']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.kmllayers"
+
+Data Layer
+  click "li[routerlink='/data-layer']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.datas
+
+Street View Panorama
+  click "li[routerlink='/data-layer']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.streetView"
+  --verify script "nguiMapRef.map.streetviewpanoramas"
+
+Places Autocomplete
+  click "li[routerlink='/places-auto-complete']"
+  enter text "Brampton, ON" into "Enter a location"
+  click ".pac-item:nth-child(1)"
+  verify element "input" value is "Brampton, ON, Canada"
+
+Directions Renderer
+  click "li[routerlink='/directions-renderer']"
+  verify script "nguiMapRef.map.getCenter()"
+  see 'Pennsylvania Station, New York, NY 10119, USA'
+  enter text "Grand" into select
+  see 'Grand Central Terminal'
+
+Drawing Manager
+  click "li[routerlink='/drawing-manager']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.drawingmanagers"
+
+Event Arguments
+  click "li[routerlink='/event-arguments']"
+  verify script "nguiMapRef.map.getCenter()"
+
+Custom Marker
+  click "li[routerlink='/custom-marker']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.markers"
+  verify script "nguiMapRef.map.custommarkers"
+
+Custom Marker NgFor
+  click "li[routerlink='/custom-marker-ng-for']"
+  verify script "nguiMapRef.map.getCenter()"
+  verify script "nguiMapRef.map.custommarkers"
+  verify script "nguiMapRef.map.custommarkers.length == 9"
+
+END
+  close browser
+
+

@@ -1,0 +1,25 @@
+{
+    "authors": "Josh Goldberg <https://github.com/JoshuaKGoldberg/>, Hans Windhoff <https://github.com/hansrwindhoff/> ",
+    "definitionFilename": "index.d.ts",
+    "libraryDependencies": [],
+    "moduleDependencies": [],
+    "libraryMajorVersion": "0",
+    "libraryMinorVersion": "0",
+    "libraryName": "js_beautify",
+    "typingsPackageName": "js-beautify",
+    "projectName": "https://github.com/beautify-web/js-beautify/",
+    "sourceRepoURL": "https://www.github.com/DefinitelyTyped/DefinitelyTyped",
+    "sourceBranch": "types-2.0",
+    "kind": "Mixed",
+    "globals": [
+        "js_beautify"
+    ],
+    "declaredModules": [
+        "js-beautify"
+    ],
+    "files": [
+        "index.d.ts"
+    ],
+    "hasPackageJson": false,
+    "contentHash": "0bf7a22ad8191f5511ce1f7863449efc9408d888dad2dba1aebf16a50abe4dc0"
+}
