@@ -293,4 +293,10 @@
       top: 340px;
     }
   }
+
+  @include maxHeight(639) {
+    .home__header{
+ min-height: 250px;
+      }
+    }
 }
