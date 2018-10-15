@@ -138,7 +138,7 @@ export class DatepickerComponent implements OnInit, OnChanges, AfterViewInit {
         items: 3,
         dots: false
       });
-      let self = this;
+      const self = this;
       let _currDay = AppUtils.getObjectById(this.sliderDates, "day", this.selectedDate.day);
       this.currentInputDateMonth = this.selectedDate.month;
       this.inputSelectedDate = this.selectedDate.day+"/"+this.selectedDate.month+"/"+this.selectedDate.year;
@@ -421,7 +421,7 @@ export class DatepickerComponent implements OnInit, OnChanges, AfterViewInit {
             }
         }
 
-        let self = this;
+        const self = this;
         // console.log("sliderDates: ", this.sliderDates)
         if (this.daysCarousel){
           setTimeout( function (){

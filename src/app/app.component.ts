@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { WindowRef } from './WindowRef';
 
 import { SchoolsService } from './schools.service';
@@ -14,9 +14,9 @@ import { AppUtils } from './app.utils';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  private doc : any;
-  private geo : any;
-  private map : any;
+  private doc: any;
+  private geo: any;
+  private map: any;
   public userLocation = {};
   public positions = [];
   private markers = [];
@@ -27,9 +27,9 @@ export class AppComponent implements OnInit {
   constructor(
     private winRef: WindowRef,
     private _sanitizer: DomSanitizer,
-    private schoolsService:SchoolsService,
+    private schoolsService: SchoolsService,
     private router: Router,
-    private route: ActivatedRoute){
+    private route: ActivatedRoute) {
 
   }
   ngOnInit() {
@@ -44,14 +44,14 @@ export class AppComponent implements OnInit {
 
     Globals.mapInstance = map;
     // Globals.mapInstance.setZoom(6);
-    this.doc.getElementById("map-loader").style.display = "block";
+    this.doc.getElementById('map-loader').style.display = 'block';
     this.geo.getCurrentPosition(
-      (pos)=> {
+      pos => {
         this.onUserLocation(pos);
       },
-      (error)=> {
+      error => {
         this.onUserLocation({
-          coords:{
+          coords: {
             latitude: -23.549877,
             longitude: -46.633987
           }
@@ -63,44 +63,44 @@ export class AppComponent implements OnInit {
     // console.log('markers', Globals.mapInstance.markers);
   }
 
-  onLoadSchools(){
-    let self = this;
+  onLoadSchools() {
+    const self = this;
     if (Globals.querySchool) {
       self.setMarkersBySchools();
       return false;
     }
-    if (Globals.schools.length == 0){
+    if (Globals.schools.length === 0) {
       this.schoolsService.get()
-      .subscribe(function(res){
-        let schools = res;
+      .subscribe(schools => {
         Globals.schools = [];
-          for (let i in schools){
-            schools[i].distance = parseFloat(AppUtils.getDistanceFromLatLonInKm(
-              self.latLngSchoolsCalc["lat"],
-              self.latLngSchoolsCalc["lon"],
-              schools[i].lat,
-              schools[i].lon
-            ).toFixed(1));
-          }
-          Globals.schools = schools.sort((a, b) => a.distance < b.distance ? -1 : a.distance > b.distance ? 1 : 0)
+
+        for (let i = 0; i < schools.length; i++) {
+          schools[i].distance = parseFloat(AppUtils.getDistanceFromLatLonInKm(
+            self.latLngSchoolsCalc['lat'],
+            self.latLngSchoolsCalc['lon'],
+            schools[i].lat,
+            schools[i].lon
+          ).toFixed(1));
+        }
+          Globals.schools = schools.sort((a, b) => a.distance < b.distance ? -1 : a.distance > b.distance ? 1 : 0);
           // console.log("Globals.schools", Globals.schools)
-          setTimeout( ()=> { self.setMarkersBySchools() }, 500);
+          setTimeout( () => { self.setMarkersBySchools(); }, 500);
         }
       );
     }
   }
 
   public setMarkersBySchools() {
-    this._schools = Globals.schools.filter(school => { return school["distance"] < 2});
+    this._schools = Globals.schools.filter(school => school['distance'] < 2);
     // this._schools = Globals.schools;
-    for (let i=0; i< this._schools.length; i++) {
-      if (this._schools[i]["lat"] && this._schools[i]["lon"]){
+    for (let i = 0; i < this._schools.length; i++) {
+      if (this._schools[i]['lat'] && this._schools[i]['lon']) {
         this.positions.push({
-          id: this._schools[i]["_id"],
-          title: this._schools[i]["nome"],
-          pos: {lat: this._schools[i]["lat"], lng: this._schools[i]["lon"]},
+          id: this._schools[i]['_id'],
+          title: this._schools[i]['nome'],
+          pos: {lat: this._schools[i]['lat'], lng: this._schools[i]['lon']},
           image: {
-            url: "/assets/images/prato-aberto-icone-pin-escola.png",
+            url: '/assets/images/prato-aberto-icone-pin-escola.png',
             size: new google.maps.Size(16, 16),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(0, 16)
@@ -108,41 +108,41 @@ export class AppComponent implements OnInit {
         });
       }
     }
-    Globals.mapInstance.setCenter({lat: Globals.userLocation["lat"], lng: Globals.userLocation["lon"]});
+    Globals.mapInstance.setCenter({lat: Globals.userLocation['lat'], lng: Globals.userLocation['lon']});
     // console.log("positions: ", this.positions)
   }
 
-  onUserLocation(position){
+  onUserLocation(position) {
     Globals.userLocation = {
       lat: position.coords.latitude,
       lon: position.coords.longitude
     };
     this.latLngSchoolsCalc = Globals.userLocation;
-    if (Globals.schools.length == 0){
+    if (Globals.schools.length === 0) {
       this.onLoadSchools();
     }
     this.positions.push({
       id: null,
-      title: "",
+      title: '',
       pos: {lat: position.coords.latitude, lng: position.coords.longitude},
       image: {
-        url: "/assets/images/prato-aberto-icone-location.png",
+        url: '/assets/images/prato-aberto-icone-location.png',
         size: new google.maps.Size(16, 16),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(0, 16)
       }
     });
-    Globals.mapInstance.setCenter({lat: Globals.userLocation["lat"], lng: Globals.userLocation["lon"]});
+    Globals.mapInstance.setCenter({lat: Globals.userLocation['lat'], lng: Globals.userLocation['lon']});
   }
 
-  gotoSchool(marker){
-    if (marker){
+  gotoSchool(marker) {
+    if (marker) {
       Globals.mapInstance.setCenter({
         lat: marker.pos.lat,
         lng: marker.pos.lng
       });
       Globals.mapInstance.setZoom(14);
-      let schoolId = AppUtils.getObjectById(Globals.schools, 'nome', marker.title)._id;
+      const schoolId = AppUtils.getObjectById(Globals.schools, 'nome', marker.title)._id;
       this.router.navigate(['/escola', schoolId]);
     }
   }
@@ -153,15 +153,15 @@ export class AppComponent implements OnInit {
 
   onMarkerInit(marker) {
     this.markers.push(marker);
-    if (this.markers.length == this.positions.length-1) {
-      this.doc.getElementById("map-loader").style.display = "none";
-      let markerCluster = new MarkerClusterer(Globals.mapInstance, this.markers, {
+    if (this.markers.length === this.positions.length - 1) {
+      this.doc.getElementById('map-loader').style.display = 'none';
+      const markerCluster = new MarkerClusterer(Globals.mapInstance, this.markers, {
         imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
         minimumClusterSize: 5
       });
     }
-    if (this.markers.length == 150) {
-      this.doc.getElementById("map-loader").style.display = "none";
+    if (this.markers.length === 150) {
+      this.doc.getElementById('map-loader').style.display = 'none';
     }
   }
 

@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 export class SchoolsService {
 
   headers: Headers;
-  constructor(private http:Http) {
+  constructor(private http: Http) {
     // this.createAuthorizationHeader();
   }
 
@@ -18,27 +18,27 @@ export class SchoolsService {
   }
 
   get() {
-    let _url = AppSettings.BASE_URL + AppSettings.SCHOOLS_ENDPOINT;
+    const _url = AppSettings.BASE_URL + AppSettings.SCHOOLS_ENDPOINT;
     // return this.http.get(_url, {headers: this.headers})
-    return this.http.get(_url, {}).map((res) => {
+    return this.http.get(_url, {}).map(res => {
       Globals.querySchool = true;
-      return res.json()
+      return res.json();
     });
   }
 
   getDetails() {
-    let _url = AppSettings.SCHOOLS_DETAILS_ENDPOINT;
+    const _url = AppSettings.SCHOOLS_DETAILS_ENDPOINT;
     // return this.http.get(_url, {headers: this.headers})
-    return this.http.get(_url, {}).map((res) => {
-      return res.json()
+    return this.http.get(_url, {}).map(res => {
+      return res.json();
     });
   }
 
   getById(id) {
-    let _url = AppSettings.BASE_URL + AppSettings.SCHOOL_ENDPOINT + `/${id}`;
+    const _url = AppSettings.BASE_URL + AppSettings.SCHOOL_ENDPOINT + `/${id}`;
     // return this.http.get(_url, {headers: this.headers})
-    return this.http.get(_url, {}).map((res) => {
-      return res.json()
-    });;
+    return this.http.get(_url, {}).map(res => {
+      return res.json();
+    });
   }
 }

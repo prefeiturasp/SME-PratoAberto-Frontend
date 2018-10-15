@@ -10,38 +10,38 @@ import { Globals } from '../app.globals';
 })
 export class HomeComponent implements OnInit {
   public searchInputModel;
-  public merendometers:Array<object> = [
-    { image: "/assets/images/prato-aberto-home-merendometro-1.png" },
-    { image: "/assets/images/prato-aberto-home-merendometro-2.png" },
-    { image: "/assets/images/prato-aberto-home-merendometro-3.png" }
+  public merendometers: object[] = [
+    { image: '/assets/images/prato-aberto-home-merendometro-1.png' },
+    { image: '/assets/images/prato-aberto-home-merendometro-2.png' },
+    { image: '/assets/images/prato-aberto-home-merendometro-3.png' }
   ];
-  private doc:any;
-  constructor(private winRef: WindowRef, private router : Router) { }
+  private doc: any;
+  constructor(private winRef: WindowRef, private router: Router) { }
 
   ngOnInit() {
     this.doc = this.winRef.nativeWindow.document;
-    this.doc.getElementById("map-container").className = "map-container";
-    this.doc.getElementById("map-loader").className = "loader__overlay";
+    this.doc.getElementById('map-container').className = 'map-container';
+    this.doc.getElementById('map-loader').className = 'loader__overlay';
   }
 
   @HostListener('window:keyup', ['$event'])
   onKeyUp(e) {
-    if (e.key == "Enter" && e.type == "keyup") {
+    if (e.key === 'Enter' && e.type === 'keyup') {
       // console.log(this.searchInputModel)
       this.router.navigate(['/busca', this.searchInputModel]);
     }
   }
 
-  gotoRoute(value, origin){
-    console.log("gotoRoute: ", value, origin);
+  gotoRoute(value, origin) {
+    console.log('gotoRoute: ', value, origin);
     Globals.originSearch = origin;
     this.router.navigate([value]);
   }
 
-  onScrollto(){
-    let _top = this.winRef.nativeWindow.$(".home__merendometer").offset().top;
-    this.winRef.nativeWindow.$("html, body").animate({
-      scrollTop:_top
+  onScrollto() {
+    const _top = this.winRef.nativeWindow.$('.home__merendometer').offset().top;
+    this.winRef.nativeWindow.$('html, body').animate({
+      scrollTop: _top
     }, 600);
   }
 }
