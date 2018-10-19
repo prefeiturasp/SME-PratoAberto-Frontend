@@ -1,13 +1,13 @@
 import { Http, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { AppSettings } from './app.settings';
 import 'rxjs/add/operator/map';
+import { AppSettings } from '../app.settings';
 
 @Injectable()
 export class CalendaryService {
 
   headers: Headers;
-  constructor(private http:Http) {
+  constructor(private http: Http) {
     this.createAuthorizationHeader();
   }
 

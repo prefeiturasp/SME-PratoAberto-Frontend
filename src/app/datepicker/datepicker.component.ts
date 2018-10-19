@@ -1,8 +1,8 @@
-import { Globals } from './../app.globals';
-import { AppUtils } from './../app.utils';
-import { WindowRef } from './../WindowRef';
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChange, ElementRef, AfterViewInit } from '@angular/core';
 import {MyDate, MyMonth} from './datepicker.component.interface';
+import { Globals } from '../app.globals';
+import { WindowRef } from '../services';
+import { AppUtils } from '../app.utils';
 
 @Component({
     selector: 'responsive-date-picker',

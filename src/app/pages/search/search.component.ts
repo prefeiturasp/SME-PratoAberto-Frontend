@@ -1,10 +1,9 @@
 import { Component, OnInit, AfterViewInit, EventEmitter, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { WindowRef } from '../WindowRef';
-import { SchoolsService } from './../schools.service';
-import { AppComponent } from './../app.component';
-import { Globals } from '../app.globals';
-import { AppUtils } from '../app.utils';
+import { Globals } from '../../app.globals';
+import { AppComponent } from '../../app.component';
+import { SchoolsService, WindowRef } from '../../services';
+import { AppUtils } from '../../app.utils';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +20,6 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   public errorMsg = 'Carregando...';
   private searchInput: any;
   public userLocation = {};
-  private positions = [];
   public schools = Globals.schools;
   public schoolsFromCarousel: Array<object> = [];
   public originSearch = Globals.originSearch;

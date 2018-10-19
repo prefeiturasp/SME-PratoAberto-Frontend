@@ -1,12 +1,9 @@
-import { CalendaryService } from './../calendary.service';
-import { Globals } from './../app.globals';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
-
-import { SchoolsService } from './../schools.service';
-import { AppComponent } from './../app.component';
-import { WindowRef } from './../WindowRef';
+import { Globals } from '../../app.globals';
+import { WindowRef } from '../../services/WindowRef';
+import { SchoolsService } from '../../services/schools.service';
+import { CalendaryService } from '../../services/calendary.service';
 
 
 @Component({
@@ -48,8 +45,6 @@ export class SchoolComponent implements OnInit {
 
   constructor(
     private winRef: WindowRef,
-    private appComp: AppComponent,
-    private router: Router,
     private route: ActivatedRoute,
     private schoolsService: SchoolsService,
     private calendaryService: CalendaryService) { }

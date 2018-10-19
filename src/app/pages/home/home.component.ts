@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, HostListener } from '@angular/core';
-import { WindowRef } from '../WindowRef';
-import { Globals } from '../app.globals';
+import { WindowRef } from '../../services/WindowRef';
+import { Globals } from '../../app.globals';
+
 
 @Component({
   selector: 'app-home',

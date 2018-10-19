@@ -1,12 +1,11 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { WindowRef } from './WindowRef';
+import { WindowRef } from './services/WindowRef';
 
-import { SchoolsService } from './schools.service';
 import { Globals } from './app.globals';
 import { AppUtils } from './app.utils';
+import { SchoolsService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -26,10 +25,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private winRef: WindowRef,
-    private _sanitizer: DomSanitizer,
     private schoolsService: SchoolsService,
-    private router: Router,
-    private route: ActivatedRoute) {
+    private router: Router) {
 
   }
   ngOnInit() {
@@ -71,22 +68,22 @@ export class AppComponent implements OnInit {
     }
     if (Globals.schools.length === 0) {
       this.schoolsService.get()
-      .subscribe(schools => {
-        Globals.schools = [];
+        .subscribe(schools => {
+          Globals.schools = [];
 
-        for (let i = 0; i < schools.length; i++) {
-          schools[i].distance = parseFloat(AppUtils.getDistanceFromLatLonInKm(
-            self.latLngSchoolsCalc['lat'],
-            self.latLngSchoolsCalc['lon'],
-            schools[i].lat,
-            schools[i].lon
-          ).toFixed(1));
-        }
+          for (let i = 0; i < schools.length; i++) {
+            schools[i].distance = parseFloat(AppUtils.getDistanceFromLatLonInKm(
+              self.latLngSchoolsCalc['lat'],
+              self.latLngSchoolsCalc['lon'],
+              schools[i].lat,
+              schools[i].lon
+            ).toFixed(1));
+          }
           Globals.schools = schools.sort((a, b) => a.distance < b.distance ? -1 : a.distance > b.distance ? 1 : 0);
           // console.log("Globals.schools", Globals.schools)
-          setTimeout( () => { self.setMarkersBySchools(); }, 500);
+          setTimeout(() => { self.setMarkersBySchools(); }, 500);
         }
-      );
+        );
     }
   }
 
@@ -98,7 +95,7 @@ export class AppComponent implements OnInit {
         this.positions.push({
           id: this._schools[i]['_id'],
           title: this._schools[i]['nome'],
-          pos: {lat: this._schools[i]['lat'], lng: this._schools[i]['lon']},
+          pos: { lat: this._schools[i]['lat'], lng: this._schools[i]['lon'] },
           image: {
             url: '/assets/images/prato-aberto-icone-pin-escola.png',
             size: new google.maps.Size(16, 16),
@@ -108,7 +105,7 @@ export class AppComponent implements OnInit {
         });
       }
     }
-    Globals.mapInstance.setCenter({lat: Globals.userLocation['lat'], lng: Globals.userLocation['lon']});
+    Globals.mapInstance.setCenter({ lat: Globals.userLocation['lat'], lng: Globals.userLocation['lon'] });
     // console.log("positions: ", this.positions)
   }
 
@@ -124,7 +121,7 @@ export class AppComponent implements OnInit {
     this.positions.push({
       id: null,
       title: '',
-      pos: {lat: position.coords.latitude, lng: position.coords.longitude},
+      pos: { lat: position.coords.latitude, lng: position.coords.longitude },
       image: {
         url: '/assets/images/prato-aberto-icone-location.png',
         size: new google.maps.Size(16, 16),
@@ -132,7 +129,7 @@ export class AppComponent implements OnInit {
         anchor: new google.maps.Point(0, 16)
       }
     });
-    Globals.mapInstance.setCenter({lat: Globals.userLocation['lat'], lng: Globals.userLocation['lon']});
+    Globals.mapInstance.setCenter({ lat: Globals.userLocation['lat'], lng: Globals.userLocation['lon'] });
   }
 
   gotoSchool(marker) {
