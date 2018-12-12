@@ -318,18 +318,19 @@ export class SchoolComponent implements OnInit {
           let currDate = "" + currWeekByDate[i].getFullYear() + this.preZero(currWeekByDate[i].getMonth() + 1) + this.preZero(currWeekByDate[i].getDate());
           let currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], { data: currDate });
 
-          if (currEats) {
+          if (currEats) {    //  ate aqui ta em ordem :D
             // console.log("currEats", currEats)
-            Object.keys(currEats["cardapio"]).map((menuKey, idx) => {
-              if (!ageMenu[ageKey][menuKey]) {
-                ageMenu[ageKey][menuKey] = {};
+            Object.keys(currEats["cardapio"]).map((meal, idx) => {
+              if (!ageMenu[ageKey][meal]) {
+                ageMenu[ageKey][meal] = {};
               }
-              ageMenu[ageKey][menuKey] = {
+              console.log(ageKey + ' @@@ ' +meal)
+              ageMenu[ageKey][meal] = {
                 name: currEats.idade,
                 date: currDate,
                 weekDays: _weekDays,
                 items: {
-                  eats: [[menuKey]]
+                  eats: [[meal]]
                 }
               };
               // console.log("ageMenu[ageKey][menuKey]", ageMenu[ageKey][menuKey])
@@ -338,9 +339,9 @@ export class SchoolComponent implements OnInit {
                 let _currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], { data: _currDate });
                 let tempArr = [];
                 if (_currEats) {
-                  tempArr = _currEats["cardapio"][menuKey];
+                  tempArr = _currEats["cardapio"][meal];
                 }
-                ageMenu[ageKey][menuKey]["items"]["eats"].push(tempArr);
+                ageMenu[ageKey][meal]["items"]["eats"].push(tempArr);
               }
             });
           }
@@ -350,13 +351,13 @@ export class SchoolComponent implements OnInit {
           weekDays: _weekDays,
           items: []
         };
-        Object.keys(ageMenu[ageKey]).map((key, i) => {
-          if (ageMenu[ageKey][key].items) {
+        Object.keys(ageMenu[ageKey]).map((meal, i) => {
+          if (ageMenu[ageKey][meal].items) {
             let tempArr = [];
-            for (let eat = 0; eat < ageMenu[ageKey][key].items.eats.length; eat++) {
-              tempArr.push(ageMenu[ageKey][key].items.eats[eat]);
+            for (let eat = 0; eat < ageMenu[ageKey][meal].items.eats.length; eat++) {
+              tempArr.push(ageMenu[ageKey][meal].items.eats[eat]);
             }
-            tempObj["name"] = ageMenu[ageKey][key].name;
+            tempObj["name"] = ageMenu[ageKey][meal].name;
             tempObj['items'].push(tempArr);
           }
         });
