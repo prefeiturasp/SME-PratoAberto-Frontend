@@ -4,15 +4,13 @@
     "title": "NOTAS GERAIS PARA UNIDADES TERCEIRIZADAS",
     "items": [
       {
-        "title": "1) Os cardápios foram elaborados por nutricionistas da Coordenadoria de Alimentação Escolar e acordados com o nutricionista responsável técnico da empresa contratada para prestação de serviço de nutrição e alimentação escolar, abaixo identificado:",
+        "title": "1)  Os cardápios foram elaborados por nutricionistas da Coordenadoria de Alimentação Escolar (CODAE) e acordados com o nutricionista responsável técnico da empresa contratada para prestação de serviço de nutrição e alimentação escolar, abaixo identificado:",
         "list": [
-          "- Jéssica Giarletta Lomas de Oliveira Rocha - CRN3 nº 32.090 - CODAE",
-          "- Mônica Cardial Tobias – CRN3 - nº 5.128 - CODAE",
+          "- Cristina Morais Pinheiro – CRN3 nº 4.973 - CODAE",
           "- Rita de Cassia Carvalho Oda - CRN3 nº 11.394 - Apetece Sistemas de Alimentação S/A.",
           "- Fernanda Izabel Galego - CRN3 nº 5.042 - Denjud Refeições Coletivas Adm e Serv Ltda.",
           "- Sofia Edneia Vitti - CRN3 nº 10.270 - SHA Comércio de Alimentos Ltda.",
-          "- Lais Witzel Ferreira - CRN3 nº 7.219 - Comercial Milano Brasil Ltda.",
-          "- Fernanda Barbosa – CRN3 nº 10.947 – AEX Alimenta Comércio de Refeições e Serviços Ltda."
+          "- Lais Witzel Ferreira - CRN3 nº 7.219 - Comercial Milano Brasil Ltda."
         ]
       },
       {
@@ -41,12 +39,18 @@
   },
   {
     "id": "diretas",
-    "title": "NOTAS GERAIS PARA UNIDADES DIRETAS, MISTAS e CONVENIADAS (CEI, CCI, CECI, CEMEI)",
+    "title": "NOTAS GERAIS PARA UNIDADES DIRETAS, MISTAS e DA REDE PARCEIRA ",
     "items": [
       {
         "title": "1) Cardápio elaborado por Nutricionistas da Coordenadoria de Alimentação Escolar",
         "list": []
-      },
+      }      
+    ]
+  },
+  {
+    "id": "diretas",
+    "title": "Exclusivamente para CEI, CCI, CECI, CEMEI:",
+    "items": [
       {
         "title": "2) Hidratação:",
         "list": [
@@ -77,16 +81,6 @@
       },
       {
         "title": "6) Refeição da Tarde: de acordo com as condições climáticas, os mesmos ingredientes do dia e seus respectivos percapitas poderão ser utilizados no preparo de risotos ou sopas.",
-        "list": []
-      }
-    ]
-  },
-  {
-    "id": "diretas",
-    "title": "NOTAS GERAIS PARA UNIDADES DIRETAS e MISTAS COM MERENDA SECA",
-    "items": [
-      {
-        "title": "O Suco de Uva Integral (somente para os SME Convênios) e a Bebida UHT poderão ser servidos juntamente com o biscoito, conforme disponibilidade em estoque.",
         "list": []
       }
     ]
