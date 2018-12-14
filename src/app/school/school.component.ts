@@ -137,7 +137,7 @@ export class SchoolComponent implements OnInit {
         }
         self.currentSchool.cards = {};
         for (let i = 0; i < res.length; i++) {
-          let obj = res[i].cardapio;
+          let cardapio = res[i].cardapio;
           if (self.currentSchool.idades.indexOf(res[i].idade) > -1) {
             if (!self.currentSchool.cards[res[i].idade]) {
               self.currentSchool.cards[res[i].idade] = {
@@ -146,10 +146,10 @@ export class SchoolComponent implements OnInit {
                 exibitionOrder: self.currentSchool.idades.indexOf(res[i].idade)
               };
             }
-            Object.keys(obj).forEach((key) => {
+            Object.keys(cardapio).forEach((key) => {
               let eats = [];
-              for (let j = 0; j < obj[key].length; j++) {
-                eats.push(obj[key][j]);
+              for (let j = 0; j < cardapio[key].length; j++) {
+                eats.push(cardapio[key][j]);
               }
               if (self.currentSchool.refeicoes.indexOf(key) > -1) {
                 self.currentSchool.cards[res[i].idade].menu.push({
@@ -295,21 +295,21 @@ export class SchoolComponent implements OnInit {
       ${currWeekByDate[4].getFullYear()}`
 
     this.calendaryService.getByRange(
-      this.currentSchool.tipo_unidade,
-      this.currentSchool.tipo_atendimento,
-      this.currentSchool.agrupamento,
+      this.currentSchool,
       startStr,
       endStr
     ).subscribe((res) => {
       this.weekCalendary = [];
-      let calendaryAgeGroups = this.winRef.nativeWindow._.groupBy(res, (item) => {
+      let todasRefeicoes = res[0]
+      let refeicoesEscola = res[1]
+      let calendaryAgeGroups = this.winRef.nativeWindow._.groupBy(todasRefeicoes, (item) => {
         return item.idade;
       });
       let item;
       let currMenu = {};
       let ageMenu = {};
       let tempWeek = [];
-      Object.keys(calendaryAgeGroups).map((ageKey, idx) => {
+      Object.keys(calendaryAgeGroups).map((ageKey, idx, arr) => {
         if (!ageMenu[ageKey]) {
           ageMenu[ageKey] = {};
           ageMenu[ageKey].name = ageKey;
@@ -333,6 +333,11 @@ export class SchoolComponent implements OnInit {
                   eats: [[meal]]
                 }
               };
+              if (!(refeicoesEscola.indexOf(meal) > -1)){
+                //  sume o nome da refeicao que nao eh da escola
+                ageMenu[ageKey][meal].items.eats = [[]]
+              }
+              
               // console.log("ageMenu[ageKey][menuKey]", ageMenu[ageKey][menuKey])
               for (let j = 0; j < 5; j++) {
                 let _currDate = "" + currWeekByDate[j].getFullYear() + this.preZero(currWeekByDate[j].getMonth() + 1) + this.preZero(currWeekByDate[j].getDate());
@@ -341,9 +346,14 @@ export class SchoolComponent implements OnInit {
                 if (_currEats) {
                   tempArr = _currEats["cardapio"][meal];
                 }
-                ageMenu[ageKey][meal]["items"]["eats"].push(tempArr);
+                if (refeicoesEscola.indexOf(meal) > -1){
+                  // exibe somente as refeicoes da escola
+                  ageMenu[ageKey][meal]["items"]["eats"].push(tempArr);
+                } 
               }
             });
+
+
           }
         }
         let tempObj = {
@@ -363,6 +373,7 @@ export class SchoolComponent implements OnInit {
         });
         this.weekCalendary.push(tempObj);
       });
+
       let printContents, popupWin;
       setTimeout(() => {
         printContents = this.winRef.nativeWindow.$("#printPage").clone();
