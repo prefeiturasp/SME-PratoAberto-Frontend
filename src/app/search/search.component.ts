@@ -134,7 +134,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         self.appComp.setMarkersBySchools();
         self.errorMsg = 'Nenhuma escola encontrada.';
       }
-    );
+      );
   }
 
   onSelectSchool(school) {
@@ -163,8 +163,8 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="infos">
           <h3 class="name">${data.nome}</h3>
           <small class="address">${address}</small>
-          </div>`;
-
+          <small class="eol">Código: ${data._id}</small>
+        </div>`;
     return html;
   }
 

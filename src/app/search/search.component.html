@@ -33,8 +33,8 @@
       </div>
       <div class="infos">
         <h3 class="name">{{school.nome}}</h3>
-        <!-- <span class="desc">{{school.description}}</span> -->
         <small class="address">{{school.endereco}}<br>{{school.bairro}}</small>
+        <small class="eol">Código: {{school._id}}</small>
       </div>
     </li>
   </ul>
@@ -52,8 +52,8 @@
         </div>
         <div class="infos">
           <h3 class="name">{{school.nome}}</h3>
-          <!-- <span class="desc">{{school.description}}</span> -->
           <small class="address">{{school.endereco}}<br>{{school.bairro}}</small>
+          <small class="eol">Código: {{school._id}}</small>
         </div>
         <a href="javascript:void(0)" (click)="onSelectSchool(school)" class="school-button">VEJA O CARDÁPIO</a>
     </div>
