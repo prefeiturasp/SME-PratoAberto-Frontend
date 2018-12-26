@@ -7,11 +7,12 @@
           placeholder="Digite o nome de uma escola"
           class="search__input"/>
     <input id="searchInputMob" auto-complete
-      [(ngModel)]="schoolSelected"
-      max-num-list="15"
-      min-chars="2"
+      [(ngModel)]="schoolSelectedxxx"
+      max-num-list="7"
+      min-chars="6"
+      ignore-accents=true
       [list-formatter]="autocompleListFormatter"
-      [source]="schools"
+      [source]="schoolsddd"
       (ngModelChange)="searchUpdate($event)"
       value-property-name="_id"
       display-property-name="nome"
@@ -33,7 +34,7 @@
       <div class="infos">
         <h3 class="name">{{school.nome}}</h3>
         <!-- <span class="desc">{{school.description}}</span> -->
-        <small class="address">{{camelize(school.endereco)}}<br>{{camelize(school.bairro)}}</small>
+        <small class="address">{{school.endereco}}<br>{{school.bairro}}</small>
       </div>
     </li>
   </ul>
