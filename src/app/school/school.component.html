@@ -92,7 +92,7 @@
           <td class="week-table-item" *ngFor="let eats of item;let i = index" [style.background-color]="getStyleContent(i)" style=" -webkit-print-color-adjust: exact;font-family: RobRg;font-size: 14px;vertical-align: top;padding: 30px 15px 15px 15px;display: table-cell;text-align: left;">
             <p *ngFor="let eat of eats;let idx = index;">
               <span *ngIf="i > 0">
-                  <span class="dot" *ngIf="i > 0" style="color: #9468AC;">•</span> {{camelize(eat)}}
+                  <span class="dot" *ngIf="i > 0" style="color: #9468AC;">•</span> {{eat}}
               </span>
               <strong *ngIf="i == 0">
                   {{eat.substring(eat.indexOf("-")+1, eat.length)}}
