@@ -103,7 +103,11 @@
         opacity: 0.8;
       }
     }
-
+    .bottomLink{
+      position: absolute;
+      right: 90px;
+      bottom: 20px;
+  }
     .container-share{
       position: absolute;
       right: 66px;
@@ -284,11 +288,7 @@
       overflow-y: auto;
       .dates{
         position: relative;
-        .datepicker-container{
-
-
-        }
-
+        .datepicker-container{}
         .custom-input{
           display: none;
         }
