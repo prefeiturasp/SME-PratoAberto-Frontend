@@ -424,9 +424,4 @@ export class SchoolComponent implements OnInit {
       return "#fafafa"
     }
   }
-
-  public camelize(str) {
-    let _str = str.toLowerCase().replace(/\s(.)/g, function ($1) { return $1.toUpperCase(); });
-    return _str.substring(0, 1).toUpperCase() + _str.substring(1, _str.length);
-  }
 }
