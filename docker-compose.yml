@@ -1,6 +1,9 @@
 version: '3'
 services:
-  web:
+  frontend:
     build: .
-    ports:
-      - "80:80"
+
+networks:
+  default:
+    external:
+      name: pratoaberto
