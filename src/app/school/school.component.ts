@@ -61,8 +61,7 @@ export class SchoolComponent implements OnInit {
     //this.doc.getElementById("map-container").className = "map-container school-page";
     this.doc.getElementById("map-container").style.display = "none";
     this.doc.getElementById("map-loader").className = "loader__overlay school-page";
-    //this.doc.getElementByClassName('cards').style.width = 'auto';
-    //this.doc.getElementByClassName('cards').style.position = 'absolute';
+   
     this.setToday();
     this.route.params.subscribe(params => {
       this.getCurrentSchool(params['id']);

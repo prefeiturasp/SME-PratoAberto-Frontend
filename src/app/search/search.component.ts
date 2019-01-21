@@ -47,6 +47,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.doc.getElementById('map-container').className = 'map-container search-page';
     this.doc.getElementById('map-loader').className = 'loader__overlay search-page';
+    this.doc.getElementById('map-container').style.display = 'block';
   }
 
   ngAfterViewInit() {
