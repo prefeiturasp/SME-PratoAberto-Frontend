@@ -52,6 +52,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     if (Globals.schools.length === 0) {
       this.onLoadSchools();
+      this.doc.getElementById('overlay_search').style.display = 'block';
     } else {
       this.schoolsLoaded = true;
       this.errorMsg = 'Nenhuma escola encontrada.';
@@ -133,6 +134,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         self.schoolsLoaded = true;
         self.appComp.setMarkersBySchools();
         self.errorMsg = 'Nenhuma escola encontrada.';
+        this.doc.getElementById('overlay_search').style.display = 'none';
       }
       );
   }

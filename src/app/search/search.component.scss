@@ -187,3 +187,12 @@
     display: block;
   }
 }
+
+.loader_overlay_search{
+  width: 100%;
+  position: absolute;
+  z-index: 7;
+  height: 700px;
+  background: rgba(21,2,33,0.85);
+  display: none;
+}
