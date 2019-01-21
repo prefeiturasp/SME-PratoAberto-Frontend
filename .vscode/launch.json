@@ -7,7 +7,8 @@
             "name": "Launch Chromium against localhost",
             "url": "http://localhost:4200/",
             "webRoot": "${workspaceFolder}",
-            "runtimeExecutable": "/usr/bin/chromium-browser",
+            //"runtimeExecutable": "/usr/bin/chromium-browser",
+            "runtimeExecutable" : "/opt/google/chrome/chrome",
             "runtimeArgs": [
               "--new-window",
               "-user-data-dir=\"/${workspaceFolder}/DevProfile\"",
