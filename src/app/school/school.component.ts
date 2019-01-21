@@ -58,8 +58,11 @@ export class SchoolComponent implements OnInit {
 
   ngOnInit() {
     this.doc = this.winRef.nativeWindow.document;
-    this.doc.getElementById("map-container").className = "map-container school-page";
+    //this.doc.getElementById("map-container").className = "map-container school-page";
+    this.doc.getElementById("map-container").style.display = "none";
     this.doc.getElementById("map-loader").className = "loader__overlay school-page";
+    //this.doc.getElementByClassName('cards').style.width = 'auto';
+    //this.doc.getElementByClassName('cards').style.position = 'absolute';
     this.setToday();
     this.route.params.subscribe(params => {
       this.getCurrentSchool(params['id']);
@@ -93,7 +96,7 @@ export class SchoolComponent implements OnInit {
           self.currentSchool.agrupamento
         );
 
-        // console.log("curretnSchool", self.currentSchool)
+        //0console.log("curretnSchool", self.currentSchool)
         self.isCard = false;
 
         if (Globals.mapInstance) {

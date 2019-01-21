@@ -9,13 +9,6 @@
 
   .calendary{
     position: relative;
-    .bottom-link{
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 40%;
-      text-align: center;
-    }
     .calendary__button-back{
       width: 50px;
       height: 48px;
@@ -110,7 +103,11 @@
         opacity: 0.8;
       }
     }
-
+    .bottomLink{
+      position: absolute;
+      right: 90px;
+      bottom: 20px;
+  }
     .container-share{
       position: absolute;
       right: 66px;
@@ -128,7 +125,7 @@
         display: block;
       }
     }
-    
+
     .button-sharefb, .button-sharemail, .button-shareprint{
       @extend .button-share;
       background-image: url(/assets/images/prato-aberto-escola-compartilhar.png);
@@ -141,6 +138,7 @@
       background-position: -48px 0;
       right: 48px;
     }
+
     .button-shareprint{
       background-position: -96px 0;
       right: 0px;

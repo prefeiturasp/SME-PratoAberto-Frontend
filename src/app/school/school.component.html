@@ -1,4 +1,4 @@
-<section class="school">
+<section class="school" style="width:100%">
   <div class="calendary">
     <a routerLink="../../busca" class="calendary__button-back"></a>
     <header class="school-infos" style="background-image: url(/assets/images/img_escola-topo.png);">
@@ -20,17 +20,16 @@
           (dateChanged)="onDateChanged($event)">
         </responsive-date-picker>
       </div>
-      <a href="https://goo.gl/tgvPSr" target="_blank" class="bottom-link">Informações nutricionais.</a>
     </div>
     <div class="container-share desk">
         <a href="javascript:void(0)" (click)="shareFb()" class="button-sharefb"></a>
-        <a href="https://telegram.me/share/url?url=https://pratoaberto.tk&text=Prato Aberto - COMIDA BOA NÃO TEM SEGREDO. Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino. Acesse: https://pratoaberto.tk" target="_blank" 
-        class="button-sharemail"></a>
+        <a href="https://telegram.me/share/url?url=https://pratoaberto.tk&text=Prato Aberto - COMIDA BOA NÃO TEM SEGREDO. Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino. Acesse: https://pratoaberto.tk" target="_blank" class="button-sharemail"></a>
         <a href="javascript:void(0)" (click)="onPrintPage()" class="button-shareprint"></a>
     </div>
     <a href="javascript:void(0)" (click)="onOpenModalEducassis()" class="button-educassis"></a>
+    <a href="https://goo.gl/tgvPSr" target="_blank" class="bottomLink">Informações nutricionais.</a>
   </div>
-  <div class="card" *ngIf="isCard && currentSchool.cards">
+  <div class="card" style="width:auto;position:absolute" *ngIf="isCard && currentSchool.cards">
     <div class="age-item" *ngFor="let card of currentSchool.cards | keys">
       <div class="age-header" (click)="onExpandCard($event)">
         {{card.name}}
