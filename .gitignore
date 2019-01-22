@@ -44,3 +44,4 @@ src/app/app.settings.ts
 # System Files
 .DS_Store
 Thumbs.db
+.env
