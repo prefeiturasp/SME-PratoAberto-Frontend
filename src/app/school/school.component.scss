@@ -571,35 +571,41 @@
   display: none;
 
   .title {
+    font-weight: 400;
+    text-align: center; 
     font-family: Varela;
     font-size: 32px;
     margin: 0;
   }
 
   .date-range {
+    text-align: center;
     font-family: Varela;
     font-size: 18px;
     line-height: 20px;
     margin-bottom: 28px;
+    padding-top: 20px;
     display: block;
   }
 
   .school-title{
-    font-family: RobBd;
+    text-align: center;
+    font-family: Varela;
     font-size: 18px;
     line-height: 20px;
+    display: block;
   }
 
   .school-subtitle{
-    font-family: RobRg;
+    font-family: Varela;
     font-size: 18px;
     line-height: 20px;
   }
 
   .week-box{
     .week-age{
-      border-bottom: 1px solid rgba(0,0,0,0.1);
       width: 100%;
+      font-weight: bold;
       display: block;
       font-family: Varela;
       font-size: 18px;

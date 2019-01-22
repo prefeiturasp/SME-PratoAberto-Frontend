@@ -79,21 +79,21 @@
   </div>
 </div>
 <div class="print-page" id="printPage" style="position: fixed;top: 0;z-index: 100;width: 100%;height: 100%;background: #fff;padding: 65px 24px;overflow-x: hidden;overflow-y: auto;">
-  <h1 class="title" style="font-family: Varela;font-size: 32px;margin: 0;font-weight: 400;">Cardápio da semana</h1><br>
-  <span class="date-range" style="font-family: Varela;font-size: 18px;line-height: 20px;margin-bottom: 28px;display: block;">{{rangeStr}}</span><br>
-  <span class="school-title" style="font-family: RobBd;font-size: 18px;line-height: 20px;" *ngIf="currentSchool">{{currentSchool.nome}}</span><br>
+  <h1 class="title">Cardápio da semana</h1>
+  <span class="date-range">{{rangeStr}}</span><br>
+  <span class="school-title" *ngIf="currentSchool">{{currentSchool.nome}}</span><br>
 
   <div class="week-box" *ngFor="let age of weekCalendary">
-    <h3 class="week-age" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);width: 100%;display: block;font-family: Varela;font-size: 18px;line-height: 20px;padding-bottom: 10px;">{{age.name}}</h3>
+    <h3 class="week-age">{{age.name}}</h3>
     <table class="week-table" style="width: 100%;display: table;border:none;border-collapse: collapse;border-spacing: 0;">
         <tr>
-          <th *ngFor="let d of age.weekDays;let i = index" [style.background-color]="getStyleTitle(i)" class="week-table-title" style=" -webkit-print-color-adjust: exact;display: table-cell;text-align: left;vertical-align: middle;border-radius: 2px;font-family: Varela;font-size: 12px;padding: 15px;">{{d.toUpperCase()}}</th>
+          <th *ngFor="let d of age.weekDays;let i = index" [style.background-color]="getStyleTitle(i)" class="week-table-title" style=" -webkit-print-color-adjust: exact;display: table-cell;text-align: center;word-spacing: 100vw;vertical-align: middle;border-radius: 2px;font-family: Varela;font-size: 12px;padding: 15px;">{{d}}</th>
         </tr>
-        <tr *ngFor="let item of age.items" style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+        <tr *ngFor="let item of age.items" style="page-break-inside: avoid; border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
           <td class="week-table-item" *ngFor="let eats of item;let i = index" [style.background-color]="getStyleContent(i)" style=" -webkit-print-color-adjust: exact;font-family: RobRg;font-size: 14px;vertical-align: top;padding: 30px 15px 15px 15px;display: table-cell;text-align: left;">
             <p *ngFor="let eat of eats;let idx = index;">
               <span *ngIf="i > 0">
-                  <span class="dot" *ngIf="i > 0" style="color: #9468AC;">•</span> {{eat}}
+                  <!-->span class="dot" *ngIf="i > 0" style="color: #9468AC;">•</span--> {{eat}}
               </span>
               <strong *ngIf="i == 0">
                   {{eat.substring(eat.indexOf("-")+1, eat.length)}}

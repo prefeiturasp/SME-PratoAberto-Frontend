@@ -279,22 +279,22 @@ export class SchoolComponent implements OnInit {
     )
     let _weekDays = [
       "",
-      `${Globals.weekDayLabels[0]}, ${this.preZero(currWeekByDate[0].getDate())}/${this.preZero(currWeekByDate[0].getMonth() + 1)}`,
-      `${Globals.weekDayLabels[1]}, ${this.preZero(currWeekByDate[1].getDate())}/${this.preZero(currWeekByDate[1].getMonth() + 1)}`,
-      `${Globals.weekDayLabels[2]}, ${this.preZero(currWeekByDate[2].getDate())}/${this.preZero(currWeekByDate[2].getMonth() + 1)}`,
-      `${Globals.weekDayLabels[3]}, ${this.preZero(currWeekByDate[3].getDate())}/${this.preZero(currWeekByDate[3].getMonth() + 1)}`,
-      `${Globals.weekDayLabels[4]}, ${this.preZero(currWeekByDate[4].getDate())}/${this.preZero(currWeekByDate[4].getMonth() + 1)}`
+      `${this.preZero(currWeekByDate[0].getDate())}/${this.preZero(currWeekByDate[0].getMonth() + 1)} ${Globals.weekDayLabels[0]}`,
+      `${this.preZero(currWeekByDate[1].getDate())}/${this.preZero(currWeekByDate[1].getMonth() + 1)} ${Globals.weekDayLabels[1]}`,
+      `${this.preZero(currWeekByDate[2].getDate())}/${this.preZero(currWeekByDate[2].getMonth() + 1)} ${Globals.weekDayLabels[2]}`,
+      `${this.preZero(currWeekByDate[3].getDate())}/${this.preZero(currWeekByDate[3].getMonth() + 1)} ${Globals.weekDayLabels[3]}`,
+      `${this.preZero(currWeekByDate[4].getDate())}/${this.preZero(currWeekByDate[4].getMonth() + 1)} ${Globals.weekDayLabels[4]}`
     ]
     let startStr = "" + currWeekByDate[0].getFullYear() + this.preZero(currWeekByDate[0].getMonth() + 1) + this.preZero(currWeekByDate[0].getDate());
     let endStr = "" + currWeekByDate[4].getFullYear() + this.preZero(currWeekByDate[4].getMonth() + 1) + this.preZero(currWeekByDate[4].getDate());
 
     this.rangeStr = `
-      ${this.preZero(currWeekByDate[0].getDate())} -
+      ${this.preZero(currWeekByDate[0].getDate())} a
       ${this.preZero(currWeekByDate[4].getDate())} de
       ${Globals.monthLabels[currWeekByDate[4].getMonth() + 1]} de
       ${currWeekByDate[4].getFullYear()}`
 
-    this.calendaryService.getByRange(
+      this.calendaryService.getByRange(
       this.currentSchool,
       startStr,
       endStr
@@ -324,7 +324,6 @@ export class SchoolComponent implements OnInit {
               if (!ageMenu[ageKey][meal]) {
                 ageMenu[ageKey][meal] = {};
               }
-              console.log(ageKey + ' @@@ ' +meal)
               ageMenu[ageKey][meal] = {
                 name: currEats.idade,
                 date: currDate,
