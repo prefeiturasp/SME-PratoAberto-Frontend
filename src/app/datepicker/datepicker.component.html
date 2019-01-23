@@ -9,11 +9,11 @@
       <span class="input-date-display" >{{inputSelectedDate}}</span>
       <input pattern="\d{1,2}/\d{1,2}/\d{4}" type="date" name="input-date" id="input-date" value="" class="input-date" (change)="inputChangeDate($event)" [(ngModel)]="selectedInputDate">
     </div>
-    <div class="timeline-carousel">
+    <!-->div class="timeline-carousel">
       <div class="item" *ngFor="let tl of sliderDates;let i = index">
           <span (click)="cellClicked(tl)">{{tl.dayStr.substring(0,3)}}, {{tl.day}}</span>
       </div>
-    </div>
+    </div-->
     <div class="row" *ngIf="showSelector">
         <div class="col-md-12" style="z-index:1000">
             <div class="calendar" style="height:300px">
