@@ -13,5 +13,3 @@ RUN rm -r /app/node_modules
 FROM nginx
 
 COPY --from=builder /app/dist /usr/share/nginx/html
-
-EXPOSE 80
