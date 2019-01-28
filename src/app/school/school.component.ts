@@ -3,7 +3,6 @@ import { Globals } from './../app.globals';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-
 import { SchoolsService } from './../schools.service';
 import { AppComponent } from './../app.component';
 import { WindowRef } from './../WindowRef';
@@ -45,7 +44,7 @@ export class SchoolComponent implements OnInit {
   public carouselOptions;
   public detailsList = [];
   public rangeStr = '';
-  public menuCreated = 'Cardápio criado em 1 de Janeiro de 2019';
+  public menuCreated = null;
 
   constructor(
     private winRef: WindowRef,
@@ -138,9 +137,18 @@ export class SchoolComponent implements OnInit {
           self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
           return
         }
+        var options = { year: 'numeric', month: 'long', day: 'numeric' }
+        var datePublishedFromRes = res[0].data_publicacao || null;
+        if (datePublishedFromRes) {
+          var date = new Date(Date.UTC(datePublishedFromRes.substring(0,4), 
+            parseInt(datePublishedFromRes.substring(4,6)) - 1, 
+            datePublishedFromRes.substring(6,8), 12));
+          self.menuCreated = 'Cardápio criado em ' + date.toLocaleDateString('pt-BR', options);
+        }
         self.currentSchool.cards = {};
         for (let i = 0; i < res.length; i++) {
           let cardapio = res[i].cardapio;
+
           if (self.currentSchool.idades.indexOf(res[i].idade) > -1) {
             if (!self.currentSchool.cards[res[i].idade]) {
               self.currentSchool.cards[res[i].idade] = {

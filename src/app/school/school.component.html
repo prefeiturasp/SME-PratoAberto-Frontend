@@ -28,6 +28,8 @@
     </div>
     <a href="javascript:void(0)" (click)="onOpenModalEducassis()" class="button-educassis"></a>
   </div>
+  <p class="date-menu-signup-mob">{{menuCreated}}</p>
+  <a class="nutricional-information-mob" href="https://goo.gl/tgvPSr" target="_blank">Informações nutricionais.</a>
   <div class="card" style="width:auto;position:absolute" *ngIf="isCard && currentSchool.cards">
     <div class="age-item" *ngFor="let card of currentSchool.cards | keys">
       <div class="age-header" (click)="onExpandCard($event)">
