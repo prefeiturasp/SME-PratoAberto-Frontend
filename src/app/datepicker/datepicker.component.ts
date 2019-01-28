@@ -31,6 +31,7 @@ export class DatepickerComponent implements OnInit, OnChanges, AfterViewInit {
     today:Date = null;
     currentInputDateMonth;
     inputSelectedDate;
+    menuCreated = 'Cardápio criado em 1 de Janeiro de 2019';
 
     PREV_MONTH:number = 1;
     CURR_MONTH:number = 2;

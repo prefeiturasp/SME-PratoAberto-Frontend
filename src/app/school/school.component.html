@@ -27,7 +27,6 @@
         <a href="javascript:void(0)" (click)="onPrintPage()" class="button-shareprint"></a>
     </div>
     <a href="javascript:void(0)" (click)="onOpenModalEducassis()" class="button-educassis"></a>
-    <a href="https://goo.gl/tgvPSr" target="_blank" class="bottomLink">Informações nutricionais.</a>
   </div>
   <div class="card" style="width:auto;position:absolute" *ngIf="isCard && currentSchool.cards">
     <div class="age-item" *ngFor="let card of currentSchool.cards | keys">
@@ -50,6 +49,8 @@
         <a href="javascript:void(0)" (click)="onOpenModalDetails()">Notas</a>
       </div>
     </div>
+    <p class="date-menu-signup-desktop">{{menuCreated}}</p>
+    <a class="nutricional-information-desktop" href="https://goo.gl/tgvPSr" target="_blank">Informações nutricionais.</a>
   </div>
   <div class="card" *ngIf="!isCard">
     <h3 class="card-alert">{{errorMessage}}</h3>

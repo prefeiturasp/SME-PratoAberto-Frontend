@@ -45,6 +45,7 @@ export class SchoolComponent implements OnInit {
   public carouselOptions;
   public detailsList = [];
   public rangeStr = '';
+  public menuCreated = 'Cardápio criado em 1 de Janeiro de 2019';
 
   constructor(
     private winRef: WindowRef,
