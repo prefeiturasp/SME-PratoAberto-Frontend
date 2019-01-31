@@ -135,7 +135,10 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         self.schoolsLoaded = true;
         self.appComp.setMarkersBySchools();
         self.errorMsg = 'Nenhuma escola encontrada.';
-        this.doc.getElementById('overlay_search').style.display = 'none';
+        setTimeout(() => {
+          this.doc.getElementById('overlay_search').style.display = 'none';
+          
+        }, 5000);
       }
       );
   }
