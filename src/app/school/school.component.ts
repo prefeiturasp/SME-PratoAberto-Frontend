@@ -137,13 +137,14 @@ export class SchoolComponent implements OnInit {
           self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
           return
         }
-        var options = { year: 'numeric', month: 'long', day: 'numeric' }
         var datePublishedFromRes = res[0].data_publicacao || null;
-        if (datePublishedFromRes) {
-          var date = new Date(Date.UTC(datePublishedFromRes.substring(0,4), 
-            parseInt(datePublishedFromRes.substring(4,6)) - 1, 
-            datePublishedFromRes.substring(6,8), 12));
-          self.menuCreated = 'Cardápio criado em ' + date.toLocaleDateString('pt-BR', options);
+        if (datePublishedFromRes && datePublishedFromRes.includes('T')) {
+          var date = new Date(datePublishedFromRes);
+          var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+          self.menuCreated = 'Cardápio criado em ' + 
+            date.toLocaleDateString('pt-BR', options).split(" ")[0] + 
+            " às " + 
+            date.toLocaleDateString('pt-BR', options).split(" ")[1];
         }
         self.currentSchool.cards = {};
         for (let i = 0; i < res.length; i++) {

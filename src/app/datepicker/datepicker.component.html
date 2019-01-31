@@ -6,7 +6,7 @@
         </span>
     </div>
     <div class="custom-input">
-      <span class="input-date-display" >{{inputSelectedDate}}</span>
+      <span style="width: 200px" class="input-date-display" >{{inputSelectedDate}}</span>
       <input pattern="\d{1,2}/\d{1,2}/\d{4}" type="date" name="input-date" id="input-date" value="" class="input-date" (change)="inputChangeDate($event)" [(ngModel)]="selectedInputDate">
     </div>
     <div class="row" *ngIf="showSelector">
