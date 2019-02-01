@@ -48,6 +48,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     this.doc.getElementById('map-container').className = 'map-container search-page';
     this.doc.getElementById('map-loader').className = 'loader__overlay search-page';
     this.doc.getElementById('map-container').style.display = 'block';
+    //this.doc.getElementById('overlay_search').style.display = 'block';
   }
 
   ngAfterViewInit() {
@@ -135,10 +136,11 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         self.schoolsLoaded = true;
         self.appComp.setMarkersBySchools();
         self.errorMsg = 'Nenhuma escola encontrada.';
-        setTimeout(() => {
-          this.doc.getElementById('overlay_search').style.display = 'none';
+        
+        
+        this.doc.getElementById('overlay_search').style.display = 'none';
           
-        }, 5000);
+            
       }
       );
   }
