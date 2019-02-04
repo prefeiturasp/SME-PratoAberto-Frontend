@@ -137,23 +137,24 @@ export class SchoolComponent implements OnInit {
           self.errorMessage = "Nenhum cardápio encontrado para a data selecionada.";
           return
         }
-        var datePublishedFromRes = res[0].data_publicacao || null;
-        if (datePublishedFromRes && datePublishedFromRes.includes('T')) {
-          var date = new Date(datePublishedFromRes);
-          var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
-          self.menuCreated = 'Cardápio criado em ' + 
-            date.toLocaleDateString('pt-BR', options).split(" ")[0] + 
-            " às " + 
-            date.toLocaleDateString('pt-BR', options).split(" ")[1];
-        }
         self.currentSchool.cards = {};
         for (let i = 0; i < res.length; i++) {
           let cardapio = res[i].cardapio;
-
+          var datePublishedFromRes = res[i].data_publicacao || null;
+          if (datePublishedFromRes && datePublishedFromRes.includes('T')) {
+            //var date = new Date(datePublishedFromRes);
+            var date = new Date(datePublishedFromRes);
+            var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+            datePublishedFromRes = 'Cardápio publicado em ' + 
+              date.toLocaleDateString('pt-BR', options).split(" ")[0] + 
+              " às " + 
+              date.toLocaleDateString('pt-BR', options).split(" ")[1];
+          }
           if (self.currentSchool.idades.indexOf(res[i].idade) > -1) {
             if (!self.currentSchool.cards[res[i].idade]) {
               self.currentSchool.cards[res[i].idade] = {
                 name: res[i].idade,
+                data_publicacao: datePublishedFromRes,
                 menu: [],
                 exibitionOrder: self.currentSchool.idades.indexOf(res[i].idade)
               };

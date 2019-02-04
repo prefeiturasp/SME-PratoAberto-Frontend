@@ -26,14 +26,10 @@ html, body{
 }
 
 .date-menu-signup-mob {
-  @media screen and (min-width: 1023px){
-    display: none;
-  }
   color: #5a5a5a;
   display: block;
-  text-align: center;
   font-size: 11px;
-  margin-top: -30px;
+  margin-top: -45px;
 }
 
 .nutricional-information-mob {
@@ -43,6 +39,7 @@ html, body{
   display: block;
   text-align: center;
   padding-bottom: 10px;
+  margin-top: -25px;
 }
 
 .date-menu-signup-desktop {
@@ -63,6 +60,7 @@ html, body{
   display: block;
   text-align: left;
   padding-left: 20px;
+  padding-top: 10px;
 }
 
 .banner-educassis{
