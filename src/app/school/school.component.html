@@ -87,6 +87,7 @@
 
   <div class="week-box" *ngFor="let age of weekCalendary">
     <h3 class="week-age">{{age.name}}</h3>
+    <h3 class="week-date-published">{{age.datePublished}}</h3>
     <table class="week-table" style="width: 100%;display: table;border:none;border-collapse: collapse;border-spacing: 0;">
         <tr>
           <th *ngFor="let d of age.weekDays;let i = index" [style.background-color]="getStyleTitle(i)" class="week-table-title" style=" -webkit-print-color-adjust: exact;display: table-cell;text-align: center;word-spacing: 100vw;vertical-align: middle;border-radius: 2px;font-family: Varela;font-size: 12px;padding: 15px;">{{d}}</th>

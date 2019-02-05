@@ -142,7 +142,6 @@ export class SchoolComponent implements OnInit {
           let cardapio = res[i].cardapio;
           var datePublishedFromRes = res[i].data_publicacao || null;
           if (datePublishedFromRes && datePublishedFromRes.includes('T')) {
-            //var date = new Date(datePublishedFromRes);
             var date = new Date(datePublishedFromRes);
             var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
             datePublishedFromRes = 'Cardápio publicado em ' + 
@@ -322,6 +321,7 @@ export class SchoolComponent implements OnInit {
       let currMenu = {};
       let ageMenu = {};
       let tempWeek = [];
+      
       Object.keys(calendaryAgeGroups).map((ageKey, idx, arr) => {
         if (!ageMenu[ageKey]) {
           ageMenu[ageKey] = {};
@@ -370,6 +370,7 @@ export class SchoolComponent implements OnInit {
         }
         let tempObj = {
           name: "",
+          datePublished: null,
           weekDays: _weekDays,
           items: []
         };
@@ -380,6 +381,16 @@ export class SchoolComponent implements OnInit {
               tempArr.push(ageMenu[ageKey][meal].items.eats[eat]);
             }
             tempObj["name"] = ageMenu[ageKey][meal].name;
+            let datePublished = (todasRefeicoes.find(function(data){ return data.idade == ageKey})).data_publicacao;
+            if (datePublished && datePublished.includes('T')) {
+              var date = new Date(datePublished);
+              var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+              datePublished = 'Cardápio publicado em ' + 
+                date.toLocaleDateString('pt-BR', options).split(" ")[0] + 
+                " às " + 
+                date.toLocaleDateString('pt-BR', options).split(" ")[1];
+                tempObj["datePublished"] = datePublished;
+            }
             tempObj['items'].push(tempArr);
           }
         });
