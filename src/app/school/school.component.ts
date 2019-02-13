@@ -268,6 +268,8 @@ export class SchoolComponent implements OnInit {
 
   onExpandCard(event) {
     let target = event.target || event.srcElement || event.currentTarget;
+    if (target.toString().includes('HTMLParagraphElement'))
+      target = this.winRef.nativeWindow.$(target).parent()
     if (this.winRef.nativeWindow.$(target).parent().hasClass("selected")) {
       this.winRef.nativeWindow.$(".age-item").removeClass('selected');
       return;

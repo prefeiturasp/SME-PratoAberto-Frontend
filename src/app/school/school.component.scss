@@ -338,7 +338,7 @@
       height: 100vh;
       overflow-x: hidden;
       overflow-y: auto;
-      width: 100% !important;
+      width: calc(100% - 360px) !important;
       position: absolute;
     }
   }
