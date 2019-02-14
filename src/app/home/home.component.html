@@ -6,8 +6,9 @@
     <!-- <input type="text" [(ngModel)]="searchInputModel" placeholder="Qual escola você procura?" class="search__box"> -->
     <a href="javascript:void(0)" (click)="onScrollto()" class="arrow__down">Saiba mais sobre o Prato Aberto</a>
   </div>
-  <div class="search__box-button" (click)="gotoRoute('/busca', 'input')">Digite o nome de uma escola</div>
-  <a (click)="gotoRoute('/busca', 'button')" class="home__button">ESCOLAS PERTO DE VOCÊ</a>
+  <div style="text-align: center">
+    <p class="home__cta-button" (click)="gotoRouteFixed('/busca')">Encontre sua escola</p>
+  </div>
   <div class="home__merendometer">
     <h3 class="title">Merendômetro</h3>
     <p class="subtitle">

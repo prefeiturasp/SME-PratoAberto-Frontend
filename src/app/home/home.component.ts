@@ -33,8 +33,12 @@ export class HomeComponent implements OnInit {
   }
 
   gotoRoute(value, origin) {
-    console.log('gotoRoute: ', value, origin);
     Globals.originSearch = origin;
+    this.router.navigate([value]);
+  }
+
+  gotoRouteFixed(value) {
+    Globals.originSearch = this.winRef.nativeWindow.innerWidth > 1023 ? 'input' : 'button';
     this.router.navigate([value]);
   }
 
