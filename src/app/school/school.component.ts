@@ -308,7 +308,14 @@ export class SchoolComponent implements OnInit {
       ${Globals.monthLabels[currWeekByDate[4].getMonth() + 1]} de
       ${currWeekByDate[4].getFullYear()}`
 
-      this.calendaryService.getByRange(
+      let urlPdf = this.calendaryService.getReportPdf(this.currentSchool,
+        startStr,
+        endStr);
+
+     
+      window.open(urlPdf,'_blank')
+
+   /*    this.calendaryService.getByRange(
       this.currentSchool,
       startStr,
       endStr
@@ -398,7 +405,7 @@ export class SchoolComponent implements OnInit {
         });
         this.weekCalendary.push(tempObj);
       });
-
+      
       let printContents, popupWin;
       setTimeout(() => {
         printContents = this.winRef.nativeWindow.$("#printPage").clone();
@@ -418,7 +425,7 @@ export class SchoolComponent implements OnInit {
           }, 1000);
         }, 1000);
       }, 250);
-    });
+    }); */
 
   }
 

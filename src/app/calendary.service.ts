@@ -24,6 +24,7 @@ export class CalendaryService {
     });;
   }
 
+
   getByRange(currentSchool, startDate, endDate) {
     let unit =  currentSchool.tipo_unidade
     let attendance = currentSchool.tipo_atendimento
@@ -33,6 +34,16 @@ export class CalendaryService {
     return this.http.get(_url, {}).map((res) => {
       return [res.json(), currentSchool.refeicoes]
     })
+  }
+
+  getReportPdf(currentSchool, startDate, endDate) {
+    let unit =  currentSchool.tipo_unidade
+    let attendance = currentSchool.tipo_atendimento
+    let grouping = currentSchool.agrupamento
+    let nameSchool = currentSchool.nome
+    // StaticSettings.BASE_URL + StaticSettings.person
+    let _url = AppSettings.BASE_URL + AppSettings.FACTORY_PDF + `?tipo_unidade=${unit}&data_inicial=${startDate}&tipo_atendimento=${attendance}&agrupamento=${grouping}&data_final=${endDate}&nome=${nameSchool}`;
+    return _url;
   }
 
 }
