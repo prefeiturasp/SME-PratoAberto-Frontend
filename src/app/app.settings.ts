@@ -4,4 +4,5 @@ export class AppSettings {
   public static SCHOOL_ENDPOINT = '/escola';
   public static SCHOOLS_DETAILS_ENDPOINT = '/assets/data/detalhes.json';
   public static CALENDARY_ENDPOINT = '/cardapios';
+  public static NOTES_EDITOR_ENDPOINT = '/editor/editar_notas';
 }

@@ -41,4 +41,12 @@ export class SchoolsService {
       return res.json();
     });
   }
+
+  getNotes() {
+    const _url = AppSettings.BASE_URL + AppSettings.NOTES_EDITOR_ENDPOINT;
+    // return this.http.get(_url, {headers: this.headers})
+    return this.http.get(_url, {}).map(res => {
+      return res.json();
+    });
+  }
 }
