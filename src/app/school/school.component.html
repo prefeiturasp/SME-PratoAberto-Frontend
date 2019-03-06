@@ -70,14 +70,7 @@
 <div class="overlay-details" id="overlayDetails">
   <a href="javascript:void(0)" class="button__fechar" (click)="onCloseModalDetails()"></a>
   <div class="details-content">
-    <h3 class="details-title">Detalhes do cardápio</h3>
-    <div class="details-desc" *ngFor="let detail of detailsList">
-      <span class="title">{{detail.title}}</span>
-      <div class="txt" *ngFor="let item of detail.items">
-        <h5 class="txt-title"><strong>{{item.title}}</strong></h5>
-        <p class="txt-desc" *ngFor="let li of item.list">{{li}}</p>
-      </div>
-    </div>
+    <div [innerHtml]="safeHtml"></div>
   </div>
 </div>
 <div class="print-page" id="printPage" style="position: fixed;top: 0;z-index: 100;width: 100%;height: 100%;background: #fff;padding: 65px 24px;overflow-x: hidden;overflow-y: auto;">

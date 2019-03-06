@@ -1,12 +1,12 @@
 import { CalendaryService } from './../calendary.service';
 import { Globals } from './../app.globals';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { SchoolsService } from './../schools.service';
 import { AppComponent } from './../app.component';
 import { WindowRef } from './../WindowRef';
-
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-school',
@@ -14,6 +14,7 @@ import { WindowRef } from './../WindowRef';
   styleUrls: ['./school.component.scss']
 })
 export class SchoolComponent implements OnInit {
+  safeHtml: SafeHtml;
   private doc: any;
   public selectedDate;
   public weekCalendary = [];
@@ -43,6 +44,7 @@ export class SchoolComponent implements OnInit {
   private newSelectedDate;
   public carouselOptions;
   public detailsList = [];
+  public notes = '';
   public rangeStr = '';
   public menuCreated = null;
 
@@ -52,11 +54,16 @@ export class SchoolComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private schoolsService: SchoolsService,
+    private sanitizer: DomSanitizer,
     private calendaryService: CalendaryService) { }
 
 
 
   ngOnInit() {
+    let self = this;
+    this.schoolsService.getNotes().subscribe(function (res) { 
+      self.safeHtml = self.sanitizer.bypassSecurityTrustHtml(res.notas); 
+    });
     this.doc = this.winRef.nativeWindow.document;
     //this.doc.getElementById("map-container").className = "map-container school-page";
     this.doc.getElementById("map-container").style.display = "none";
@@ -67,10 +74,11 @@ export class SchoolComponent implements OnInit {
       this.getCurrentSchool(params['id']);
     });
 
-    let self = this;
+    
     this.schoolsService.getDetails().subscribe(function (res) {
       self.detailsList = res;
     });
+    
   }
 
   getCurrentSchool(_id) {
@@ -149,7 +157,15 @@ export class SchoolComponent implements OnInit {
               " às " + 
               date.toLocaleDateString('pt-BR', options).split(" ")[1];
           }
-          if (self.currentSchool.idades.indexOf(res[i].idade) > -1) {
+          if (res[i].idade == 'Toda Idade' && 
+                self.currentSchool.idades.indexOf('Todas as idades') > -1) {
+            res[i].idade = 'Todas as idades'
+          } else if (res[i].idade == 'Toda Idade' 
+          && (self.currentSchool.tipo_unidade == 'PROJETO_CECI' 
+          || self.currentSchool.tipo_unidade == 'CEI_PARCEIRO_(RP)')) {
+            res[i].idade = 'Adulto'
+          }
+          if (self.currentSchool.idades.indexOf(res[i].idade) > -1 || res[i].idade == 'Adulto') {
             if (!self.currentSchool.cards[res[i].idade]) {
               self.currentSchool.cards[res[i].idade] = {
                 name: res[i].idade,
