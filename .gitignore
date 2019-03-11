@@ -18,6 +18,7 @@
 *.sublime-workspace
 
 # IDE - VSCode
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -43,3 +44,4 @@ src/app/app.settings.ts
 # System Files
 .DS_Store
 Thumbs.db
+.env

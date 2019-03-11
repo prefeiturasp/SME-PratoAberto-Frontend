@@ -141,7 +141,7 @@ export class DatepickerComponent implements OnInit, OnChanges, AfterViewInit {
       const self = this;
       let _currDay = AppUtils.getObjectById(this.sliderDates, "day", this.selectedDate.day);
       this.currentInputDateMonth = this.selectedDate.month;
-      this.inputSelectedDate = this.selectedDate.day+"/"+this.selectedDate.month+"/"+this.selectedDate.year;
+      this.inputSelectedDate = this.selectedDate.day+"/"+ ("0"+this.selectedDate.month).slice(-2)+"/"+this.selectedDate.year;
       if (_currDay.day === this.selectedDate.day && _currDay.month === this.selectedDate.month && _currDay.year === this.selectedDate.year) {
         if (this.daysCarousel){
           this.daysCarousel.trigger('to.owl.carousel', _currDay.id - this.olderCount);
@@ -171,24 +171,31 @@ export class DatepickerComponent implements OnInit, OnChanges, AfterViewInit {
         if (self.sliderDates[currentCarouselIdx]){
           let currItem = self.sliderDates[currentCarouselIdx];
           self.selectDate(currItem);
-          self.inputSelectedDate = currItem["day"]+'/'+currItem["month"]+'/'+currItem["year"];
+          self.inputSelectedDate = currItem["day"]+'/'+("0"+currItem["month"]).slice(-2)+'/'+currItem["year"];
         }
       });
     }
 
     inputChangeDate(e){
       let arrSel = this.selectedInputDate.split("-");
-      if (this.currentInputDateMonth && parseInt(this.currentInputDateMonth) > parseInt(arrSel[1])){
-        this.createMonth(arrSel[1], arrSel[0]);
-        this.winRef.nativeWindow.$(".timeline-carousel").hide();
-      } else if (this.currentInputDateMonth && parseInt(this.currentInputDateMonth) < parseInt(arrSel[1])) {
+      if (this.currentInputDateMonth && parseInt(this.currentInputDateMonth) != parseInt(arrSel[1])){
         this.createMonth(arrSel[1], arrSel[0]);
         this.winRef.nativeWindow.$(".timeline-carousel").hide();
       }
       setTimeout(()=>{
-        let newDate = AppUtils.getObjectById(this.sliderDates, "day", arrSel[2]);
+        //let newDate = AppUtils.getObjectById(this.sliderDates, "day", arrSel[2]);
+        let newDate = {
+            cmo: 2,
+            currDay: false,
+            day: arrSel[2],
+            dayStr: null,
+            id: null,
+            month: arrSel[1],
+            sun: false,
+            year: arrSel[0]
+        }
+        this.inputSelectedDate = arrSel[2]+'/'+("0"+arrSel[1]).slice(-2)+'/'+arrSel[0];
         this.cellClicked(newDate);
-        this.inputSelectedDate = arrSel[2]+'/'+arrSel[1]+'/'+arrSel[0];
       }, 500);
       this.currentInputDateMonth = parseInt(arrSel[1]);
     }
@@ -279,12 +286,14 @@ export class DatepickerComponent implements OnInit, OnChanges, AfterViewInit {
             // Next month of day
             this.nextMonth();
         }
-        this.daysCarousel.trigger('to.owl.carousel', cell.id - this.olderCount);
+        if (this.winRef.nativeWindow.$(window).width() >= 1023){
+            this.daysCarousel.trigger('to.owl.carousel', cell.id - this.olderCount);
+        }
         this.timelineCarousel.trigger('to.owl.carousel', cell.id - this.olderCount);
         if (this.winRef.nativeWindow.$(window).width() < 1023){
           this.winRef.nativeWindow.$(".timeline-carousel").show();
         }
-        this.weekdayStr = cell.dayStr.toString();
+        this.weekdayStr = cell.dayStr ? cell.dayStr.toString() : null;
     }
 
     selectDate(date:any):void {

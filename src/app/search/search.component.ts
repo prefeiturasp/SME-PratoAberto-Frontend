@@ -47,11 +47,14 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     this.doc.getElementById('map-container').className = 'map-container search-page';
     this.doc.getElementById('map-loader').className = 'loader__overlay search-page';
+    this.doc.getElementById('map-container').style.display = 'block';
+    //this.doc.getElementById('overlay_search').style.display = 'block';
   }
 
   ngAfterViewInit() {
     if (Globals.schools.length === 0) {
       this.onLoadSchools();
+      this.doc.getElementById('overlay_search').style.display = 'block';
     } else {
       this.schoolsLoaded = true;
       this.errorMsg = 'Nenhuma escola encontrada.';
@@ -133,8 +136,13 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         self.schoolsLoaded = true;
         self.appComp.setMarkersBySchools();
         self.errorMsg = 'Nenhuma escola encontrada.';
+        
+        
+        this.doc.getElementById('overlay_search').style.display = 'none';
+          
+            
       }
-    );
+      );
   }
 
   onSelectSchool(school) {
@@ -163,8 +171,8 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         <div class="infos">
           <h3 class="name">${data.nome}</h3>
           <small class="address">${address}</small>
-          </div>`;
-
+          <small class="eol">Código: ${data._id}</small>
+        </div>`;
     return html;
   }
 

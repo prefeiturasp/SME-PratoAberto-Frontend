@@ -91,6 +91,34 @@
     }
   }
 
+  .home__cta-button {
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 260px;
+    font-family: 'RobMd';
+    color: #fff;
+    font-size: 1rem;
+    position: absolute;
+    top: calc(50vh - 32px);
+    @include minWidth(1024) {
+      top: calc(57vh - 32px);
+      left: 204px;
+    }
+    z-index: 10;
+    background-image: url(/assets/images/prato-aberto-icone-pin-branco.png);
+    background-color: #2881bb;
+    background-repeat: no-repeat;
+    background-size: 12px 16px;
+    background-position: 20px 50%;
+    border: 5px none;
+    border-radius: 5px;
+    padding: 13px;
+    margin-left: -129px;
+    box-shadow: 0 4px 8px 0 rgba(28, 107, 170, 0.6), inset 0 -3px 0 0 #1c6baa;
+  }
+
   .search__box-button{
     @extend .search__box;
     @include font-size(18);

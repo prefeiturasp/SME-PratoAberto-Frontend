@@ -103,7 +103,11 @@
         opacity: 0.8;
       }
     }
-
+    .bottomLink{
+      position: absolute;
+      right: 90px;
+      bottom: 20px;
+  }
     .container-share{
       position: absolute;
       right: 66px;
@@ -284,11 +288,7 @@
       overflow-y: auto;
       .dates{
         position: relative;
-        .datepicker-container{
-
-
-        }
-
+        .datepicker-container{}
         .custom-input{
           display: none;
         }
@@ -338,6 +338,8 @@
       height: 100vh;
       overflow-x: hidden;
       overflow-y: auto;
+      width: calc(100% - 360px) !important;
+      position: absolute;
     }
   }
 }
@@ -569,40 +571,51 @@
   display: none;
 
   .title {
+    font-weight: 400;
+    text-align: center; 
     font-family: Varela;
     font-size: 32px;
     margin: 0;
   }
 
   .date-range {
+    text-align: center;
     font-family: Varela;
     font-size: 18px;
     line-height: 20px;
     margin-bottom: 28px;
+    padding-top: 20px;
     display: block;
   }
 
   .school-title{
-    font-family: RobBd;
+    text-align: center;
+    font-family: Varela;
     font-size: 18px;
     line-height: 20px;
+    display: block;
   }
 
   .school-subtitle{
-    font-family: RobRg;
+    font-family: Varela;
     font-size: 18px;
     line-height: 20px;
   }
 
   .week-box{
     .week-age{
-      border-bottom: 1px solid rgba(0,0,0,0.1);
       width: 100%;
+      font-weight: bold;
       display: block;
       font-family: Varela;
       font-size: 18px;
       line-height: 20px;
       padding-bottom: 10px;
+    }
+    .week-date-published {
+      margin-top: -15px;
+      font-size: 12px;
+      font-weight: normal;
     }
 
     .week-table{

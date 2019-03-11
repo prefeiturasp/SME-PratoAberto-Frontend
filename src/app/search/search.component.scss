@@ -2,9 +2,6 @@
 
 .search-schools{
 
-  .schools__list-desk{
-    display: none;
-  }
   .search-schools__search{
     width: 100%;
     padding: 16px 8px;
@@ -153,22 +150,6 @@
     top: 0;
     left: 0;
 
-    .schools__list-desk{
-      display: block;
-      position: absolute;
-      top: 80px;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background-color: #fff;
-      height: calc(100vh - 110px);
-
-      .item{
-        cursor: pointer;
-        // min-width: 400px;
-        width: 95%;
-      }
-    }
-
     .search-schools__search{
       max-width: 400px;
 
@@ -205,4 +186,13 @@
   @include minWidth(1024){
     display: block;
   }
+}
+
+.loader_overlay_search{
+  width: 100%;
+  position: absolute;
+  z-index: 7;
+  height: 700px;
+  background: rgba(21,2,33,0.85);
+  display: none;
 }
