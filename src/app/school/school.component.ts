@@ -138,7 +138,9 @@ export class SchoolComponent implements OnInit {
  
   getCalendary(date, unit, attendance, grouping) {
     let self = this;
-    this.calendaryService.get(date, unit, attendance, grouping)
+    console.log(self.currentSchool.nome);
+    //this.calendaryService.get(date, unit, attendance, grouping)
+    this.calendaryService.getWithSchool(date, unit, attendance, grouping,self.currentSchool.nome)
       .subscribe(function (res) {
         if (res.length == 0) {
           self.isCard = false;

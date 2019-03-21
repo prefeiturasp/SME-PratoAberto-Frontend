@@ -24,6 +24,14 @@ export class CalendaryService {
     });
   }
 
+  getWithSchool(date, unit, attendance, grouping, nome) {
+    // StaticSettings.BASE_URL + StaticSettings.person
+    let _url = AppSettings.BASE_URL + AppSettings.CALENDARY_ENDPOINT + `/${date}?tipo_unidade=${unit}&tipo_atendimento=${attendance}&agrupamento=${grouping}&nome=${nome}`;
+    return this.http.get(_url, {}).map((res) => {
+      return res.json()
+    });
+  }
+
 
   getByRange(currentSchool, startDate, endDate) {
     let unit =  currentSchool.tipo_unidade
