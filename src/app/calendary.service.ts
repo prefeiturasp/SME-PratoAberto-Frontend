@@ -21,7 +21,15 @@ export class CalendaryService {
     let _url = AppSettings.BASE_URL + AppSettings.CALENDARY_ENDPOINT + `/${date}?tipo_unidade=${unit}&tipo_atendimento=${attendance}&agrupamento=${grouping}`;
     return this.http.get(_url, {}).map((res) => {
       return res.json()
-    });;
+    });
+  }
+
+  getWithSchool(date, unit, attendance, grouping, nome) {
+    // StaticSettings.BASE_URL + StaticSettings.person
+    let _url = AppSettings.BASE_URL + AppSettings.CALENDARY_ENDPOINT + `/${date}?tipo_unidade=${unit}&tipo_atendimento=${attendance}&agrupamento=${grouping}&nome=${nome}`;
+    return this.http.get(_url, {}).map((res) => {
+      return res.json()
+    });
   }
 
 
