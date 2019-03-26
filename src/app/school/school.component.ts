@@ -135,10 +135,12 @@ export class SchoolComponent implements OnInit {
 
     return todayStr;
   }
-
+ 
   getCalendary(date, unit, attendance, grouping) {
     let self = this;
-    this.calendaryService.get(date, unit, attendance, grouping)
+    console.log(self.currentSchool.nome);
+    //this.calendaryService.get(date, unit, attendance, grouping)
+    this.calendaryService.getWithSchool(date, unit, attendance, grouping,self.currentSchool.nome)
       .subscribe(function (res) {
         if (res.length == 0) {
           self.isCard = false;
@@ -179,14 +181,14 @@ export class SchoolComponent implements OnInit {
               for (let j = 0; j < cardapio[key].length; j++) {
                 eats.push(cardapio[key][j]);
               }
-              if (self.currentSchool.refeicoes.indexOf(key) > -1) {
+              //if (self.currentSchool.refeicoes.indexOf(key) > -1) {
                 self.currentSchool.cards[res[i].idade].menu.push({
                   name: key,
                   content: eats,
                   icon: key.replace(/ /g, '').toLowerCase(),
                   exibitionOrder: self.currentSchool.refeicoes.indexOf(key)
                 });
-              }
+              //}
             });
           }
 
