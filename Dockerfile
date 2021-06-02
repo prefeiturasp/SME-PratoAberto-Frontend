@@ -17,3 +17,4 @@ RUN chmod +x /app/entrypoint.sh
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
