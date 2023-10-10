@@ -6,9 +6,11 @@ pipeline {
       namespace = "${env.branchname == 'development' ? 'pratoaberto-dev' : env.branchname == 'homolog' ? 'pratoaberto-hom' : env.branchname == 'homolog-r2' ? 'pratoaberto-hom2' : 'sme-pratoaberto' }"
     }
   
-    agent {
-      node { label 'AGENT-NODES' }
-    }
+    agent { kubernetes { 
+              label 'builder'
+              defaultContainer 'builder'
+            }
+          }
 
     options {
       buildDiscarder(logRotator(numToKeepStr: '15', artifactNumToKeepStr: '15'))
