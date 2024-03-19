@@ -1,103 +1,242 @@
-<section class="school" style="width:100%">
+<section class="school" style="width: 100%">
   <div class="calendary">
     <a routerLink="../../busca" class="calendary__button-back"></a>
-    <header class="school-infos" style="background-image: url(/assets/images/img_escola-topo.png);">
-        <div class="txt-content">
-          <h3 class="title" *ngIf="currentSchool">{{currentSchool.nome}}</h3>
-        </div>
-        <a href="javascript:void(0)" (click)="onClickShare()" id="share-button" class="button-share"></a>
-        <div class="container-share mob" id="share-container">
-            <a href="javascript:void(0)" (click)="shareFb()" class="button-sharefb"></a>
-            <a href="https://telegram.me/share/url?url=https://pratoaberto.tk&text=Prato Aberto - COMIDA BOA NÃO TEM SEGREDO. Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino." target="_blank" class="button-sharemail"></a>
-            <a href="javascript:void(0)" (click)="onPrintPage()" class="button-shareprint"></a>
-        </div>
+    <header
+      class="school-infos"
+      style="background-image: url(/assets/images/img_escola-topo.png)"
+    >
+      <div class="txt-content">
+        <h3 class="title" *ngIf="currentSchool">{{ currentSchool.nome }}</h3>
+      </div>
+      <a
+        href="javascript:void(0)"
+        (click)="onClickShare()"
+        id="share-button"
+        class="button-share"
+      ></a>
+      <div class="container-share mob" id="share-container">
+        <a
+          href="javascript:void(0)"
+          (click)="shareFb()"
+          class="button-sharefb"
+        ></a>
+        <a
+          href="https://telegram.me/share/url?url=https://pratoaberto.tk&text=Prato Aberto - COMIDA BOA NÃO TEM SEGREDO. Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino."
+          target="_blank"
+          class="button-sharemail"
+        ></a>
+        <a
+          href="javascript:void(0)"
+          (click)="onPrintPage()"
+          class="button-shareprint"
+        ></a>
+      </div>
     </header>
     <div class="dates">
       <div class="datepicker-container">
         <responsive-date-picker
           [options]="datePickerOptions"
           [selDate]="selectedDate"
-          (dateChanged)="onDateChanged($event)">
+          (dateChanged)="onDateChanged($event)"
+        >
         </responsive-date-picker>
       </div>
     </div>
     <div class="container-share desk">
-        <a href="javascript:void(0)" (click)="shareFb()" class="button-sharefb"></a>
-        <a href="https://telegram.me/share/url?url=https://pratoaberto.tk&text=Prato Aberto - COMIDA BOA NÃO TEM SEGREDO. Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino. Acesse: https://pratoaberto.tk" target="_blank" class="button-sharemail"></a>
-        <a href="javascript:void(0)" (click)="onPrintPage()" class="button-shareprint"></a>
+      <a
+        href="javascript:void(0)"
+        (click)="shareFb()"
+        class="button-sharefb"
+      ></a>
+      <a
+        href="https://telegram.me/share/url?url=https://pratoaberto.tk&text=Prato Aberto - COMIDA BOA NÃO TEM SEGREDO. Um jeito fácil e transparente para todo mundo se nutrir de informação sobre o que é servido na Rede Municipal de Ensino. Acesse: https://pratoaberto.tk"
+        target="_blank"
+        class="button-sharemail"
+      ></a>
+      <a
+        href="javascript:void(0)"
+        (click)="onPrintPage()"
+        class="button-shareprint"
+      ></a>
     </div>
-    <a href="javascript:void(0)" (click)="onOpenModalEducassis()" class="button-educassis"></a>
+    <a
+      href="javascript:void(0)"
+      (click)="onOpenModalEducassis()"
+      class="button-educassis"
+    ></a>
   </div>
-  <a class="nutricional-information-mob" href="https://goo.gl/tgvPSr" target="_blank">Informações nutricionais</a>
+  <a
+    class="nutricional-information-mob"
+    href="/assets/informacao_nutricional.xlsx"
+    target="_blank"
+    >Informações nutricionais</a
+  >
   <div class="card" *ngIf="isCard && currentSchool.cards">
     <div class="age-item" *ngFor="let card of currentSchool.cards | keys">
       <div class="age-header" (click)="onExpandCard($event)">
-        {{card.name}}
-        <p class="date-menu-signup-mob">{{card.data_publicacao}}</p>
+        {{ card.name }}
+        <p class="date-menu-signup-mob">{{ card.data_publicacao }}</p>
       </div>
       <div class="card-item" *ngFor="let menu of card.menu | orderby">
         <div class="title-content">
-          <img src="assets/images/prato-aberto-icone-{{menu.icon}}.png" alt="" class="icon">
-          <h4 class="title">{{menu.name}}</h4>
-          
+          <img
+            src="assets/images/prato-aberto-icone-{{ menu.icon }}.png"
+            alt=""
+            class="icon"
+          />
+          <h4 class="title">{{ menu.name }}</h4>
         </div>
         <ul class="food-list">
           <li class="food-item" *ngFor="let food of menu.content">
-            <span class="food-title">{{food}}</span>
+            <span class="food-title">{{ food }}</span>
           </li>
         </ul>
       </div>
       <div class="deatils-link">
-        Os cardápios poderão sofrer alterações em razão do grau de maturação dos hortifrutis, necessidade de adaptações excepcionais na unidade escolar, autorizações de troca previamente analisadas entre outros.<br>
+        Os cardápios poderão sofrer alterações em razão do grau de maturação dos
+        hortifrutis, necessidade de adaptações excepcionais na unidade escolar,
+        autorizações de troca previamente analisadas entre outros.<br />
         <a href="javascript:void(0)" (click)="onOpenModalDetails()">Notas</a>
       </div>
     </div>
-    <a class="nutricional-information-desktop" href="https://goo.gl/tgvPSr" target="_blank">Informações nutricionais</a>
+    <a
+      class="nutricional-information-desktop"
+      href="/assets/informacao_nutricional.xlsx"
+      target="_blank"
+      >Informações nutricionais</a
+    >
   </div>
   <div class="card" *ngIf="!isCard">
-    <h3 class="card-alert">{{errorMessage}}</h3>
+    <h3 class="card-alert">{{ errorMessage }}</h3>
   </div>
 </section>
 <div class="overlay-educassis" id="overlayEducassis">
   <div class="banner-educassis">
-    <a href="javascript:void(0)" class="button__fechar" (click)="onCloseModalEducassis()"></a>
-    <img src="/assets/images/prato-aberto-home-educassis-mob-escola.png" class="educassis-mob" alt="">
-    <img src="/assets/images/prato-aberto-home-educassis-desk-escola.png" class="educassis-desk" alt="">
-    <a href="https://www.messenger.com/t/EduPrefSP" target="_blank" class="button-moreinfos fb"></a>
-    <a href="https://web.telegram.org/#/im?p=@EduPrefSP_bot" target="_blank" class="button-moreinfos tl"></a>
+    <a
+      href="javascript:void(0)"
+      class="button__fechar"
+      (click)="onCloseModalEducassis()"
+    ></a>
+    <img
+      src="/assets/images/prato-aberto-home-educassis-mob-escola.png"
+      class="educassis-mob"
+      alt=""
+    />
+    <img
+      src="/assets/images/prato-aberto-home-educassis-desk-escola.png"
+      class="educassis-desk"
+      alt=""
+    />
+    <a
+      href="https://www.messenger.com/t/EduPrefSP"
+      target="_blank"
+      class="button-moreinfos fb"
+    ></a>
+    <a
+      href="https://web.telegram.org/#/im?p=@EduPrefSP_bot"
+      target="_blank"
+      class="button-moreinfos tl"
+    ></a>
   </div>
 </div>
 <div class="overlay-details" id="overlayDetails">
-  <a href="javascript:void(0)" class="button__fechar" (click)="onCloseModalDetails()"></a>
+  <a
+    href="javascript:void(0)"
+    class="button__fechar"
+    (click)="onCloseModalDetails()"
+  ></a>
   <div class="details-content">
     <div [innerHtml]="safeHtml"></div>
   </div>
 </div>
-<div class="print-page" id="printPage" style="position: fixed;top: 0;z-index: 100;width: 100%;height: 100%;background: #fff;padding: 65px 24px;overflow-x: hidden;overflow-y: auto;">
+<div
+  class="print-page"
+  id="printPage"
+  style="
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    padding: 65px 24px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  "
+>
   <h1 class="title">Cardápio da semana</h1>
-  <span class="date-range">{{rangeStr}}</span><br>
-  <span class="school-title" *ngIf="currentSchool">{{currentSchool.nome}}</span><br>
+  <span class="date-range">{{ rangeStr }}</span
+  ><br />
+  <span class="school-title" *ngIf="currentSchool">{{
+    currentSchool.nome
+  }}</span
+  ><br />
 
   <div class="week-box" *ngFor="let age of weekCalendary">
-    <h3 class="week-age">{{age.name}}</h3>
-    <h3 class="week-date-published">{{age.datePublished}}</h3>
-    <table class="week-table" style="width: 100%;display: table;border:none;border-collapse: collapse;border-spacing: 0;">
-        <tr>
-          <th *ngFor="let d of age.weekDays;let i = index" [style.background-color]="getStyleTitle(i)" class="week-table-title" style=" -webkit-print-color-adjust: exact;display: table-cell;text-align: center;word-spacing: 100vw;vertical-align: middle;border-radius: 2px;font-family: Varela;font-size: 12px;padding: 15px;">{{d}}</th>
-        </tr>
-        <tr *ngFor="let item of age.items" style="page-break-inside: avoid; border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-          <td class="week-table-item" *ngFor="let eats of item;let i = index" [style.background-color]="getStyleContent(i)" style=" -webkit-print-color-adjust: exact;font-family: RobRg;font-size: 14px;vertical-align: top;padding: 30px 15px 15px 15px;display: table-cell;text-align: left;">
-            <p *ngFor="let eat of eats;let idx = index;">
-              <span *ngIf="i > 0">
-                  <!-->span class="dot" *ngIf="i > 0" style="color: #9468AC;">•</span--> {{eat}}
-              </span>
-              <strong *ngIf="i == 0">
-                  {{eat.substring(eat.indexOf("-")+1, eat.length)}}
-              </strong>
-
-            </p>
-          </td>
-        </tr>
-      </table>
+    <h3 class="week-age">{{ age.name }}</h3>
+    <h3 class="week-date-published">{{ age.datePublished }}</h3>
+    <table
+      class="week-table"
+      style="
+        width: 100%;
+        display: table;
+        border: none;
+        border-collapse: collapse;
+        border-spacing: 0;
+      "
+    >
+      <tr>
+        <th
+          *ngFor="let d of age.weekDays; let i = index"
+          [style.background-color]="getStyleTitle(i)"
+          class="week-table-title"
+          style="
+            -webkit-print-color-adjust: exact;
+            display: table-cell;
+            text-align: center;
+            word-spacing: 100vw;
+            vertical-align: middle;
+            border-radius: 2px;
+            font-family: Varela;
+            font-size: 12px;
+            padding: 15px;
+          "
+        >
+          {{ d }}
+        </th>
+      </tr>
+      <tr
+        *ngFor="let item of age.items"
+        style="
+          page-break-inside: avoid;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        "
+      >
+        <td
+          class="week-table-item"
+          *ngFor="let eats of item; let i = index"
+          [style.background-color]="getStyleContent(i)"
+          style="
+            -webkit-print-color-adjust: exact;
+            font-family: RobRg;
+            font-size: 14px;
+            vertical-align: top;
+            padding: 30px 15px 15px 15px;
+            display: table-cell;
+            text-align: left;
+          "
+        >
+          <p *ngFor="let eat of eats; let idx = index">
+            <span *ngIf="i > 0">
+              <!-->span class="dot" *ngIf="i > 0" style="color: #9468AC;">•</span-->
+              {{ eat }}
+            </span>
+            <strong *ngIf="i == 0">
+              {{ eat.substring(eat.indexOf("-") + 1, eat.length) }}
+            </strong>
+          </p>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
