@@ -1,0 +1,7 @@
+Utilizar node na versão 10.24.1 (recomendado usar nvm para versionamento)
+
+> nvm use 10.24.1
+
+> npm install --dev
+
+> npm start
