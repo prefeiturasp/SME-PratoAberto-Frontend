@@ -318,13 +318,13 @@ export class SchoolComponent implements OnInit {
       `${this.preZero(currWeekByDate[4].getDate())}/${this.preZero(currWeekByDate[4].getMonth() + 1)} ${Globals.weekDayLabels[4]}`
     ]
     let startStr = "" + currWeekByDate[0].getFullYear() + this.preZero(currWeekByDate[0].getMonth() + 1) + this.preZero(currWeekByDate[0].getDate());
-    let endStr = "" + currWeekByDate[4].getFullYear() + this.preZero(currWeekByDate[4].getMonth() + 1) + this.preZero(currWeekByDate[4].getDate());
+    let endStr = "" + currWeekByDate[6].getFullYear() + this.preZero(currWeekByDate[6].getMonth() + 1) + this.preZero(currWeekByDate[6].getDate());
 
     this.rangeStr = `
       ${this.preZero(currWeekByDate[0].getDate())} a
-      ${this.preZero(currWeekByDate[4].getDate())} de
-      ${Globals.monthLabels[currWeekByDate[4].getMonth() + 1]} de
-      ${currWeekByDate[4].getFullYear()}`
+      ${this.preZero(currWeekByDate[6].getDate())} de
+      ${Globals.monthLabels[currWeekByDate[6].getMonth() + 1]} de
+      ${currWeekByDate[6].getFullYear()}`
 
       let urlPdf = this.calendaryService.getReportPdf(this.currentSchool,
         startStr,
