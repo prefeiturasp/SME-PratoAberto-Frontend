@@ -296,11 +296,6 @@ export class SchoolComponent implements OnInit {
     this.winRef.nativeWindow.$(target).parent().addClass('selected');
   }
 
-  dateModelChange(e) {
-    // console.log("dateModelChange", e)
-
-  }
-
   onPrintPage() {
     let currWeekByDate = this.getWeekByDate(
       new Date(
@@ -309,22 +304,15 @@ export class SchoolComponent implements OnInit {
         Globals.calendaryDate["day"]
       )
     )
-    let _weekDays = [
-      "",
-      `${this.preZero(currWeekByDate[0].getDate())}/${this.preZero(currWeekByDate[0].getMonth() + 1)} ${Globals.weekDayLabels[0]}`,
-      `${this.preZero(currWeekByDate[1].getDate())}/${this.preZero(currWeekByDate[1].getMonth() + 1)} ${Globals.weekDayLabels[1]}`,
-      `${this.preZero(currWeekByDate[2].getDate())}/${this.preZero(currWeekByDate[2].getMonth() + 1)} ${Globals.weekDayLabels[2]}`,
-      `${this.preZero(currWeekByDate[3].getDate())}/${this.preZero(currWeekByDate[3].getMonth() + 1)} ${Globals.weekDayLabels[3]}`,
-      `${this.preZero(currWeekByDate[4].getDate())}/${this.preZero(currWeekByDate[4].getMonth() + 1)} ${Globals.weekDayLabels[4]}`
-    ]
+
     let startStr = "" + currWeekByDate[0].getFullYear() + this.preZero(currWeekByDate[0].getMonth() + 1) + this.preZero(currWeekByDate[0].getDate());
-    let endStr = "" + currWeekByDate[4].getFullYear() + this.preZero(currWeekByDate[4].getMonth() + 1) + this.preZero(currWeekByDate[4].getDate());
+    let endStr = "" + currWeekByDate[6].getFullYear() + this.preZero(currWeekByDate[6].getMonth() + 1) + this.preZero(currWeekByDate[6].getDate());
 
     this.rangeStr = `
       ${this.preZero(currWeekByDate[0].getDate())} a
-      ${this.preZero(currWeekByDate[4].getDate())} de
-      ${Globals.monthLabels[currWeekByDate[4].getMonth() + 1]} de
-      ${currWeekByDate[4].getFullYear()}`
+      ${this.preZero(currWeekByDate[6].getDate())} de
+      ${Globals.monthLabels[currWeekByDate[6].getMonth() + 1]} de
+      ${currWeekByDate[6].getFullYear()}`
 
       let urlPdf = this.calendaryService.getReportPdf(this.currentSchool,
         startStr,
@@ -332,119 +320,6 @@ export class SchoolComponent implements OnInit {
 
      
       window.open(urlPdf,'_blank')
-
-   /*    this.calendaryService.getByRange(
-      this.currentSchool,
-      startStr,
-      endStr
-    ).subscribe((res) => {
-      this.weekCalendary = [];
-      let todasRefeicoes = res[0]
-      let refeicoesEscola = res[1]
-      let calendaryAgeGroups = this.winRef.nativeWindow._.groupBy(todasRefeicoes, (item) => {
-        return item.idade;
-      });
-      let item;
-      let currMenu = {};
-      let ageMenu = {};
-      let tempWeek = [];
-      
-      Object.keys(calendaryAgeGroups).map((ageKey, idx, arr) => {
-        if (!ageMenu[ageKey]) {
-          ageMenu[ageKey] = {};
-          ageMenu[ageKey].name = ageKey;
-        }
-        for (let i = 0; i < currWeekByDate.length; i++) {
-          let currDate = "" + currWeekByDate[i].getFullYear() + this.preZero(currWeekByDate[i].getMonth() + 1) + this.preZero(currWeekByDate[i].getDate());
-          let currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], { data: currDate });
-
-          if (currEats) {    //  ate aqui ta em ordem :D
-            // console.log("currEats", currEats)
-            Object.keys(currEats["cardapio"]).map((meal, idx) => {
-              if (!ageMenu[ageKey][meal]) {
-                ageMenu[ageKey][meal] = {};
-              }
-              ageMenu[ageKey][meal] = {
-                name: currEats.idade,
-                date: currDate,
-                weekDays: _weekDays,
-                items: {
-                  eats: [[meal]]
-                }
-              };
-              if (!(refeicoesEscola.indexOf(meal) > -1)){
-                //  sume o nome da refeicao que nao eh da escola
-                ageMenu[ageKey][meal].items.eats = [[]]
-              }
-              
-              // console.log("ageMenu[ageKey][menuKey]", ageMenu[ageKey][menuKey])
-              for (let j = 0; j < 5; j++) {
-                let _currDate = "" + currWeekByDate[j].getFullYear() + this.preZero(currWeekByDate[j].getMonth() + 1) + this.preZero(currWeekByDate[j].getDate());
-                let _currEats = this.winRef.nativeWindow._.findWhere(calendaryAgeGroups[ageKey], { data: _currDate });
-                let tempArr = [];
-                if (_currEats) {
-                  tempArr = _currEats["cardapio"][meal];
-                }
-                if (refeicoesEscola.indexOf(meal) > -1){
-                  // exibe somente as refeicoes da escola
-                  ageMenu[ageKey][meal]["items"]["eats"].push(tempArr);
-                } 
-              }
-            });
-
-
-          }
-        }
-        let tempObj = {
-          name: "",
-          datePublished: null,
-          weekDays: _weekDays,
-          items: []
-        };
-        Object.keys(ageMenu[ageKey]).map((meal, i) => {
-          if (ageMenu[ageKey][meal].items) {
-            let tempArr = [];
-            for (let eat = 0; eat < ageMenu[ageKey][meal].items.eats.length; eat++) {
-              tempArr.push(ageMenu[ageKey][meal].items.eats[eat]);
-            }
-            tempObj["name"] = ageMenu[ageKey][meal].name;
-            let datePublished = (todasRefeicoes.find(function(data){ return data.idade == ageKey})).data_publicacao;
-            if (datePublished && datePublished.includes('T')) {
-              var date = new Date(datePublished);
-              var options = {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
-              datePublished = 'Cardápio publicado em ' + 
-                date.toLocaleDateString('pt-BR', options).split(" ")[0] + 
-                " às " + 
-                date.toLocaleDateString('pt-BR', options).split(" ")[1];
-                tempObj["datePublished"] = datePublished;
-            }
-            tempObj['items'].push(tempArr);
-          }
-        });
-        this.weekCalendary.push(tempObj);
-      });
-      
-      let printContents, popupWin;
-      setTimeout(() => {
-        printContents = this.winRef.nativeWindow.$("#printPage").clone();
-        printContents.css({
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          display: "block",
-          overflow: "visible"
-        })
-        this.winRef.nativeWindow.$("body").prepend(printContents);
-        setTimeout(() => {
-          window.print();
-          setTimeout(() => {
-            window.close();
-            printContents.remove();
-          }, 1000);
-        }, 1000);
-      }, 250);
-    }); */
-
   }
 
   getWeekByDate(currDate) {
