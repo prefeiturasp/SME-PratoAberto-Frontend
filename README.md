@@ -66,6 +66,7 @@ nosso [código de conduta](./CODEOFCONDUCT.md).
 
 ### Dependências
 
+ * Node v10.24.1
  * [angular-cli](https://github.com/angular/angular-cli)
  * Sass (latest)
  * Typescript (latest)
