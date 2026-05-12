@@ -1,4 +1,3 @@
-import { OrderByPipe } from './school/orderby.pipe';
 import { KeysPipe } from './school/keys.pipe';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -34,7 +33,6 @@ import { FocusDirective } from './focus.directive';
     DatepickerComponent,
     SearchPipe,
     KeysPipe,
-    OrderByPipe,
     FocusDirective
   ],
   imports: [
