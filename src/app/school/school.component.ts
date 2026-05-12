@@ -173,7 +173,6 @@ export class SchoolComponent implements OnInit {
                 name: res[i].idade,
                 data_publicacao: datePublishedFromRes,
                 menu: [],
-                exibitionOrder: self.currentSchool.idades.indexOf(res[i].idade)
               };
             }
             Object.keys(cardapio).forEach((key) => {
@@ -185,8 +184,7 @@ export class SchoolComponent implements OnInit {
                 self.currentSchool.cards[res[i].idade].menu.push({
                   name: key,
                   content: eats,
-                  icon: key.replace(/ /g, '').toLowerCase(),
-                  exibitionOrder: self.currentSchool.refeicoes.indexOf(key)
+                  icon: key.replace(/ /g, '').toLowerCase()
                 });
               //}
             });
