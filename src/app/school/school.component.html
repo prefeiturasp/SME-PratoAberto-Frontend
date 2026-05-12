@@ -77,7 +77,7 @@
         {{ card.name }}
         <p class="date-menu-signup-mob">{{ card.data_publicacao }}</p>
       </div>
-      <div class="card-item" *ngFor="let menu of card.menu | orderby">
+      <div class="card-item" *ngFor="let menu of card.menu">
         <div class="title-content">
           <img
             src="assets/images/prato-aberto-icone-{{ menu.icon }}.png"
